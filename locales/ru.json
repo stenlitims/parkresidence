@@ -1,0 +1,16 @@
+{
+  "links": {
+    "О комплексе": "О комплексе",
+    "Выбрать квартиру": "Выбрать квартиру",
+    "Как купить": "Как купить",
+    "Акции": "Акции"
+  },
+  "home": {
+    "title": "Welcome",
+    "introduction": "This is an introduction in English."
+  },
+  "about": {
+    "title": "About",
+    "introduction": "This page is made to give you more informations."
+  }
+}
