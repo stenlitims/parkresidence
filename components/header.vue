@@ -47,14 +47,14 @@
 
         <div class="top-phone"><a href="tel:044 123-45-67">044 123-45-67</a></div>
 
-        <div class="burger">
+        <div class="burger" data-fancybox data-src="#modal-nav" href="javascript:;">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
     </div>
-    {{$store.state.locale}}
+ 
   </header>
 </template>
 

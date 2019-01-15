@@ -16,6 +16,9 @@ module.exports = {
    */
   head: {
     title: pkg.name,
+    base: {
+      href: "/"
+    },
     meta: [{
         charset: 'utf-8'
       },
@@ -26,18 +29,33 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: pkg.description
+        content: "park-residence"
       }
     ],
     script: [{
       src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js',
       type: "text/javascript"
+    }, {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js',
+      type: "text/javascript"
+    }, {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js',
+      type: "text/javascript"
     }],
     link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }]
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css'
+      },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      }
+    ]
   },
 
   /*
@@ -48,7 +66,8 @@ module.exports = {
   },
 
   router: {
-    middleware: 'i18n'
+    middleware: 'i18n',
+    base: '/'
   },
 
   /*

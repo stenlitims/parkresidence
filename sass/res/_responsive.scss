@@ -8,25 +8,92 @@
 
 
 
-@media (min-width: 1360px) {
+@media (min-width: 1360px) {}
 
+@media (max-width: 1440px) {
+  .heading1 {
+    font-size: 64px;
+  }
+
+  .main-img .text {
+    font-size: 24px;
+  }
+
+  .heading2 {
+    font-size: 44px;
+  }
+
+  .text1 {
+    font-size: 24px;
+  }
+  .main-img{
+      margin-bottom: 80px;
+  }
+
+  .section{
+      margin-bottom: 70px;
+  }
+  .main-bg{
+      height: 600px;
+  }
+
+  .modal-nav .modal-content {
+    padding: 80px;
+  }
+  .modal-nav .nav-row ul{
+    font-size: 28px;
+  }
+  .f-phone a{
+    font-size: 32px;
+  }
 }
 
-@media (min-width: 1440px) {
- 
+@media (max-width: 1360px) {
+  body {
+    font-size: 14px;
+  }
+
+  .heading1 {
+    font-size: 58px;
+  }
+
+  .main-img .text {
+    font-size: 20px;
+  }
+
+  .main-img .main-text {
+    max-width: 700px;
+  }
+
+  .heading2 {
+    font-size: 40px;
+  }
+
+  .text1 {
+    font-size: 22px;
+  }
+  .modal-nav .modal-content {
+    padding: 70px;
+  }
+  .modal-nav .nav-row ul{
+    font-size: 26px;
+  }
+  .f-phone a{
+    font-size: 30px;
+  }
 }
 
-@media (max-width: 1400px) {
-
+@media (max-height: 645px) {
+  .modal-nav .modal-content {
+    padding: 50px 70px;
+  }
 }
 
 @media (max-width: 1440px) and (min-width: 991px) {}
 
 @media (max-width: 1340px) {}
 
-@media (max-width: 1200px) {
-
-}
+@media (max-width: 1200px) {}
 
 @media (max-width: 1140px) {}
 

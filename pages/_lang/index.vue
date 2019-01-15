@@ -1,16 +1,29 @@
 <template>
   <div class="main-page">
     <div class="main-img" style="background-image: url(main/1.jpg)">
-      <div class="main-text">
-        <div class="heading1">Park Residence
-          <br>для жизни
+      <div class="main-text-list owl-carousel">
+        <div class="main-text">
+          <div class="heading1">Park Residence
+            <br>для жизни
+          </div>
+          <div
+            class="text"
+          >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
+          <a href class="btn btn-def">
+            <span>Выбрать квартиру</span>
+          </a>
         </div>
-        <div
-          class="text"
-        >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
-        <a href class="btn btn-def">
-          <span>Выбрать квартиру</span>
-        </a>
+        <div class="main-text">
+          <div class="heading1">Park Residence
+            <br>для жизни
+          </div>
+          <div
+            class="text"
+          >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
+          <a href class="btn btn-def">
+            <span>Выбрать квартиру</span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="container">
@@ -93,6 +106,96 @@
           </div>
         </div>
       </div>
+
+      <section class="section black-box">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row list">
+              <div class="col-sm-6">
+                <div class="item">
+                  <div class="num">850</div>
+                  <div class="text">Уютных, комфортных
+                    <br>и теплых квартир
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="item">
+                  <div class="num">8</div>
+                  <div class="text">Этажей в 6 современных
+                    <br>домах жилого комплекса
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="item">
+                  <div class="num">34-82 м²</div>
+                  <div class="text">Площадь квартир
+                    <br>с продуманной планировкой
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="item">
+                  <div class="num">2019 год</div>
+                  <div class="text">Ввод в эксплуатацию
+                    <br>и выдача ключей в доме №1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 text-bl">
+            <div class="title2">
+              <p>
+                Выберите комфортную планировку
+                квартиры
+                <br>прямо сейчас
+              </p>
+            </div>
+            <div class>
+              <a href class="btn btn-def">
+                <span>Выбрать квартиру</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="main-bg" style="background-image: url(main/4.jpg)">
+      <div class="container">
+        <div class="wrap-text-slide">
+          <div class="text-slide owl-carousel">
+            <div class="item">
+              <div class="title">Квартиры</div>
+              <div class="text">
+                <p>Продуманные универсальные планировки позволяют создать любой дизайн квартиры, который вы только пожелаете.</p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="title">Квартиры</div>
+              <div class="text">
+                <p>Продуманные универсальные планировки позволяют создать любой дизайн квартиры, который вы только пожелаете.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-text-bottom">
+      <div class="container text-center">
+        <div class="heading3">Создайте свое впечатление о Park Residence</div>
+        <div class="text">
+          <p>Запишитесь на просмотр и своими глазами посмотрите, как идет процесс
+            <br>строительства и обустройства территории комплекса.
+          </p>
+        </div>
+        <a href class="btn btn-def">
+          <span>Записаться на просмотр</span>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -100,7 +203,31 @@
 <script>
 export default {
   head() {
-    return { title: "Главная" };
+    return {
+      title: "Главная"
+    };
+  },
+  mounted() {
+    $(".text-slide").owlCarousel({
+      loop: false,
+      margin: 0,
+      nav: true,
+      dots: false,
+      items: 1,
+      autoplaySpeed: 1000,
+      navSpeed: 1000
+    });
+
+    $(".main-text-list").owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: true,
+      dots: false,
+      items: 1,
+      navText: ["", ""],
+      autoplaySpeed: 1000,
+      navSpeed: 1000
+    });
   }
 };
 </script>
