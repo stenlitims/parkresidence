@@ -10,7 +10,7 @@
             class="text"
           >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
           <a href class="btn btn-def">
-            <span>Выбрать квартиру</span>
+            <span>{{$t('links["Выбрать квартиру"]')}}</span>
           </a>
         </div>
         <div class="main-text">
@@ -21,7 +21,7 @@
             class="text"
           >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
           <a href class="btn btn-def">
-            <span>Выбрать квартиру</span>
+            <span>{{$t('links["Выбрать квартиру"]')}}</span>
           </a>
         </div>
       </div>
@@ -40,29 +40,33 @@
         <div class="list-text-img">
           <div class="list-wrap">
             <div class="list">
-              <div class="item">
-                <div class="num">01</div>
-                <div class="title">
-                  Жить недалеко от Киева
-                  и оставаться в тишине
+              <div class="items">
+                <div class="item">
+                  <div class="num">01</div>
+                  <div class="title">
+                    Жить недалеко от Киева
+                    и оставаться в тишине
+                  </div>
+                  <div
+                    class="text"
+                  >Park Residence расположен всего в 3 километрах от столицы, вдали от оживленных дорог. Уровень шума во дворе комплекса в 3 раза меньше, чем в черте города. Вы сможете жить и отдыхать, не отвлекаясь на движение большого города.</div>
                 </div>
-                <div
-                  class="text"
-                >Park Residence расположен всего в 3 километрах от столицы, вдали от оживленных дорог. Уровень шума во дворе комплекса в 3 раза меньше, чем в черте города. Вы сможете жить и отдыхать, не отвлекаясь на движение большого города.</div>
-              </div>
-              <div class="item">
-                <div class="num">02</div>
-                <div class="title">
-                  Жить недалеко от Киева
-                  и оставаться в тишине
+                <div class="item">
+                  <div class="num">02</div>
+                  <div class="title">
+                    Жить недалеко от Киева
+                    и оставаться в тишине
+                  </div>
+                  <div
+                    class="text"
+                  >Park Residence расположен всего в 3 километрах от столицы, вдали от оживленных дорог. Уровень шума во дворе комплекса в 3 раза меньше, чем в черте города. Вы сможете жить и отдыхать, не отвлекаясь на движение большого города.</div>
                 </div>
-                <div
-                  class="text"
-                >Park Residence расположен всего в 3 километрах от столицы, вдали от оживленных дорог. Уровень шума во дворе комплекса в 3 раза меньше, чем в черте города. Вы сможете жить и отдыхать, не отвлекаясь на движение большого города.</div>
               </div>
-              <a href="#" class="btn btn-def btn-l">
-                <span>Расположение</span>
-              </a>
+              <div class="btns">
+                <a href="#" class="btn btn-def btn-l">
+                  <span>{{$t('links["Расположение"]')}}</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -79,29 +83,33 @@
           </div>
           <div class="list-wrap">
             <div class="list">
-              <div class="item">
-                <div class="num">03</div>
-                <div class="title">
-                  Безопасность
-                  на первом месте
+              <div class="items">
+                <div class="item">
+                  <div class="num">03</div>
+                  <div class="title">
+                    Безопасность
+                    на первом месте
+                  </div>
+                  <div
+                    class="text"
+                  >Закрытый двор с пропускной системой, круглосуточная охрана комплекса с двумя стационарными постами и продуманная система видеонаблюдения — вот залог безопасности для жителей и гостей комплекса.</div>
                 </div>
-                <div
-                  class="text"
-                >Закрытый двор с пропускной системой, круглосуточная охрана комплекса с двумя стационарными постами и продуманная система видеонаблюдения — вот залог безопасности для жителей и гостей комплекса.</div>
-              </div>
-              <div class="item">
-                <div class="num">04</div>
-                <div class="title">
-                  Стильная архитектура
-                  и уютный двор
+                <div class="item">
+                  <div class="num">04</div>
+                  <div class="title">
+                    Стильная архитектура
+                    и уютный двор
+                  </div>
+                  <div
+                    class="text"
+                  >ЖК Park Residence выгодно отличается от серых многоэтажек, ведь каждая деталь комплекса отражает философию хюгге, которая объединяет красоту, функциональность и комфорт.</div>
                 </div>
-                <div
-                  class="text"
-                >ЖК Park Residence выгодно отличается от серых многоэтажек, ведь каждая деталь комплекса отражает философию хюгге, которая объединяет красоту, функциональность и комфорт.</div>
               </div>
-              <a href="#" class="btn btn-def btn-l">
-                <span>Концепция</span>
-              </a>
+              <div class="btns">
+                <a href="#" class="btn btn-def btn-l">
+                  <span>{{$t('links["Концепция"]')}}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +117,7 @@
 
       <section class="section black-box">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-lg-8">
             <div class="row list">
               <div class="col-sm-6">
                 <div class="item">
@@ -145,7 +153,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 text-bl">
+          <div class="col-lg-4 text-bl">
             <div class="title2">
               <p>
                 Выберите комфортную планировку
@@ -155,7 +163,7 @@
             </div>
             <div class>
               <a href class="btn btn-def">
-                <span>Выбрать квартиру</span>
+                <span>{{$t('links["Выбрать квартиру"]')}}</span>
               </a>
             </div>
           </div>
@@ -193,7 +201,7 @@
           </p>
         </div>
         <a href class="btn btn-def">
-          <span>Записаться на просмотр</span>
+          <span>{{$t('main["Записаться на просмотр"]')}}</span>
         </a>
       </div>
     </div>
@@ -201,11 +209,24 @@
 </template>
 
 <script>
+import mix from "@/mixin/global";
+import axios from "axios";
+
 export default {
-  head() {
-    return {
-      title: "Главная"
-    };
+  mixins: [mix],
+  data() {
+    return {};
+  },
+  asyncData({ params }) {
+    let api = process.env.api;
+    if (!api) {
+      let api = context.env.api;
+    }
+    return axios.get(api + "1").then(res => {
+      return {
+        data: res.data
+      };
+    });
   },
   mounted() {
     $(".text-slide").owlCarousel({

@@ -3,12 +3,14 @@
     <div class="container">
       <div class="footer-line1">
         <div class="f-contact">
-          <p>Узнайте больше по телефону</p>
-          <div class="f-phone">
-            <a href="#">044 123-45-67</a>
+          <div>
+            <p>{{$t('links["Узнайте больше по телефону"]')}}</p>
+            <div class="f-phone">
+              <a href="#">044 123-45-67</a>
+            </div>
           </div>
           <div class="cont">
-            <p>Офис продаж</p>
+            <p>{{$t('links["Офис продаж"]')}}</p>
             <p>г. Киев, ул. Шевченка, 74, офис 17
               <br>Пн - Сб с 10:00 до 21:00
             </p>
@@ -19,78 +21,77 @@
           <div class="f-nav-item">
             <ul>
               <li>
-                <a href="#">О комплексе</a>
+                <nuxt-link to="about" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">Концепция</a>
+                <nuxt-link to="concept" exact>{{$t('links["Концепция"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">Описание</a>
+                <a href="#">{{$t('links["Описание"]')}}</a>
               </li>
               <li>
-                <a href="#">Стиль жизни</a>
+                <a href="#">{{$t('links["Стиль жизни"]')}}</a>
               </li>
               <li>
-                <a href="#">Расположение</a>
-              </li>
-            </ul>
-          </div>
-          <div class="f-nav-item">
-            <ul>
-              <li>
-                <a href="#">Как купить</a>
-              </li>
-              <li>
-                <a href="#">Ход строительства</a>
-              </li>
-              <li>
-                <a href="#">Новости</a>
-              </li>
-              <li>
-                <a href="#">Контакты</a>
+                <a href="#">{{$t('links["Расположение"]')}}</a>
               </li>
             </ul>
           </div>
           <div class="f-nav-item">
             <ul>
               <li>
-                <a href="#">Квартиры на генплане</a>
+                <a href="#">{{$t('links["Как купить"]')}}</a>
               </li>
               <li>
-                <a href="#">Подбор по параметрам</a>
+                <a href="#">{{$t('links["Ход строительства"]')}}</a>
               </li>
               <li>
-                <a href="#">Документы</a>
+                 <a href="#">{{$t('links["Новости"]')}}</a>
               </li>
               <li>
-                <a href="#">Застройщик</a>
+                 <a href="#">{{$t('links["Контакты"]')}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="f-nav-item">
+            <ul>
+              <li>
+                <a href="#">{{$t('links["Квартиры на генплане"]')}}</a>
+              </li>
+              <li>
+                <a href="#">{{$t('links["Подбор по параметрам"]')}}</a>
+              </li>
+              <li>
+                <a href="#">{{$t('links["Документы"]')}}</a>
+              </li>
+              <li>
+                <a href="#">{{$t('links["Застройщик"]')}}</a>
               </li>
             </ul>
           </div>
         </div>
 
-
         <div class="f-soc-list">
-            <a href="#" class="insta">
-                <svg>
+          <a href="#" class="insta">
+            <svg>
               <use xlink:href="#ic_insta"></use>
             </svg>
-            </a>
-            <a href="#" class="facebook">
-                <svg>
+          </a>
+          <a href="#" class="facebook">
+            <svg>
               <use xlink:href="#ic_facebook"></use>
             </svg>
-            </a>
-            <a href="#">
-                <svg>
+          </a>
+          <a href="#">
+            <svg>
               <use xlink:href="#ic_telegram"></use>
             </svg>
-            </a>
-            <a href="#">
-                <svg>
+          </a>
+          <a href="#">
+            <svg>
               <use xlink:href="#ic_viber"></use>
             </svg>
-            </a>
+          </a>
         </div>
       </div>
 

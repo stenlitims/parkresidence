@@ -8,16 +8,16 @@
           <div class="col-sm-6">
             <ul>
               <li>
-                <a href="#">{{$t('links["Главная"]')}}</a>
+                <nuxt-link :to="$i18n.path('')" exact>{{$t('links["Главная"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">{{$t('links["О комплексе"]')}}</a>
+                <nuxt-link to="about" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">{{$t('links["Концепция"]')}}</a>
+                <nuxt-link to="concept" exact>{{$t('links["Концепция"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">{{$t('links["Расположение"]')}}</a>
+                <nuxt-link to="location" exact>{{$t('links["Расположение"]')}}</nuxt-link>
               </li>
               <li>
                 <a href="#">{{$t('links["Стиль жизни"]')}}</a>
@@ -41,7 +41,7 @@
                 <a href="#">{{$t('links["Ход строительства"]')}}</a>
               </li>
               <li>
-                <a href="#">{{$t('links["Новости"]')}}</a>
+                <nuxt-link to="news" exact>{{$t('links["Новости"]')}}</nuxt-link>
               </li>
 
               <li>

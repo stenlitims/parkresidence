@@ -26,25 +26,41 @@
   .text1 {
     font-size: 24px;
   }
-  .main-img{
-      margin-bottom: 80px;
+
+  .main-img {
+    margin-bottom: 80px;
   }
 
-  .section{
-      margin-bottom: 70px;
+  .section {
+    margin-bottom: 70px;
   }
-  .main-bg{
-      height: 600px;
+
+  .main-bg {
+    height: 600px;
   }
 
   .modal-nav .modal-content {
     padding: 80px;
   }
-  .modal-nav .nav-row ul{
+
+  .modal-nav .nav-row ul {
     font-size: 28px;
   }
-  .f-phone a{
+
+  .f-phone a {
     font-size: 32px;
+  }
+
+  .black-box {
+    padding: 96px;
+  }
+
+  .footer {
+    padding: 48px 0;
+  }
+
+  .main-bg .wrap-text-slide .title {
+    font-size: 36px;
   }
 }
 
@@ -72,14 +88,42 @@
   .text1 {
     font-size: 22px;
   }
+
   .modal-nav .modal-content {
     padding: 70px;
   }
-  .modal-nav .nav-row ul{
+
+  .modal-nav .nav-row ul {
     font-size: 26px;
   }
-  .f-phone a{
+
+  .f-phone a {
     font-size: 30px;
+  }
+
+  .black-box {
+    padding: 70px 90px;
+  }
+
+  .main-text-bottom {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .main-bg .wrap-text-slide .text {
+    font-size: 17px;
+  }
+
+  .main-bg .wrap-text-slide {
+    padding: 40px;
+  }
+
+  .main-bg .wrap-text-slide {
+    width: 400px;
+  }
+
+  .black-box .num {
+    font-size: 40px;
   }
 }
 
@@ -93,7 +137,78 @@
 
 @media (max-width: 1340px) {}
 
-@media (max-width: 1200px) {}
+@media (max-width: 1200px) {
+  .modal-nav .modal-bg {
+    display: none;
+  }
+
+  .modal-nav .modal-content {
+    width: 100%;
+  }
+
+  .list-text-img {
+    flex-wrap: wrap;
+
+    >div {
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    .img {
+      order: -1;
+      margin-bottom: 50px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .list-text-img .list-wrap .list {
+    max-width: 100%;
+
+    .items {
+      display: flex;
+      justify-content: space-around;
+
+      .item {
+        max-width: 43%;
+        margin-bottom: 44px;
+      }
+    }
+
+    .btns {
+      text-align: center;
+    }
+  }
+
+  .header .logo {
+    margin-right: 20px;
+  }
+
+  .burger {
+    margin-left: 32px;
+  }
+
+  .header .main-nav li {
+    margin: 0 10px;
+    font-size: 13px;
+  }
+
+  .header .logo svg {
+    width: 93px;
+    height: 56px;
+  }
+
+
+
+
+
+
+
+
+}
 
 @media (max-width: 1140px) {}
 
