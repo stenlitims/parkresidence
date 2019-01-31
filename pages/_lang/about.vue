@@ -114,7 +114,7 @@
 
       <div class="section">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-sm-6">
             <div class="item-text mb0">
               <div class="title">Парковки</div>
               <div
@@ -122,7 +122,7 @@
               >На территории комплекса есть 5 подземных отапливаемых парковок, каждая из которых вмещает 35 автомобилей. На парковку можно попасть прямо из лифта, что очень актуально холодной зимой. Также есть безопасный наружный паркинг на 240 машиномест.</div>
             </div>
           </div>
-          <div class="col-md-6 a-center">
+          <div class="col-sm-6 a-center">
             <div class="item-nums">
               <div class="item">
                 <div class="num">175</div>

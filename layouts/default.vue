@@ -1,5 +1,5 @@
 <template>
-  <div :class="$store.state.mainClass">
+  <div :class="$store.state.mainClass" class="main-wrap">
     <siteHeader/>
     <nuxt/>
     <siteFooter/>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-if (typeof window == 'object') {
+if (typeof window == "object") {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 
@@ -53,6 +53,10 @@ export default {
       arrows: false,
       touch: false,
       baseClass: "b-close"
+    });
+
+    $(document).on("click", ".modal-nav a", function() {
+      $.fancybox.close();
     });
   }
 };

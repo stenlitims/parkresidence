@@ -1,31 +1,53 @@
 <template>
   <div class="inner-page">
     <div class="container">
-      <div class="container2">
-        <h1 class="heading25 tt heading3-dh">{{title}}</h1>
-        <div class="list-news">
-          <div class="item">
-            <div class="info">
-              <div class="date">
+      <div class="news-one" v-if="$route.params.id">
+        <div class="container2 section">
+          <div class="container3">
+            <div class="news-h">
+              <div class="n-date">
                 <svg>
                   <use xlink:href="#ic_calendar"></use>
                 </svg>
-                14.10.2018
+                {{one.date}}
+              </div>
+            </div>
+            <h1 class="heading25">{{one.pagetitle}}</h1>
+          </div>
+
+          <div class="new-img">
+            <img :src="$url+one.image" alt>
+          </div>
+
+          <div class="container3">
+            <div class="def-text" v-html="one.content"></div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="container2 section">
+        <h1 class="heading25 tt heading3-dh">{{title}}</h1>
+        <div class="list-news">
+          <div class="item" v-for="(item, i) in news" :key="i">
+            <div class="info">
+              <div class="n-date">
+                <svg>
+                  <use xlink:href="#ic_calendar"></use>
+                </svg>
+                {{item.date}}
               </div>
               <div class="title">
-                <a href="#">80% новостроек не предусматривают ни одного умного решения — ни в домах, ни в квартирах</a>
+                <nuxt-link :to="$i18n.path('')+'news/'+item.alias" exact>{{item.pagetitle}}</nuxt-link>
               </div>
               <div class="introtext">
-                <p>Большинство строительных компаний не спешат оснащать свои объекты по последнему слову техники. Всего 6% новостроек комфорт-класса не оборудованы совершенно...</p>
+                <p>{{introtext(item)}}</p>
               </div>
 
               <div class="more">
-                <a href="#">Подробнее</a>
+                <nuxt-link :to="$i18n.path('')+'news/'+item.alias" exact>{{$t('main["Подробнее"]')}}</nuxt-link>
               </div>
-
             </div>
             <div class="img">
-              <img src="images/news/1.jpg" alt>
+              <img :src="$url+item.image_mini" alt>
             </div>
           </div>
         </div>
@@ -41,7 +63,8 @@ export default {
   mixins: [mix],
   data() {
     return {
-      mainClass: ["def-page", "black-header"]
+      mainClass: ["def-page", "black-header"],
+      newsId: null
     };
   },
   asyncData({ params }) {
@@ -54,6 +77,54 @@ export default {
         data: res.data
       };
     });
+  },
+
+  head() {
+    let data = this.data[this.$store.state.locale];
+    if (this.$route.params.id) {
+      data = this.one;
+    }
+    let title = data.pagetitle + " | Park Residence";
+    if (data.longtitle) {
+      title = data.longtitle;
+    }
+
+    return {
+      title: title,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: data.description
+        }
+      ]
+    };
+  },
+
+  mounted() {
+    //  console.log(this.$route.params);
+  },
+  computed: {
+    news() {
+      let data = this.data.news[this.$store.state.locale];
+      return data;
+    },
+    one() {
+      if (this.$route.params.id) {
+        return this.news[this.$route.params.id];
+      }
+      return null;
+    }
+  },
+  methods: {
+    introtext(item) {
+      if (item["introtext"] == "") {
+        let text = item["content"].replace(/<[^>]+>/g, "");
+        return text.substring(0, 200) + "...";
+      } else {
+        return item["introtext"];
+      }
+    }
   }
 };
 </script>

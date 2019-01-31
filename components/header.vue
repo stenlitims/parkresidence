@@ -13,7 +13,7 @@
         <div class="main-nav">
           <ul>
             <li>
-              <nuxt-link to="about" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
+              <nuxt-link :to="$i18n.path('')+'about'" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
             </li>
             <li>
               <a href="#">{{$t('links["Выбрать квартиру"]')}}</a>

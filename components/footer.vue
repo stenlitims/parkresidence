@@ -21,10 +21,10 @@
           <div class="f-nav-item">
             <ul>
               <li>
-                <nuxt-link to="about" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
+                <nuxt-link :to="$i18n.path('')+'about'" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
               </li>
               <li>
-                <nuxt-link to="concept" exact>{{$t('links["Концепция"]')}}</nuxt-link>
+                <nuxt-link :to="$i18n.path('')+'concept'" exact>{{$t('links["Концепция"]')}}</nuxt-link>
               </li>
               <li>
                 <a href="#">{{$t('links["Описание"]')}}</a>
@@ -33,23 +33,23 @@
                 <a href="#">{{$t('links["Стиль жизни"]')}}</a>
               </li>
               <li>
-                <a href="#">{{$t('links["Расположение"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'location'" exact>{{$t('links["Расположение"]')}}</nuxt-link>
               </li>
             </ul>
           </div>
           <div class="f-nav-item">
             <ul>
               <li>
-                <a href="#">{{$t('links["Как купить"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
               </li>
               <li>
                 <a href="#">{{$t('links["Ход строительства"]')}}</a>
               </li>
               <li>
-                 <a href="#">{{$t('links["Новости"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'news'" exact>{{$t('links["Новости"]')}}</nuxt-link>
               </li>
               <li>
-                 <a href="#">{{$t('links["Контакты"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'contacts'" exact>{{$t('links["Контакты"]')}}</nuxt-link>
               </li>
             </ul>
           </div>

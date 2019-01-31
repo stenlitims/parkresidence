@@ -27,7 +27,7 @@
     font-size: 24px;
   }
 
-  .main-img {
+  .main-text-list {
     margin-bottom: 80px;
   }
 
@@ -61,6 +61,14 @@
 
   .main-bg .wrap-text-slide .title {
     font-size: 36px;
+  }
+
+  .inner-heading .h1 {
+    font-size: 44px;
+  }
+
+  .inner-heading {
+    padding: 56px;
   }
 }
 
@@ -124,6 +132,34 @@
 
   .black-box .num {
     font-size: 40px;
+  }
+
+  .row-pb>div {
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+
+  .row-pb .col-bg {
+    background: none;
+  }
+
+  .item-text .text {
+    font-size: 15px;
+  }
+
+  .item-text {
+    max-width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .row-fix-mb {
+    margin-bottom: -30px;
+  }
+
+  .w100-img {
+    margin-left: -15px;
+    margin-right: -15px;
   }
 }
 
@@ -205,7 +241,9 @@
 
 
 
-
+  .inner-heading {
+    width: 768px;
+  }
 
 
 }

@@ -1,31 +1,19 @@
 <template>
   <div class="main-page">
-    <div class="main-img" style="background-image: url(main/1.jpg)">
-      <div class="main-text-list owl-carousel">
+    <div class="main-text-list owl-carousel">
+      <div
+      v-for="(item, i) in main_slider" :key="i"
+       class="main-img" :style="{'background-image': 'url('+$url+item.image+')'}">
         <div class="main-text">
-          <div class="heading1">Park Residence
-            <br>для жизни
+          <div class="heading1">
+            {{item.title}}
           </div>
-          <div
-            class="text"
-          >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
-          <a href class="btn btn-def">
-            <span>{{$t('links["Выбрать квартиру"]')}}</span>
-          </a>
-        </div>
-        <div class="main-text">
-          <div class="heading1">Park Residence
-            <br>для жизни
-          </div>
-          <div
-            class="text"
-          >Концептуальный проект, который полностью отражает принципы философии хюгге — уютного жилья и комфортного общения с ощущением благополучия и личного счастья.</div>
-          <a href class="btn btn-def">
-            <span>{{$t('links["Выбрать квартиру"]')}}</span>
-          </a>
+          <div class="text" v-html="item.text"></div>
         </div>
       </div>
+
     </div>
+
     <div class="container">
       <div class="section1 section text-center">
         <div class="heading2 line-b">ЖК Park Residence
@@ -171,20 +159,20 @@
       </section>
     </div>
 
-    <div class="main-bg" style="background-image: url(main/4.jpg)">
-      <div class="container">
-        <div class="wrap-text-slide">
-          <div class="text-slide owl-carousel">
-            <div class="item">
-              <div class="title">Квартиры</div>
-              <div class="text">
-                <p>Продуманные универсальные планировки позволяют создать любой дизайн квартиры, который вы только пожелаете.</p>
+    <div class="text-slide owl-carousel">
+      <div
+      v-for="(item, i) in b_main_slider" :key="i"
+       class="main-bg" :style="{'background-image': 'url('+$url+item.image+')'}">
+        <div class="container">
+          <div class="wrap-text-slide">
+            <div class="wr">
+              <div class="s-nav">
+                <div class="s-prev"></div>
+                <div class="s-next"></div>
               </div>
-            </div>
-            <div class="item">
-              <div class="title">Квартиры</div>
+              <div class="title">{{item.title}}</div>
               <div class="text">
-                <p>Продуманные универсальные планировки позволяют создать любой дизайн квартиры, который вы только пожелаете.</p>
+                <p>{{item.text}}</p>
               </div>
             </div>
           </div>
@@ -228,15 +216,32 @@ export default {
       };
     });
   },
+  computed:{
+    main_slider(){
+      return this.data.tv.main_slider[this.$store.state.locale];
+    },
+    b_main_slider(){
+      return this.data.tv.b_main_slider[this.$store.state.locale];
+    }
+  },
   mounted() {
-    $(".text-slide").owlCarousel({
+    let bSlider = $(".text-slide");
+    bSlider.owlCarousel({
       loop: false,
       margin: 0,
-      nav: true,
+      nav: false,
       dots: false,
       items: 1,
       autoplaySpeed: 1000,
       navSpeed: 1000
+    });
+
+    $(document).on("click", ".s-next", function() {
+      bSlider.trigger("next.owl.carousel");
+    });
+
+    $(document).on("click", ".s-prev", function() {
+      bSlider.trigger("prev.owl.carousel");
     });
 
     $(".main-text-list").owlCarousel({
