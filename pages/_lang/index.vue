@@ -1,17 +1,33 @@
 <template>
   <div class="main-page">
     <div class="main-text-list owl-carousel">
-      <div
-      v-for="(item, i) in main_slider" :key="i"
-       class="main-img" :style="{'background-image': 'url('+$url+item.image+')'}">
-        <div class="main-text">
-          <div class="heading1">
-            {{item.title}}
-          </div>
+      <div v-for="(item, i) in main_slider" :key="i" class="main-img" :class="'slide'+i">
+        <img :src="$url+item.image" class="bg-img" :class="{'scaleIn': i == 0}" alt>
+        <div class="main-text" v-if="i == 0">
+          <div
+            class="heading1 wow fadeInUp2"
+            data-wow-duration=".6s"
+            data-wow-delay=".2s"
+          >{{item.title}}</div>
+          <div
+            class="text wow fadeInUp2"
+            data-wow-duration=".6s"
+            data-wow-delay=".3s"
+            v-html="item.text"
+          ></div>
+          <div
+            class="btns wow fadeInUp2"
+            data-wow-duration=".6s"
+            data-wow-delay=".4s"
+            v-html="item.btn"
+          ></div>
+        </div>
+        <div class="main-text" v-else>
+          <div class="heading1">{{item.title}}</div>
           <div class="text" v-html="item.text"></div>
+          <div class="btns" v-html="item.btn"></div>
         </div>
       </div>
-
     </div>
 
     <div class="container">
@@ -161,8 +177,11 @@
 
     <div class="text-slide owl-carousel">
       <div
-      v-for="(item, i) in b_main_slider" :key="i"
-       class="main-bg" :style="{'background-image': 'url('+$url+item.image+')'}">
+        v-for="(item, i) in b_main_slider"
+        :key="i"
+        class="main-bg"
+        :style="{'background-image': 'url('+$url+item.image+')'}"
+      >
         <div class="container">
           <div class="wrap-text-slide">
             <div class="wr">
@@ -216,11 +235,12 @@ export default {
       };
     });
   },
-  computed:{
-    main_slider(){
+  created() {},
+  computed: {
+    main_slider() {
       return this.data.tv.main_slider[this.$store.state.locale];
     },
-    b_main_slider(){
+    b_main_slider() {
       return this.data.tv.b_main_slider[this.$store.state.locale];
     }
   },
@@ -244,7 +264,9 @@ export default {
       bSlider.trigger("prev.owl.carousel");
     });
 
-    $(".main-text-list").owlCarousel({
+    let mainSlider = $(".main-text-list");
+
+    mainSlider.owlCarousel({
       loop: true,
       margin: 0,
       nav: true,
@@ -252,7 +274,37 @@ export default {
       items: 1,
       navText: ["", ""],
       autoplaySpeed: 1000,
-      navSpeed: 1000
+      navSpeed: 1000,
+      animateOut: "none",
+      animateIn: "none"
+    });
+
+    mainSlider.on("changed.owl.carousel", function(event) {
+      setTimeout(() => {
+        $(".main-img img").removeClass("scaleIn");
+      }, 1000);
+    });
+
+    function removeClAnim() {
+      setTimeout(() => {
+        $(".main-img img").removeClass("scaleFadeIn scaleFadeOut");
+      }, 1000);
+    }
+
+    mainSlider.on("change.owl.carousel", function(event) {
+      let $currentItem = $(".owl-item", mainSlider).eq(event.item.index);
+      // console.log(1, $currentItem);
+      $currentItem.find("img").addClass("scaleFadeOut");
+      $currentItem.find("img").removeClass("scaleFadeIn");
+      removeClAnim();
+    });
+
+    mainSlider.on("changed.owl.carousel", function(event) {
+      // console.log(2);
+      let $currentItem = $(".owl-item", mainSlider).eq(event.item.index);
+      $currentItem.find("img").addClass("scaleFadeIn");
+      $currentItem.find("img").removeClass("scaleFadeOut");
+      removeClAnim();
     });
   }
 };

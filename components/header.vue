@@ -33,12 +33,12 @@
 
       <div>
         <div class="mob-btns">
-          <a href="#" class="fav-btn">
+          <nuxt-link class="fav-btn" :to="$i18n.path('')+'favorites'" exact>
             <svg>
               <use xlink:href="#ic_heart"></use>
             </svg>
             <span class="num">2</span>
-          </a>
+          </nuxt-link>
           <a href="#" class="phone-btn2">
             <svg>
               <use xlink:href="#ic_phone"></use>

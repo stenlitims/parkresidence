@@ -4,7 +4,7 @@ const spriteSvg = require('nuxt-sprite-svg-inline')
 
 module.exports = {
   mode: 'universal',
-
+  // loading: '~/components/loading.vue',
 
   env: {
     api: "https://web.park-residence.com.ua/api?id=",
@@ -40,6 +40,9 @@ module.exports = {
       type: "text/javascript"
     }, {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js',
+      type: "text/javascript"
+    }, {
+      src: ' https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js',
       type: "text/javascript"
     }],
     link: [{

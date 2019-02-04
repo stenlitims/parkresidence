@@ -1,11 +1,128 @@
 <template>
   <div class="inner-page">
-    <div class="container">
-      <div class="container2">
-       
+    <div class="container section">
+      <div class="container3">
+        <div class="doc-wrap">
+          <div class="heading3">Документы застройщика</div>
+          <div class="doc-list">
+            <div class="item">
+              <div class="l">
+                <div class="ico-doc">
+                  <svg>
+                    <use xlink:href="#ic-doc"></use>
+                  </svg>
+                </div>
+                <div class="title">Проектная декларация от 14.05.2018</div>
+              </div>
+              <div class="r">
+                <div class="ico-dw">
+                  <svg>
+                    <use xlink:href="#ic_dw"></use>
+                  </svg>
+                </div>
+                <a href="#" class="t-dw">Скачать</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="l">
+                <div class="ico-doc">
+                  <svg>
+                    <use xlink:href="#ic-doc"></use>
+                  </svg>
+                </div>
+                <div class="title">Проектная декларация от 14.05.2018</div>
+              </div>
+              <div class="r">
+                <div class="ico-dw">
+                  <svg>
+                    <use xlink:href="#ic_dw"></use>
+                  </svg>
+                </div>
+                <a href="#" class="t-dw">Скачать</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="l">
+                <div class="ico-doc">
+                  <svg>
+                    <use xlink:href="#ic-doc"></use>
+                  </svg>
+                </div>
+                <div class="title">Проектная декларация от 14.05.2018</div>
+              </div>
+              <div class="r">
+                <div class="ico-dw">
+                  <svg>
+                    <use xlink:href="#ic_dw"></use>
+                  </svg>
+                </div>
+                <a href="#" class="t-dw">Скачать</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-wrap">
+          <div class="heading3">Разрешительная документация</div>
+          <div class="doc-list">
+            <div class="item">
+              <div class="l">
+                <div class="ico-doc">
+                  <svg>
+                    <use xlink:href="#ic-doc"></use>
+                  </svg>
+                </div>
+                <div class="title">Проектная декларация от 14.05.2018</div>
+              </div>
+              <div class="r">
+                <div class="ico-dw">
+                  <svg>
+                    <use xlink:href="#ic_dw"></use>
+                  </svg>
+                </div>
+                <a href="#" class="t-dw">Скачать</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="l">
+                <div class="ico-doc">
+                  <svg>
+                    <use xlink:href="#ic-doc"></use>
+                  </svg>
+                </div>
+                <div class="title">Проектная декларация от 14.05.2018</div>
+              </div>
+              <div class="r">
+                <div class="ico-dw">
+                  <svg>
+                    <use xlink:href="#ic_dw"></use>
+                  </svg>
+                </div>
+                <a href="#" class="t-dw">Скачать</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="l">
+                <div class="ico-doc">
+                  <svg>
+                    <use xlink:href="#ic-doc"></use>
+                  </svg>
+                </div>
+                <div class="title">Проектная декларация от 14.05.2018</div>
+              </div>
+              <div class="r">
+                <div class="ico-dw">
+                  <svg>
+                    <use xlink:href="#ic_dw"></use>
+                  </svg>
+                </div>
+                <a href="#" class="t-dw">Скачать</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -31,11 +148,7 @@ export default {
     });
   },
   computed: {},
-  mounted() {
-
-  },
-  methods: {
-
-  }
+  mounted() {},
+  methods: {}
 };
 </script>

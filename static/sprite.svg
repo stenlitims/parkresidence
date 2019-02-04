@@ -74,4 +74,19 @@
   <symbol viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg" id="ic_dw">
     <path d="M14 6h-4V0H4v6H0l7 7 7-7zM0 15v2h14v-2H0z" fill="#855235"></path>
   </symbol>
+  <symbol viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg" id="ic-doc">
+    <path d="M5 5a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2H5zm-1 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm1 3a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H5z" fill="#B37E56"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.828a2 2 0 0 0-.586-1.414L11.586.586A2 2 0 0 0 10.172 0H2zm12 18V7h-3a2 2 0 0 1-2-2V2H2v16h12zM11 2.828L13.172 5H11V2.828z" fill="#B37E56"></path>
+  </symbol>
+
+    <symbol viewBox="0 0 18 12"  xmlns="http://www.w3.org/2000/svg" id="ic_video">
+    <path d="M14 4.5V1c0-.55-.45-1-1-1H1C.45 0 0 .45 0 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V7.5l4 4V.5l-4 4z"></path>
+  </symbol>
+  <symbol viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" id="ic_grafic">
+    <path d="M16 0H2C.9 0 0 .9 0 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zM6 14H4V7h2v7zm4 0H8V4h2v10zm4 0h-2v-4h2v4z" fill="#855235"></path>
+  </symbol>
+    <symbol viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" id="ic_photo">
+    <path d="M5.75.5L4.378 2H2C1.175 2 .5 2.675.5 3.5v9c0 .825.675 1.5 1.5 1.5h12c.825 0 1.5-.675 1.5-1.5v-9c0-.825-.675-1.5-1.5-1.5h-2.377L10.25.5h-4.5zM8 11.75c-2.07 0-3.75-1.68-3.75-3.75 0-2.07 1.68-3.75 3.75-3.75 2.07 0 3.75 1.68 3.75 3.75 0 2.07-1.68 3.75-3.75 3.75z"
+      fill="#9E9E9E"></path>
+  </symbol>
 </svg>

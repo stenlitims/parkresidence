@@ -5,7 +5,7 @@
       <div class="modal-content">
         <!-- v-if="$i18n.locale === 'ru'" -->
         <div class="row nav-row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 fadeInRight2">
             <ul>
               <li>
                 <nuxt-link :to="$i18n.path('')" exact>{{$t('links["Главная"]')}}</nuxt-link>
@@ -36,9 +36,12 @@
             </ul>
           </div>
           <div class="col-sm-6">
-            <ul>
+            <ul class="fadeInRight2" style="animation-delay: .2s;">
               <li>
-                <a href="#">{{$t('links["Ход строительства"]')}}</a>
+                <nuxt-link
+                  :to="$i18n.path('')+'hodrabot'"
+                  exact
+                >{{$t('links["Ход строительства"]')}}</nuxt-link>
               </li>
               <li>
                 <nuxt-link :to="$i18n.path('')+'news'" exact>{{$t('links["Новости"]')}}</nuxt-link>
@@ -54,7 +57,7 @@
               </li>
             </ul>
 
-            <div class="langs">
+            <div class="langs fadeInRight2" style="animation-delay: .3s;">
               <nuxt-link
                 :class="{'active': $i18n.locale == 'ru'}"
                 :to="$route.fullPath.replace(/^\/[^\/]+/, '')"
@@ -67,13 +70,13 @@
         </div>
 
         <div class="row row-contacts">
-          <div class="col-sm-6">
+          <div class="col-sm-6 fadeInRight2" style="animation-delay: .4s;">
             <p class="t">{{$t('links["Узнайте больше по телефону"]')}}</p>
             <div class="f-phone">
               <a href="#">044 123-45-67</a>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 fadeInRight2" style="animation-delay: .5s;">
             <div class="cont">
               <p class="t">{{$t('links["Офис продаж"]')}}</p>
               <p class="adr">г. Киев, ул. Шевченка, 74, офис 17
@@ -82,7 +85,7 @@
             </div>
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-sm-6 fadeInRight2" style="animation-delay: .4s;">
             <div class="f-soc-list">
               <a href="#" class="insta">
                 <svg>
