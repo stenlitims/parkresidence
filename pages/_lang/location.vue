@@ -8,75 +8,85 @@
 
     <div class="container">
       <div class="section">
-        <div class="inner-text text-center inner-text-m">
-          <p>Park Residence — это жилой комплекс новой эры, который создан, чтобы сделать жизнь комфортнее во всех ее проявлениях. Это настоящее воплощение скандинавской философии хюгге, в которой идеально сочетаются уют, безопасность и хорошее настроение.</p>
+        <div class="def-text def-text-grey text-center inner-text-m" v-html="d.content">
         </div>
       </div>
 
       <div class="section">
-        <div class="row row-pb">
-          <div class="col-md-6 col-img">
-            <img src="images/concept/2.jpg" alt>
+        <div class="bg-img-text" style="background-image: url(images/location/2.jpg)">
+          <div class="inner-text">
+            <p>ЖК Park Residence — это тихий уголок, где можно расслабиться и отдохнуть. Но всего мгновение — и вы уже в течении большого города и круговороте ярких событий.</p>
           </div>
-          <div class="col-md-6">
-            <div class="item-text">
-              <div
-                class="text"
-              >Жизнь в мегаполисе идет на высоких скоростях. И чтобы успеть все, нельзя терять ни минуты. Время стоит дорого. И мы это прекрасно знаем. Поэтому в Park Residence мы создали уникальную инфраструктуру жизни, где вы можете работать, отдыхать, воспитывать детей и наслаждаться каждым днем.</div>
-              <a href class="btn btn-def">
-                <span>{{$t('main["Узнать больше"]')}}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="inner-text text-center inner-text-m">
-          <p>Park Residence создан для людей, которые ценят свое время и хотят оградить себя от шумной суеты мегаполиса. Это пространство для тех, кто любит комфорт и стремится быть в тренде.</p>
-        </div>
-      </div>
-
-      <div class="section w100-img">
-        <img src="images/concept/3.jpg" alt>
-      </div>
-
-      <div class="section">
-        <div class="row row-fix-mb">
-          <div class="col-md-6">
-            <div class="item-text">
-              <div class="text">
-                Чтобы жить на полную, жителям даже не обязательно покидать территорию комплекса, ведь на расстоянии
-                7 минут спокойным шагом здесь есть практически все, что может понадобиться.
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="item-text">
-              <div
-                class="text"
-              >Park Residence — это жизнь на высоких оборотах, в которой всегда будет островок тишины и спокойствия. Ваш островок.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section text-center">
-        <div class="heading25 tt">Park Residence
-          <br>
-        <span> Живи. Работай. Отдыхай.</span> 
         </div>
       </div>
     </div>
 
+    <div class="location-block">
+      <div class="container location-header">
+        <div class="heading3 text-center">Инфраструктура</div>
+        <div class="list-locations">
+          <div class="item" data-type="shop">
+            <div class="ico">
+              <svg class="icon">
+                <use xlink:href="#loc-mag"></use>
+              </svg>
+            </div>
+            <div class="title">Магазины</div>
+          </div>
+          <div class="item" data-type="theater">
+            <div class="ico">
+              <svg class="icon">
+                <use xlink:href="#loc-teater"></use>
+              </svg>
+            </div>
+            <div class="title">Развлечения</div>
+          </div>
+          <div class="item" data-type="kids">
+            <div class="ico">
+              <svg class="icon">
+                <use xlink:href="#loc-children"></use>
+              </svg>
+            </div>
+            <div class="title">Детям</div>
+          </div>
+          <div class="item" data-type="cafe">
+            <div class="ico">
+              <svg class="icon">
+                <use xlink:href="#loc-eat"></use>
+              </svg>
+            </div>
+            <div class="title">Рестораны</div>
+          </div>
+          <div class="item" data-type="medical">
+            <div class="ico">
+              <svg class="icon">
+                <use xlink:href="#loc-medical"></use>
+              </svg>
+            </div>
+            <div class="title">Медицина</div>
+          </div>
+          <div class="item" data-type="sport">
+            <div class="ico">
+              <svg class="icon">
+                <use xlink:href="#loc-boll"></use>
+              </svg>
+            </div>
+            <div class="title">Спорт</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="map" class="location-map"></div>
+    </div>
+
     <div class="main-text-bottom">
       <div class="container text-center">
-        <div class="heading3">Выберите свою квартиру
-          <br>в ЖК Park Residence
+        <div class="heading3">Хотите осмотреть территорию вокруг
+          <br>ЖК Park Residence?
         </div>
 
         <a href class="btn btn-def">
-          <span>{{$t('links["Выбрать квартиру"]')}}</span>
+          <span>{{$t('main["Записаться на просмотр"]')}}</span>
         </a>
       </div>
     </div>
@@ -101,6 +111,91 @@ export default {
         data: res.data
       };
     });
+  },
+  mounted() {
+    if (!window.mapLoaded) {
+      this.loadMapScript();
+    } else {
+      this.buildMap();
+    }
+  },
+  methods: {
+    buildMap() {
+      var map = new mapboxgl.Map({
+        container: "map", // container id
+        style: "mapbox://styles/mapbox/basic-v9", // stylesheet location
+        center: [30.241477870847287, 50.52163636529689], // starting position [lng, lat]
+        zoom: 13
+      });
+
+      // mapboxgl.setRTLTextPlugin(
+      //   "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js"
+      // );
+      map.addControl(
+        new MapboxLanguage({
+          defaultLanguage: "ru"
+        })
+      );
+      map.scrollZoom.disable();
+      map.addControl(new mapboxgl.NavigationControl());
+
+      let lang = this.$store.state.locale;
+      let markers = [];
+      let infrastructure = this.data.tv.infrastructure;
+
+      function setMarker(type) {
+      //  markers = [];
+        for (let data of infrastructure) {
+
+          if (markers[data.MIGX_id]) markers[data.MIGX_id].remove();
+
+          if (type && type !== data.type && data.type !== "main") continue;
+
+          var el = document.createElement("div");
+          el.className = "marker_" + data.type;
+          var offset = 30;
+          if (data.type == "main") {
+            el.style.width = "40px";
+            el.style.height = "50px";
+            el.className = "main-marker";
+          } else {
+            el.style.width = "24px";
+            el.style.height = "24px";
+            offset = 17;
+          }
+
+          //  el.style.backgroundImage =  "url(" + this.$url + "assets/images/krug.png)";
+          var popup = new mapboxgl.Popup({
+            offset: offset
+          }).setHTML('<div class="wr-loc">' + data["title_" + lang] + "</div>");
+
+          if (!Array.isArray(data.cord)) {
+            data.cord = data.cord.split(",");
+            data.cord = [data.cord[1], data.cord[0]];
+          }
+
+          // add marker to map
+          markers[data.MIGX_id] = new mapboxgl.Marker(el)
+            .setLngLat(data.cord)
+            .setPopup(popup)
+            .addTo(map);
+        }
+      }
+
+      setMarker();
+
+      $(document).on("click", ".mapboxgl-marker", function() {
+        $(".mapboxgl-marker").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      $(document).on("click", ".list-locations .item", function() {
+        var item = $(this).data("type");
+        $(".list-locations .item").removeClass("active");
+        $(this).addClass("active");
+        setMarker(item);
+      });
+    }
   }
 };
 </script>

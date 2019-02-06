@@ -65,7 +65,7 @@ export default {
             "https://mapbox.github.io/mapbox-gl-language/index.js",
             () => {
               mapboxgl.accessToken =
-                "pk.eyJ1Ijoic3RlbmxpdGltcyIsImEiOiJjam1uaG9uZ24wcmg0M3FvZXplaTNnZmdsIn0.qFtcVdoa2pzGrH_ykQLdXQ";
+                "pk.eyJ1IjoiaWdvcnRrYWNodWsiLCJhIjoiY2pydGdxcTRoMG9kZDN5bWkyYm1tMXY4biJ9.un44KRzrFYmnmUix_jKe2g";
               this.buildMap();
               window.mapLoaded = true;
             }

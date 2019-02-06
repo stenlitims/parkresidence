@@ -247,14 +247,6 @@
     font-size: 24px;
   }
 
-  .inner-heading .h1 {
-    font-size: 38px;
-
-  }
-
-  .inner-heading {
-    padding: 40px;
-  }
 
   .item-text .title {
     font-size: 26px;
@@ -273,5 +265,9 @@
       font-size: 50px;
     }
   }
+
+  .inner-heading {
+    width: 672px;
+}
 
 }

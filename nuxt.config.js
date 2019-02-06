@@ -33,17 +33,22 @@ module.exports = {
       }
     ],
     script: [{
+
       src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js',
-      type: "text/javascript"
+      type: "text/javascript",
+      body: true
     }, {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js',
-      type: "text/javascript"
+      type: "text/javascript",
+      body: true
     }, {
       src: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js',
-      type: "text/javascript"
+      type: "text/javascript",
+      body: true
     }, {
       src: ' https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js',
-      type: "text/javascript"
+      type: "text/javascript",
+      body: true
     }],
     link: [{
         rel: 'stylesheet',
