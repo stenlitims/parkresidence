@@ -16,11 +16,60 @@
         </svg>
         <span class="num">2</span>
       </nuxt-link>
-      <a href="#" class="phone-btn m-btn">
+      <a
+        class="phone-btn m-btn js-modal"
+        data-fancybox="fbtncallback"
+        data-src="#callback"
+        href="javascript:;"
+      >
         <svg>
           <use xlink:href="#ic_phone"></use>
         </svg>
       </a>
+    </div>
+
+    <div class="def-modal callback-modal text-center" id="callback">
+      <div class="heading4">Мы заботимся о вас
+        <br>и вашем времени!
+      </div>
+      <div class="text">Закажите бесплатный звонок, мы перезвоним в течении 30 секунд</div>
+      <cForm 
+      btnName="Перезвоните мне"
+      action="callback" 
+      :fields="{
+        phone:'Номер телефона'
+      }"
+      ></cForm>
+
+      <div class="soc-wrap">
+        <div class="text">или напишите нам</div>
+        <div class="soc-list-big soc-list">
+          <a href="#" class="it">
+            <div class="ico">
+              <svg class="telegram">
+                <use xlink:href="#ic_telegram"></use>
+              </svg>
+            </div>
+            <div class="t">Telegram</div>
+          </a>
+          <a href="#" class="it">
+            <div class="ico">
+              <svg class="viber">
+                <use xlink:href="#ic_viber"></use>
+              </svg>
+            </div>
+            <div class="t">Viber</div>
+          </a>
+          <a href="#" class="it">
+            <div class="ico">
+              <svg class="messenger">
+                <use xlink:href="#ic_messenger"></use>
+              </svg>
+            </div>
+            <div class="t">Messenger</div>
+          </a>
+        </div>
+      </div>
     </div>
 
     <modalNav/>
@@ -41,13 +90,18 @@ if (typeof window == "object") {
 import siteFooter from "~/components/footer.vue";
 import siteHeader from "~/components/header.vue";
 import modalNav from "~/components/modalNav.vue";
+import cForm from "~/components/elem/cForm.vue";
+import all from "@/mixin/all";
 
 export default {
   components: {
     siteFooter,
     siteHeader,
-    modalNav
+    modalNav,
+    cForm
   },
+
+  mixins: [all],
 
   data() {
     return {
@@ -55,6 +109,9 @@ export default {
       styleLine: {
         width: 0,
         opacity: 1
+      },
+      formCallback: {
+        phone: ""
       }
     };
   },
@@ -71,6 +128,14 @@ export default {
       arrows: false,
       touch: false,
       baseClass: "b-close"
+    });
+
+    $(".js-modal").fancybox({
+      animationDuration: 500,
+      animationEffect: "material",
+      arrows: false,
+      touch: false
+      // baseClass: "b-close"
     });
 
     $(document).on("click", ".modal-nav a", function() {

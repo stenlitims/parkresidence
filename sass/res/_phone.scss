@@ -1,4 +1,11 @@
 @media (max-width: 767px) {
+
+
+
+  .inner-text {
+    font-size: 22px;
+  }
+
   .main-img .text p {
     display: none;
   }
@@ -21,6 +28,43 @@
     top: 15px;
     right: 15px;
   }
+
+  .inner-heading {
+    left: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .row-pb {
+    .item-text {
+      margin-bottom: 30px;
+    }
+
+    >div {
+      &:last-child {
+        .item-text {
+          margin-bottom: 0;
+        }
+
+      }
+    }
+
+  }
+
+  .row-pb>div.col-img {
+    margin-bottom: 30px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .w100-img img {
+    min-height: 320px;
+    object-fit: cover;
+  }
+
+  .heading25 {
+    font-size: 36px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -31,6 +75,10 @@
 }
 
 @media (max-width: 575px) {
+
+  .bg-img-text{
+    height: 320px;
+  }
   .modal-nav .langs {
     position: static;
     margin-top: 30px;
@@ -47,8 +95,8 @@
   .header {
     background: #000;
     color: #fff;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     position: fixed;
 
     a {
@@ -222,17 +270,80 @@
     margin-bottom: 24px;
   }
 
+  .inner-heading .h1 {
+    font-size: 32px;
+  }
+
+  .item-text {
+    text-align: center;
+  }
+
+  .item-nums {
+    margin-top: 30px;
+    text-align: center;
+    max-width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .item {
+      margin: 0 0 32px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .num {
+      font-size: 40px;
+    }
+  }
+
+  .main-text-bottom {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .inner-heading:before {
+    width: 40px;
+  }
+
+  .inner-text {
+    font-size: 18px;
+  }
+
+  .item-text .btn {
+    margin-top: 24px;
+  }
+
+  .inner-bg {
+    margin-bottom: 36px;
+  }
 
 
 }
 
 @media (max-width: 460px) {
- .b-close .fancybox-slide--html{
-  padding: 0;
-  .fancybox-content{
-    width: 100%;
+
+  .bg-img-text{
+    padding: 20px;
   }
+
+  .heading25 {
+    font-size: 28px;
   }
+
+  .heading3 {
+    font-size: 26px;
+  }
+
+  .b-close .fancybox-slide--html {
+    padding: 0;
+
+    .fancybox-content {
+      width: 100%;
+    }
+  }
+
   .main-bg .wrap-text-slide {
     width: 100%;
     position: relative;

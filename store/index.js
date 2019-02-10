@@ -2,7 +2,8 @@ export const state = () => ({
   locales: ['ru', 'ua'],
   locale: 'ru',
   mainClass: [],
-  mainUrl: 'https://web.park-residence.com.ua/'
+  mainUrl: 'https://web.park-residence.com.ua/',
+  api: 'https://web.park-residence.com.ua/api',
 })
 
 export const mutations = {

@@ -194,7 +194,7 @@ a {
   transition: all .5s;
   outline: none;
   font-weight: 600;
-  padding: 20px 30px;
+  padding: 18px 23px;
   cursor: pointer;
 
   &:before {
@@ -272,16 +272,20 @@ optgroup,
 textarea {}
 
 .form-group {
+  margin-bottom: 8px;
+
   .form-control {
-    border: 1px solid #C4C4C4;
+    border: 1px solid #DCDDDD;
     border-radius: 0;
     color: #232528;
     transition: all .4s ease;
     outline: none;
     box-shadow: none;
+    height: 48px;
+    line-height: 48px;
 
     &:focus {
-      border-color: $color;
+      border-color: #525354;
     }
   }
 }
@@ -629,6 +633,10 @@ button {
 
   .logo {
     margin-right: 41px;
+
+    a {
+      display: block;
+    }
 
     svg {
       width: 108px;
@@ -1019,7 +1027,7 @@ button {
   font-size: 26px;
   font-family: $fontGR;
   color: #855235;
-  line-height: 1, 1;
+  line-height: 1.2;
   margin-bottom: 16px;
   letter-spacing: normal;
 }
@@ -2337,12 +2345,12 @@ button {
     }
   }
 
-  .active{
-    .ico{
+  .active {
+    .ico {
       background: #F2EDE9;
     }
 
-    svg{
+    svg {
       fill: #B37E56;
     }
   }
@@ -2380,7 +2388,88 @@ body .mapboxgl-popup-content {
     background: url(https://web.park-residence.com.ua/assets/images/krug.png) !important;
   }
 
-  &.main-marker{
+  &.main-marker {
     background: url(https://web.park-residence.com.ua/assets/images/main_ico.png) !important;
+  }
+}
+
+
+.def-modal {
+  padding: 32px 24px;
+}
+
+.callback-modal {
+  max-width: 336px;
+
+
+  .form {
+    width: 208px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+
+    .btn {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .heading4 {
+    margin-bottom: 8px;
+  }
+
+  .text {
+    font-size: 14px;
+    color: #616161;
+    margin-bottom: 16px;
+  }
+}
+
+.soc-list-big {
+  justify-content: center;
+  font-size: 12px;
+
+  a {
+    height: inherit;
+    margin: 0 8px;
+    color: #000000;
+
+    &:hover {
+      animation: none;
+    }
+  }
+
+  .ico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    background: #F2F2F2;
+
+  }
+
+
+  .telegram {
+    fill: #0088CC;
+  }
+
+  .viber {
+    fill: #59267C;
+  }
+
+  .messenger {
+    fill: #0084FF;
+  }
+}
+
+
+.alert {
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
