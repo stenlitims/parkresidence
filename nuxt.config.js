@@ -93,9 +93,9 @@ module.exports = {
    */
   plugins: ['~/plugins/i18n.js'],
 
-  generate: {
-    routes: ['/', '/about', '/ua', '/ua/about', '/сoncept', '/ua/сoncept']
-  },
+  // generate: {
+  //   routes: ['/', '/about', '/ua', '/ua/about', '/сoncept', '/ua/сoncept']
+  // },
 
   /*
    ** Nuxt.js modules

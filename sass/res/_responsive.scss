@@ -162,6 +162,7 @@
     margin-left: -15px;
     margin-right: -15px;
   }
+
 }
 
 @media (max-height: 645px) {
@@ -172,9 +173,19 @@
 
 @media (max-width: 1440px) and (min-width: 991px) {}
 
+
 @media (max-width: 1340px) {}
 
 @media (max-width: 1200px) {
+  .cube-contacts {
+    padding: 40px;
+    padding-top: 38px;
+  }
+
+  .cube-contacts .title{
+    font-size: 30px;
+  }
+
   .modal-nav .modal-bg {
     display: none;
   }
@@ -246,7 +257,7 @@
     width: 768px;
   }
 
-  
+
   .inner-heading .h1 {
     font-size: 38px;
 
@@ -257,6 +268,13 @@
   }
 
 
+}
+
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .cube-contacts{
+    padding: 35px 20px;
+  }
 }
 
 @media (max-width: 1140px) {}

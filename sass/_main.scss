@@ -1546,44 +1546,45 @@ button {
 }
 
 
-@media (min-width: 576px) {
-  .black-header {
-    .header {
+@media (min-width: 576px) {}
+
+.black-header {
+  .header {
+    color: #111111;
+
+
+    a {
       color: #111111;
-
-
-      a {
-        color: #111111;
-      }
     }
+  }
 
-    .header .logo svg {
-      fill: #111111;
-    }
+  .header .logo svg {
+    fill: #111111;
+  }
 
-    .soc-list svg {
-      fill: #B37E56;
-    }
+  .soc-list svg {
+    fill: #B37E56;
+  }
 
-    .burger {
-      border: 1px solid rgba(0, 0, 0, 0.4);
+  .burger {
+    border: 1px solid rgba(0, 0, 0, 0.4);
 
-      span {
-        background: #111111;
-      }
-    }
-
-    .header .main-nav .count {
-      background: #B37E56;
-      color: #fff;
-    }
-
-    .header .main-nav a:before {
+    span {
       background: #111111;
     }
   }
 
+  .header .main-nav .count {
+    background: #B37E56;
+    color: #fff;
+  }
+
+  .header .main-nav a:before {
+    background: #111111;
+  }
 }
+
+
 
 
 
@@ -1876,37 +1877,57 @@ button {
   }
 }
 
+@media (min-width: 575px) {
+  .cube-contacts {
+    background: #855235;
+    color: #fff;
+
+    a {
+      color: #fff;
+
+    }
+  }
+
+
+}
+
 .cube-contacts {
-  background: #855235;
   padding: 56px;
-  color: #fff;
   z-index: 10;
-  // transform: translate(0, 15%);
 
   .title {
     font-size: 32px;
     font-family: $fontGR;
     margin-bottom: 16px;
     letter-spacing: normal;
+    line-height: 1.1;
   }
 
   .list {
-    margin-bottom: 44px;
+    margin-bottom: 40px;
 
     .c-item {
-      margin-bottom: 17px;
+      margin-bottom: 20px;
     }
   }
 
-  .c-item {
+  svg {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0;
+    display: inline-block;
+    vertical-align: middle;
+    fill: #fff;
+  }
 
-    svg {
-      width: 16px;
-      height: 16px;
-      margin-right: 15px;
-      display: inline-block;
-      vertical-align: middle;
-    }
+  .c-item {
+    padding-left: 32px;
+    position: relative;
+
+
 
     a {
       text-decoration: underline;
@@ -1925,10 +1946,6 @@ button {
     }
   }
 
-  a {
-    color: #fff;
-
-  }
 }
 
 
@@ -1937,6 +1954,10 @@ button {
   align-items: center;
   text-align: center;
   justify-content: center;
+
+  >div {
+    transform: translate(0, -20px);
+  }
 
   .heading4 {
     margin-bottom: 32px;
@@ -2396,6 +2417,13 @@ body .mapboxgl-popup-content {
 
 .def-modal {
   padding: 32px 24px;
+  display: none;
+}
+
+.fancybox-inner {
+  .def-modal {
+    display: block;
+  }
 }
 
 .callback-modal {

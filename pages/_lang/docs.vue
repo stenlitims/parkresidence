@@ -2,125 +2,33 @@
   <div class="inner-page">
     <div class="container section">
       <div class="container3">
-        <div class="doc-wrap">
-          <div class="heading3">Документы застройщика</div>
+        <div class="doc-wrap" v-for="(item, i) in data.docs" :key="i">
+          <div class="heading3">{{item['title_' + lang]}}</div>
           <div class="doc-list">
-            <div class="item">
+            <div class="item" v-for="(item2, i2) in item.list" :key="i2">
               <div class="l">
                 <div class="ico-doc">
                   <svg>
                     <use xlink:href="#ic-doc"></use>
                   </svg>
                 </div>
-                <div class="title">Проектная декларация от 14.05.2018</div>
+                <div class="title">{{item2['title_' + lang]}}</div>
               </div>
-              <div class="r">
+              <a :href="$url+item2.image" target="_blank" class="r">
                 <div class="ico-dw">
                   <svg>
                     <use xlink:href="#ic_dw"></use>
                   </svg>
                 </div>
-                <a href="#" class="t-dw">Скачать</a>
-              </div>
+                <div class="t-dw">{{$t('links["Скачать"]')}}</div>
+              </a>
             </div>
-            <div class="item">
-              <div class="l">
-                <div class="ico-doc">
-                  <svg>
-                    <use xlink:href="#ic-doc"></use>
-                  </svg>
-                </div>
-                <div class="title">Проектная декларация от 14.05.2018</div>
-              </div>
-              <div class="r">
-                <div class="ico-dw">
-                  <svg>
-                    <use xlink:href="#ic_dw"></use>
-                  </svg>
-                </div>
-                <a href="#" class="t-dw">Скачать</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="l">
-                <div class="ico-doc">
-                  <svg>
-                    <use xlink:href="#ic-doc"></use>
-                  </svg>
-                </div>
-                <div class="title">Проектная декларация от 14.05.2018</div>
-              </div>
-              <div class="r">
-                <div class="ico-dw">
-                  <svg>
-                    <use xlink:href="#ic_dw"></use>
-                  </svg>
-                </div>
-                <a href="#" class="t-dw">Скачать</a>
-              </div>
-            </div>
+           
+           
           </div>
         </div>
 
-        <div class="doc-wrap">
-          <div class="heading3">Разрешительная документация</div>
-          <div class="doc-list">
-            <div class="item">
-              <div class="l">
-                <div class="ico-doc">
-                  <svg>
-                    <use xlink:href="#ic-doc"></use>
-                  </svg>
-                </div>
-                <div class="title">Проектная декларация от 14.05.2018</div>
-              </div>
-              <div class="r">
-                <div class="ico-dw">
-                  <svg>
-                    <use xlink:href="#ic_dw"></use>
-                  </svg>
-                </div>
-                <a href="#" class="t-dw">Скачать</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="l">
-                <div class="ico-doc">
-                  <svg>
-                    <use xlink:href="#ic-doc"></use>
-                  </svg>
-                </div>
-                <div class="title">Проектная декларация от 14.05.2018</div>
-              </div>
-              <div class="r">
-                <div class="ico-dw">
-                  <svg>
-                    <use xlink:href="#ic_dw"></use>
-                  </svg>
-                </div>
-                <a href="#" class="t-dw">Скачать</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="l">
-                <div class="ico-doc">
-                  <svg>
-                    <use xlink:href="#ic-doc"></use>
-                  </svg>
-                </div>
-                <div class="title">Проектная декларация от 14.05.2018</div>
-              </div>
-              <div class="r">
-                <div class="ico-dw">
-                  <svg>
-                    <use xlink:href="#ic_dw"></use>
-                  </svg>
-                </div>
-                <a href="#" class="t-dw">Скачать</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>

@@ -247,6 +247,24 @@
     font-size: 24px;
   }
 
+  .hod-list .info,
+  .hod-list .img {
+    width: 50%;
+  }
+
+  .hod-list .info {
+    padding: 32px;
+  }
+
+  .doc-list .item {
+    padding: 32px;
+  }
+
+  .doc-list .item svg {
+    width: 18px;
+    height: 18px;
+  }
+
 
   .item-text .title {
     font-size: 26px;
@@ -273,6 +291,14 @@
   .bg-img-text {
     margin-left: -15px;
     margin-right: -15px;
+  }
+
+  .contact-map {
+    margin-top: 0;
+  }
+
+  .r-text-contacts>div {
+    transform: none;
   }
 
 }

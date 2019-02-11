@@ -3,7 +3,7 @@
     <div class="container">
       <div class="container2">
         <div class="row contacts">
-          <div class="col-lg-6 cube-contacts">
+          <div class="col-md-6 cube-contacts">
             <div class="title">Заходите в гости</div>
             <div class="list">
               <div class="c-item">
@@ -39,7 +39,7 @@
               г. Киев, ул. Саксаганского, 35А
             </div>
           </div>
-          <div class="col-lg-6 r-text-contacts">
+          <div class="col-md-6 r-text-contacts">
             <div>
               <div class="heading4">Хотите узнать больше
                 <br>о ЖК или задать вопрос?

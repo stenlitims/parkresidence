@@ -39,7 +39,12 @@
             </svg>
             <span class="num">2</span>
           </nuxt-link>
-          <a href="#" class="phone-btn2">
+          <a
+            class="phone-btn2 js-modal"
+            data-fancybox="fbtncallback2"
+            data-src="#callback"
+            href="javascript:;"
+          >
             <svg>
               <use xlink:href="#ic_phone"></use>
             </svg>

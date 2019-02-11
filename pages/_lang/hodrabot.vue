@@ -13,7 +13,7 @@
               <span>Видеокамера</span>
             </a>
             
-            <a href="#">
+            <a href="#" class="grafic-hod">
               <svg>
                 <use xlink:href="#ic_grafic"></use>
               </svg>

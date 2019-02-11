@@ -27,6 +27,9 @@ export default {
   },
 
   computed: {
+    lang() {
+      return this.$store.state.locale;
+    },
     d() {
       if (this.data) {
         return this.data[this.$store.state.locale];

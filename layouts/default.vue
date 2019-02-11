@@ -29,20 +29,19 @@
     </div>
 
     <div class="def-modal callback-modal text-center" id="callback">
-      <div class="heading4">Мы заботимся о вас
-        <br>и вашем времени!
+      <div class="heading4" v-html="$t('modal.callbackHeading')">
       </div>
-      <div class="text">Закажите бесплатный звонок, мы перезвоним в течении 30 секунд</div>
+      <div class="text">{{$t('modal["callbackText"]')}}</div>
       <cForm 
-      btnName="Перезвоните мне"
+      :btnName="$t('form.callbackBtn')"
       action="callback" 
       :fields="{
-        phone:'Номер телефона'
+        phone:$t('form.phone')
       }"
       ></cForm>
 
       <div class="soc-wrap">
-        <div class="text">или напишите нам</div>
+        <div class="text">{{$t('modal["или напишите нам"]')}}</div>
         <div class="soc-list-big soc-list">
           <a href="#" class="it">
             <div class="ico">
