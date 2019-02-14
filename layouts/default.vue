@@ -29,44 +29,62 @@
     </div>
 
     <div class="def-modal callback-modal text-center" id="callback">
-      <div class="heading4" v-html="$t('modal.callbackHeading')">
-      </div>
+      <div class="heading4" v-html="$t('modal.callbackHeading')"></div>
       <div class="text">{{$t('modal["callbackText"]')}}</div>
-      <cForm 
-      :btnName="$t('form.callbackBtn')"
-      action="callback" 
-      :fields="{
+      <cForm
+        :btnName="$t('form.callbackBtn')"
+        action="callback"
+        :fields="{
         phone:$t('form.phone')
       }"
       ></cForm>
 
       <div class="soc-wrap">
         <div class="text">{{$t('modal["или напишите нам"]')}}</div>
-        <div class="soc-list-big soc-list">
-          <a href="#" class="it">
-            <div class="ico">
-              <svg class="telegram">
-                <use xlink:href="#ic_telegram"></use>
-              </svg>
+        <socList/>
+      </div>
+    </div>
+
+    <div class="def-modal writeUs-modal text-center" id="writeUs">
+      <div class="heading4" v-html="$t('links[\'Написать нам\']')"></div>
+      <cForm
+        :btnName="$t('form.writeUsBtn')"
+        action="writeUs"
+        :fields="{
+        name:$t('form.name'),
+        email:'E-mail',
+        text:$t('form.text')
+      }"
+      ></cForm>
+
+      <div class="soc-wrap">
+        <div class="text text-center">{{$t('modal["или напишите нам"]')}}</div>
+        <socList/>
+      </div>
+    </div>
+
+    <div class="actions" id="actions">
+      <div class="actions-list owl-carousel">
+        <div class="item-action" :id="'ac'+i" v-for="(item, i) in $store.state.actions" :key="i">
+          <div class="img">
+            <img :src="$store.state.mainUrl+item.image" alt>
+          </div>
+          <div class="info">
+            <div class="div">
+              <div class="date">
+                <div class="ico">
+                  <svg>
+                    <use xlink:href="#ic_calendar"></use>
+                  </svg>
+                </div>
+                {{item['date_'+lang]}}
+              </div>
+              <div class="heading4">{{item['title_'+lang]}}</div>
+              <div class="text" v-html="item['text_'+lang]"></div>
             </div>
-            <div class="t">Telegram</div>
-          </a>
-          <a href="#" class="it">
-            <div class="ico">
-              <svg class="viber">
-                <use xlink:href="#ic_viber"></use>
-              </svg>
-            </div>
-            <div class="t">Viber</div>
-          </a>
-          <a href="#" class="it">
-            <div class="ico">
-              <svg class="messenger">
-                <use xlink:href="#ic_messenger"></use>
-              </svg>
-            </div>
-            <div class="t">Messenger</div>
-          </a>
+
+            <div class="btns" v-html="item['btn_'+lang]"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -90,6 +108,7 @@ import siteFooter from "~/components/footer.vue";
 import siteHeader from "~/components/header.vue";
 import modalNav from "~/components/modalNav.vue";
 import cForm from "~/components/elem/cForm.vue";
+import socList from "~/components/elem/socList.vue";
 import all from "@/mixin/all";
 
 export default {
@@ -97,7 +116,8 @@ export default {
     siteFooter,
     siteHeader,
     modalNav,
-    cForm
+    cForm,
+    socList
   },
 
   mixins: [all],
@@ -137,6 +157,26 @@ export default {
       // baseClass: "b-close"
     });
 
+    // $(".js-actions").fancybox({
+    //   animationDuration: 500,
+    //   animationEffect: "material",
+    //   arrows: false,
+    //   touch: false,
+    //   baseClass: "modal-actions",
+    //   beforeShow: function(e) {
+    //   }
+    // });
+
+    $(document).on("click", ".js-actions", () => {
+      $.fancybox.open(this.actionsArr, {
+        animationDuration: 500,
+        animationEffect: "material",
+        //    arrows: false,
+        //   touch: false,
+        baseClass: "modal-actions"
+      });
+    });
+
     $(document).on("click", ".modal-nav a", function() {
       $.fancybox.close();
     });
@@ -150,6 +190,27 @@ export default {
       $("body").addClass("loaded");
       this.initWow();
     }, 1100);
+
+    if (!this.$store.state.actions.length) {
+      this.$store.dispatch("getActions");
+    }
+  },
+  computed: {
+    lang() {
+      return this.$store.state.locale;
+    },
+    actionsArr() {
+      let data = [];
+      let i;
+      for (i = 0; i < this.$store.state.actions.length; i++) {
+        data.push({
+          src: "#ac" + i,
+          type: "inline",
+          opts: {}
+        });
+      }
+      return data;
+    }
   },
   methods: {
     stratLoading() {

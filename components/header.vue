@@ -19,12 +19,12 @@
               <a href="#">{{$t('links["Выбрать квартиру"]')}}</a>
             </li>
             <li>
-              <a href="#">{{$t('links["Как купить"]')}}</a>
+               <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
             </li>
             <li>
-              <a href="#">
+              <a class="js-actions" href="javascript:;">
                 {{$t('links["Акции"]')}}
-                <span class="count">2</span>
+                <span class="count">{{$store.state.actions.length}}</span>
               </a>
             </li>
           </ul>

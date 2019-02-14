@@ -240,7 +240,7 @@ a {
   }
 }
 
-.btn-line {
+body .btn-line {
   display: inline-block;
   font-size: 13px;
   text-transform: uppercase;
@@ -287,6 +287,12 @@ textarea {}
     &:focus {
       border-color: #525354;
     }
+  }
+
+  textarea.form-control {
+    line-height: 1.4;
+    height: 96px;
+    resize: none;
   }
 }
 
@@ -469,6 +475,17 @@ button {
   position: relative;
   width: 100%;
   transition: all .4s ease;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .6);
+    z-index: 1;
+  }
 
 
 
@@ -1231,6 +1248,9 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    a{
+      outline: none !important;
+    }
   }
 
   .nav-row {
@@ -1646,7 +1666,7 @@ button {
     font-size: 26px;
     color: #855235;
     font-family: "Graublau Slab Pro";
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     letter-spacing: normal;
 
     a {
@@ -1654,12 +1674,16 @@ button {
     }
   }
 
-  .text {
-    line-height: 1.6;
-    font-size: 16px;
+  .text, .introtext {
+    line-height: 1.62;
     letter-spacing: -0.01em;
     color: #616161;
     margin-bottom: 19px;
+    p{
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
   }
 
   .more {
@@ -1703,7 +1727,7 @@ button {
   font-size: 14px;
   letter-spacing: -0.01em;
   color: #9E9E9E;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
 
@@ -2434,7 +2458,7 @@ body .mapboxgl-popup-content {
     width: 208px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 24px;
+
 
     .btn {
       width: 100%;
@@ -2442,13 +2466,34 @@ body .mapboxgl-popup-content {
     }
   }
 
-  .heading4 {
-    margin-bottom: 8px;
+
+
+
+}
+
+
+
+.def-modal {
+  .form {
+    margin-bottom: 24px;
   }
 
   .text {
     font-size: 14px;
     color: #616161;
+    margin-bottom: 16px;
+  }
+
+  .heading4 {
+    margin-bottom: 8px;
+  }
+}
+
+.writeUs-modal {
+  min-width: 336px;
+  text-align: center;
+
+  .heading4 {
     margin-bottom: 16px;
   }
 }
@@ -2498,6 +2543,62 @@ body .mapboxgl-popup-content {
   p {
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+.actions {
+  display: none;
+  max-width: 720px;
+
+}
+
+.modal-actions {
+  .fancybox-content {
+    padding: 0;
+  }
+
+  .info {
+    letter-spacing: -0.01em;
+    color: #111111;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 75%;
+    padding: 48px;
+    padding-right: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.83) 52%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .heading4 {
+    margin-bottom: 16px;
+  }
+
+  .text {
+    line-height: 1.62;
+  }
+
+  .date {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+
+    .ico {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+      position: relative;
+      bottom: -1px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: #B37E56;
     }
   }
 }

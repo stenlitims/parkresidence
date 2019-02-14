@@ -44,7 +44,12 @@
               <div class="heading4">Хотите узнать больше
                 <br>о ЖК или задать вопрос?
               </div>
-              <a href="#" class="btn btn-line">Написать нам</a>
+              <a
+                class="btn btn-line js-modal"
+                data-fancybox="writeUsBtn"
+                data-src="#writeUs"
+                href="javascript:;"
+              >Написать нам</a>
             </div>
           </div>
         </div>
@@ -52,6 +57,22 @@
     </div>
 
     <div id="map" class="contact-map"></div>
+    <div class="main-text-bottom hideMin675">
+      <div class="container text-center">
+        <div class="heading3">Хотите узнать больше
+          <br>о ЖК или задать вопрос?
+        </div>
+
+        <a
+          class="btn btn-line js-modal"
+          data-fancybox="writeUsBtn2"
+          data-src="#writeUs"
+          href="javascript:;"
+        >
+          <span>{{$t('links["Написать нам"]')}}</span>
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -83,6 +104,14 @@ export default {
     } else {
       this.buildMap();
     }
+
+    $(".js-modal").fancybox({
+      animationDuration: 500,
+      animationEffect: "material",
+      arrows: false,
+      touch: false
+      // baseClass: "b-close"
+    });
   },
   methods: {
     buildMap() {

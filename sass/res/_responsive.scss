@@ -182,7 +182,7 @@
     padding-top: 38px;
   }
 
-  .cube-contacts .title{
+  .cube-contacts .title {
     font-size: 30px;
   }
 
@@ -267,12 +267,21 @@
     padding: 40px;
   }
 
+  .news-one .heading25{
+    font-size: 36px;
+  }
+
+  .def-page .header{
+    margin-bottom: 64px;
+    padding-top: 16px;
+  }
+
 
 }
 
 
 @media (max-width: 900px) and (min-width: 768px) {
-  .cube-contacts{
+  .cube-contacts {
     padding: 35px 20px;
   }
 }
@@ -280,3 +289,10 @@
 @media (max-width: 1140px) {}
 
 @media all and (max-width: 1300px) and (min-width: 1200px) {}
+
+@media all and (max-width: 1200px) and (min-width: 768px) {
+  .list-news .img {
+    min-width: 40%;
+    width: 40%;
+  }
+}

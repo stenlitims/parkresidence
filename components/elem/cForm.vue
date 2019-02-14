@@ -9,9 +9,10 @@
         :placeholder="item"
         :mask="['(38) ### ##-##-###']"
       />
+      <textarea v-else-if="i == 'text'" v-model="data[i]" class="form-control" :placeholder="item"></textarea>
       <input type="text" v-else v-model="data[i]" class="form-control" :placeholder="item">
     </div>
-    <div class="form-group">
+    <div class="form-group text-center">
       <button class="btn btn-def" @click="send">
         <span>{{btnName}}</span>
       </button>
@@ -51,11 +52,29 @@ export default {
     this.data.action = this.action;
   },
   methods: {
+    isAddress(email) {
+      let pattern = /^([A-Za-z0-9_\-.+])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,})$/;
+      if (pattern.test(email)) {
+        return true;
+      }
+      return false;
+    },
     validate(data) {
       for (let item in data) {
+        if (data[item] == "") {
+          if ($.inArray(this.$t('mes["emptyErros"]'), this.errors) < 0) {
+            this.errors.push(this.$t('mes["emptyErros"]'));
+          }
+          break;
+        }
         if (data[item].length < 10 && item == "phone") {
           if ($.inArray(this.$t('mes["phoneErros"]'), this.errors) < 0) {
             this.errors.push(this.$t('mes["phoneErros"]'));
+          }
+        }
+        if (item == "email" && !this.isAddress(data[item])) {
+          if ($.inArray(this.$t('mes["emailErros"]'), this.errors) < 0) {
+            this.errors.push(this.$t('mes["emailErros"]'));
           }
         }
       }

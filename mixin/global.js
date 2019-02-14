@@ -75,6 +75,14 @@ export default {
           );
         }
       );
+    },
+    introtext(item) {
+      if (item["introtext"] == "") {
+        let text = item["content"].replace(/<[^>]+>/g, "");
+        return text.substring(0, 200) + "...";
+      } else {
+        return item["introtext"];
+      }
     }
   }
 }

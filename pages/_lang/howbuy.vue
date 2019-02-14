@@ -44,6 +44,9 @@ export default {
       };
     });
   },
+  mounted() {
+
+  },
   computed: {
     list() {
       let arr = [];

@@ -10,20 +10,20 @@
               <svg>
                 <use xlink:href="#ic_video"></use>
               </svg>
-              <span>Видеокамера</span>
+              <span>{{$t('links["Видеокамера"]')}}</span>
             </a>
             
             <a href="#" class="grafic-hod">
               <svg>
                 <use xlink:href="#ic_grafic"></use>
               </svg>
-              <span>График строительства</span>
+              <span>{{$t('links["График строительства"]')}}</span>
             </a>
           </div>
 
           <div class="r">
             <div class="sd">
-              Сдача в
+              {{$t('links["Сдача в"]')}}
               <span>2021</span>
             </div>
           </div>

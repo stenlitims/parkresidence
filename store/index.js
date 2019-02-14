@@ -4,6 +4,7 @@ export const state = () => ({
   mainClass: [],
   mainUrl: 'https://web.park-residence.com.ua/',
   api: 'https://web.park-residence.com.ua/api',
+  actions: []
 })
 
 export const mutations = {
@@ -14,6 +15,21 @@ export const mutations = {
   },
   setMainClass(state, payload) {
     state.mainClass = payload;
+  },
+
+  getActions(state, payload) {
+    state.actions = payload;
   }
 
+}
+
+export const actions = {
+  getActions({
+    commit,
+    state
+  }) {
+    $.get(state.api + '?action=actions', (data) => {
+      commit('getActions', data);
+    }, "json");
+  }
 }
