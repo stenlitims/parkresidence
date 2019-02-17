@@ -59,7 +59,7 @@
     padding: 48px 0;
   }
 
-  .main-bg .wrap-text-slide .title {
+  .wrap-text-slide .title {
     font-size: 36px;
   }
 
@@ -118,15 +118,15 @@
     padding-bottom: 70px;
   }
 
-  .main-bg .wrap-text-slide .text {
+  .wrap-text-slide .text {
     font-size: 17px;
   }
 
-  .main-bg .wrap-text-slide {
+  .wrap-text-slide {
     padding: 40px;
   }
 
-  .main-bg .wrap-text-slide {
+  .wrap-text-slide {
     width: 400px;
   }
 
@@ -161,6 +161,11 @@
   .w100-img {
     margin-left: -15px;
     margin-right: -15px;
+  }
+
+  .list-hod .ico svg {
+    width: 120px;
+    height: 120px;
   }
 
 }
@@ -267,15 +272,18 @@
     padding: 40px;
   }
 
-  .news-one .heading25{
+  .news-one .heading25 {
     font-size: 36px;
   }
 
-  .def-page .header{
+  .def-page .header {
     margin-bottom: 64px;
     padding-top: 16px;
   }
 
+  .howbuy-list .text {
+    padding-left: 0;
+  }
 
 }
 

@@ -4,6 +4,7 @@ export const state = () => ({
   mainClass: [],
   mainUrl: 'https://web.park-residence.com.ua/',
   api: 'https://web.park-residence.com.ua/api',
+  siteName: ' | Park Residence',
   actions: []
 })
 

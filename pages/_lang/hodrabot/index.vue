@@ -30,9 +30,11 @@
         </div>
 
         <div class="hod-list">
-          <div class="item">
+          <div class="item" v-for="(item, i) in list" :key="i">
             <div class="info">
-              <div class="heading4">Ноябрь, 2018</div>
+              <div class="heading4">
+                <nuxt-link :to="$i18n.path('')+'hodrabot/'+item.alias" exact>{{item.pagetitle}}</nuxt-link>
+              </div>
               <div class="count">
                 <div class="it">
                   <div class="ico">
@@ -40,7 +42,7 @@
                       <use xlink:href="#ic_photo"></use>
                     </svg>
                   </div>
-                  <div class="t">15</div>
+                  <div class="t">{{item.count_photo}}</div>
                 </div>
                 <div class="it">
                   <div class="ico">
@@ -48,49 +50,19 @@
                       <use xlink:href="#ic_video"></use>
                     </svg>
                   </div>
-                  <div class="t">1</div>
+                  <div class="t">{{item.count_videos}}</div>
                 </div>
               </div>
 
               <div class="text">
-                <p>Продолжается разработка грунта котлована на этапе 1. Выполняется устройство распорной системы шпунтового ограждения котлована...</p>
+                <p>{{introtext(item)}}</p>
               </div>
             </div>
             <div class="img">
-              <img src="images/hodrabot/1.jpg" alt>
-              <div class="plus"></div>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="info">
-              <div class="heading4">Ноябрь, 2018</div>
-              <div class="count">
-                <div class="it">
-                  <div class="ico">
-                    <svg>
-                      <use xlink:href="#ic_photo"></use>
-                    </svg>
-                  </div>
-                  <div class="t">15</div>
-                </div>
-                <div class="it">
-                  <div class="ico">
-                    <svg>
-                      <use xlink:href="#ic_video"></use>
-                    </svg>
-                  </div>
-                  <div class="t">1</div>
-                </div>
-              </div>
-
-              <div class="text">
-                <p>Продолжается разработка грунта котлована на этапе 1. Выполняется устройство распорной системы шпунтового ограждения котлована...</p>
-              </div>
-            </div>
-            <div class="img">
-              <img src="images/hodrabot/1.jpg" alt>
-              <div class="plus"></div>
+              <nuxt-link :to="$i18n.path('')+'hodrabot/'+item.alias" exact>
+                <img :src="$url+item.image_mini" alt>
+                <div class="plus"></div>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -120,7 +92,12 @@ export default {
       };
     });
   },
-  computed: {},
+  computed: {
+    list() {
+      let data = this.data.data[this.$store.state.locale];
+      return data;
+    }
+  },
   mounted() {},
   methods: {}
 };

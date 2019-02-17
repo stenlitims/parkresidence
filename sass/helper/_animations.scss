@@ -985,6 +985,8 @@
   }
 }
 
+
+
 @keyframes scaleFadeIn {
   from {
     transform: scale(1);
@@ -992,21 +994,29 @@
   }
 
   to {
-    transform: scale(1.3);
+    transform: scale(1.1);
     opacity: 0;
   }
+}
+
+.scaleFadeIn {
+  animation: scaleFadeIn .5s ease;
 }
 
 @keyframes scaleFadeOut {
   from {
     transform: scale(1.3);
-    opacity: 0;
+    opacity: 1;
   }
 
   to {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.scaleFadeOut {
+  animation: scaleFadeOut .2s ease;
 }
 
 .zoomIn {

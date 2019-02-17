@@ -1,7 +1,7 @@
 export default {
   head() {
     let data = this.data[this.$store.state.locale];
-    let title = data.pagetitle + " | Park Residence";
+    let title = data.pagetitle + this.$store.state.siteName;
     if (data.longtitle) {
       title = data.longtitle;
     }

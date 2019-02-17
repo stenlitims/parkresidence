@@ -7,18 +7,18 @@
           <div
             class="heading1 wow fadeInUp2"
             data-wow-duration=".6s"
-            data-wow-delay=".2s"
+            data-wow-delay="0"
           >{{item.title}}</div>
           <div
             class="text wow fadeInUp2"
             data-wow-duration=".6s"
-            data-wow-delay=".3s"
+            data-wow-delay=".1s"
             v-html="item.text"
           ></div>
           <div
             class="btns wow fadeInUp2"
             data-wow-duration=".6s"
-            data-wow-delay=".4s"
+            data-wow-delay=".2s"
             v-html="item.btn"
           ></div>
         </div>
@@ -175,13 +175,17 @@
       </section>
     </div>
 
-    <div class="text-slide owl-carousel">
-      <div
-        v-for="(item, i) in b_main_slider"
-        :key="i"
-        class="main-bg"
-        :style="{'background-image': 'url('+$url+item.image+')'}"
-      >
+    <div class="w-text-slide">
+      <div class="text-slide owl-carousel">
+        <div
+          v-for="(item, i) in b_main_slider"
+          :key="i"
+          class="main-bg"
+          :data-id="i"
+          :style="{'background-image': 'url('+$url+item.image+')'}"
+        ></div>
+      </div>
+      <div class="wrap-container">
         <div class="container">
           <div class="wrap-text-slide">
             <div class="wr">
@@ -189,9 +193,9 @@
                 <div class="s-prev"></div>
                 <div class="s-next"></div>
               </div>
-              <div class="title">{{item.title}}</div>
+              <div class="title">{{b_main_slider[blide].title}}</div>
               <div class="text">
-                <p>{{item.text}}</p>
+                <p>{{b_main_slider[blide].text}}</p>
               </div>
             </div>
           </div>
@@ -222,7 +226,9 @@ import axios from "axios";
 export default {
   mixins: [mix],
   data() {
-    return {};
+    return {
+      blide: 0
+    };
   },
   asyncData({ params }) {
     let api = process.env.api;
@@ -264,6 +270,14 @@ export default {
       bSlider.trigger("prev.owl.carousel");
     });
 
+    bSlider.on("changed.owl.carousel", event => {
+      setTimeout(() => {
+        let id = $(".text-slide .active .main-bg").data("id");
+     //   console.log(id);
+        this.blide = id;
+      }, 100);
+    });
+
     let mainSlider = $(".main-text-list");
 
     mainSlider.owlCarousel({
@@ -275,8 +289,10 @@ export default {
       navText: ["", ""],
       autoplaySpeed: 1000,
       navSpeed: 1000,
-      animateOut: "none",
-      animateIn: "none"
+      autoplay: true,
+      autoplayTimeout: 10000,
+      animateOut: "scaleFadeIn",
+      animateIn: "scaleFadeOut"
     });
 
     mainSlider.on("changed.owl.carousel", function(event) {
@@ -284,6 +300,10 @@ export default {
         $(".main-img img").removeClass("scaleIn");
       }, 1000);
     });
+
+    /*
+
+  
 
     function removeClAnim() {
       setTimeout(() => {
@@ -306,6 +326,7 @@ export default {
       $currentItem.find("img").removeClass("scaleFadeOut");
       removeClAnim();
     });
+    */
   }
 };
 </script>

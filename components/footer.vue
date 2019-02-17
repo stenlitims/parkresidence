@@ -43,7 +43,10 @@
                 <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">{{$t('links["Ход строительства"]')}}</a>
+                <nuxt-link
+                  :to="$i18n.path('')+'hodrabot'"
+                  exact
+                >{{$t('links["Ход строительства"]')}}</nuxt-link>
               </li>
               <li>
                 <nuxt-link :to="$i18n.path('')+'news'" exact>{{$t('links["Новости"]')}}</nuxt-link>
@@ -62,7 +65,7 @@
                 <a href="#">{{$t('links["Подбор по параметрам"]')}}</a>
               </li>
               <li>
-                <a href="#">{{$t('links["Документы"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'docs'" exact>{{$t('links["Документы"]')}}</nuxt-link>
               </li>
               <li>
                 <a href="#">{{$t('links["Застройщик"]')}}</a>

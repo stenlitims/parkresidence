@@ -1,5 +1,11 @@
 @media (max-width: 767px) {
 
+  .howbuy-list {
+    .wrap-t {
+      margin-top: 16px;
+    }
+  }
+
   .heading25 {
     font-size: 36px;
   }
@@ -124,6 +130,16 @@
   .new-img {
     margin-bottom: 24px;
   }
+
+  .list-hod .ico svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .howbuy-list .item {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -136,6 +152,45 @@
 }
 
 @media (max-width: 575px) {
+
+  .howbuy-list {
+    .wrap-t {
+      margin-top: 16px;
+
+      .text {
+        padding-bottom: 16px;
+        display: none;
+      }
+    }
+
+    .more {
+      font-size: 16px;
+
+      a {
+        color: #9E9E9E;
+
+        &:after {
+          content: "";
+          display: inline-block;
+          border-right: 2px solid #9E9E9E;
+          border-bottom: 2px solid #9E9E9E;
+          width: 7px;
+          height: 7px;
+          margin-left: 7px;
+          transition: all .3s ease;
+          transform: rotate(45deg) translate(-2px, -2px);
+        }
+
+        &.active {
+          &:after {
+            transform: rotate(-135deg) translate(-2px, 2px);
+          }
+        }
+      }
+
+
+    }
+  }
 
   .list-news .item {
     flex-wrap: wrap;
@@ -481,9 +536,22 @@
   }
 
 
+  .list-hod {
+    .item {
+      img {
+        min-height: 220px;
+        object-fit: cover;
+      }
+    }
+  }
+
 }
 
 @media (max-width: 460px) {
+
+  .howbuy-list .item {
+    padding: 24px 16px;
+  }
 
   .list-news .info {
     padding: 24px 16px;
@@ -529,11 +597,11 @@
     }
   }
 
-  .main-bg .wrap-text-slide {
+  .wrap-text-slide {
     width: 100%;
     position: relative;
     text-align: center;
-    bottom: -290px;
+    bottom: -100px;
     padding: 24px;
   }
 
@@ -543,7 +611,7 @@
     margin-bottom: 180px;
   }
 
-  .main-bg .wrap-text-slide .title {
+  .wrap-text-slide .title {
     font-size: 28px;
   }
 

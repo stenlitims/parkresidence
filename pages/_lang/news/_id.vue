@@ -84,7 +84,7 @@ export default {
     if (this.$route.params.id) {
       data = this.one;
     }
-    let title = data.pagetitle + " | Park Residence";
+    let title = data.pagetitle + this.$store.state.siteName;
     if (data.longtitle) {
       title = data.longtitle;
     }

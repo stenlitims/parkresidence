@@ -167,6 +167,20 @@ export default {
     //   }
     // });
 
+    $(document).on("click", ".js-more", function(e) {
+      e.preventDefault();
+      let par = $(this).closest(".wrap-t");
+      par.find(".text").slideToggle();
+      $(this).toggleClass("active");
+      let text = $(this).text();
+      let data = $(this).data();
+      if ($(this).text() == data.texth) {
+        $(this).text(data.textsh);
+      } else {
+        $(this).text(data.texth);
+      }
+    });
+
     $(document).on("click", ".js-actions", () => {
       $.fancybox.open(this.actionsArr, {
         animationDuration: 500,
@@ -189,7 +203,7 @@ export default {
       this.loading = false;
       $("body").addClass("loaded");
       this.initWow();
-    }, 1100);
+    }, 1000);
 
     if (!this.$store.state.actions.length) {
       this.$store.dispatch("getActions");

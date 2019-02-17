@@ -310,4 +310,22 @@
     margin-bottom: 32px;
   }
 
+  .list-hod .owl-nav{
+    position: static;
+    margin-top: 16px;
+    transform: translate(0);
+    text-align: center;
+  }
+
+  .howbuy-list .item{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .howbuy-list{
+    .title, .introtext{
+      max-width: 220px;
+    }
+  }
+
 }

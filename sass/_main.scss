@@ -758,7 +758,37 @@ button {
     // animation-delay: .1s;
     animation-fill-mode: both;
   }
+
+  .heading1,
+  .text,
+  .btns {
+    opacity: 0;
+    transform: translate(0, 30px);
+    transition: all .6s ease;
+    transition-delay: .2s;
+  }
+
+  .text {
+    transition-delay: .3s;
+  }
+
+  .btns {
+    transition-delay: .4s;
+  }
+
 }
+
+.owl-item.active {
+
+  .heading1,
+  .text,
+  .btns {
+    opacity: 1;
+    transform: translate(0, 0px);
+  }
+}
+
+
 
 
 
@@ -933,52 +963,84 @@ button {
   background-position: center;
   background-size: cover;
 
-  .wrap-text-slide {
-    width: 530px;
-    padding: 70px;
+ 
+}
+
+.wrap-text-slide {
+  width: 530px;
+  padding: 70px;
+  background: #fff;
+
+  .title {
+    font-weight: 300;
+    line-height: 1;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #855235;
+    font-family: "Graublau Slab Pro";
+    margin-bottom: 22px;
+  }
+
+  .text {
+    font-size: 19px;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .owl-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 32px;
+    color: #B27E56;
+    line-height: 1;
     background: #fff;
+  }
 
-    .title {
-      font-weight: 300;
-      line-height: 1;
-      font-size: 40px;
-      text-transform: uppercase;
-      color: #855235;
-      font-family: "Graublau Slab Pro";
-      margin-bottom: 22px;
-    }
+  .disabled {
+    color: #CCCCCC !important;
+  }
 
-    .text {
-      font-size: 19px;
+  .owl-prev {
+    margin-right: 18px;
+  }
 
-      p:last-child {
-        margin-bottom: 0;
-      }
-    }
+  .wr {
+    position: relative;
+  }
+}
 
-    .owl-nav {
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-size: 32px;
-      color: #B27E56;
-      line-height: 1;
-      background: #fff;
-    }
 
-    .disabled {
-      color: #CCCCCC !important;
-    }
+  .text-slide, .main-text-list{
+    display: block !important;
+    opacity: 1 !important;
+  }
 
-    .owl-prev {
-      margin-right: 18px;
-    }
 
-    .wr {
-      position: relative;
+.w-text-slide {
+  position: relative;
+
+  .wrap-container {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >div {
+      pointer-events: all;
+      
     }
   }
 }
+
 
 .s-nav {
   position: absolute;
@@ -1248,7 +1310,8 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    a{
+
+    a {
       outline: none !important;
     }
   }
@@ -1674,13 +1737,15 @@ button {
     }
   }
 
-  .text, .introtext {
+  .text,
+  .introtext {
     line-height: 1.62;
     letter-spacing: -0.01em;
     color: #616161;
     margin-bottom: 19px;
-    p{
-      &:last-child{
+
+    p {
+      &:last-child {
         margin-bottom: 0;
       }
     }
@@ -2184,6 +2249,10 @@ button {
 
   .heading4 {
     margin-bottom: 16px;
+
+    a {
+      color: #855235;
+    }
   }
 
   .count {
@@ -2599,6 +2668,101 @@ body .mapboxgl-popup-content {
       width: 16px;
       height: 16px;
       fill: #B37E56;
+    }
+  }
+}
+
+
+.list-hod {
+  .full {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+    top: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: #fff;
+    }
+  }
+
+  .ico {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    svg {
+      fill: #855235;
+      width: 160px;
+      height: 160px;
+      opacity: .8;
+      transition: all .3s ease;
+    }
+  }
+
+  &:hover {
+    .ico {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+
+  .owl-nav {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .owl-next,
+  .owl-prev {
+    width: 40px;
+    height: 40px;
+    background: rgba(17, 17, 17, 0.4) !important;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 4px;
+    transition: all .3s ease;
+
+    &:before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: 0 auto;
+      border-bottom: 2px solid #fff;
+      border-right: 2px solid #fff;
+      position: relative;
+    }
+
+    &.disabled {
+      opacity: .5;
+      cursor: default !important;
+    }
+  }
+
+  .owl-next {
+
+    &:before {
+      left: -2px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .owl-prev {
+
+    &:before {
+      left: 1;
+      transform: rotate(135deg);
     }
   }
 }
