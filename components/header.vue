@@ -16,7 +16,7 @@
               <nuxt-link :to="$i18n.path('')+'about'" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
             </li>
             <li>
-              <a href="#">{{$t('links["Выбрать квартиру"]')}}</a>
+              <nuxt-link :to="$i18n.path('')+'sections'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
             </li>
             <li>
                <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="top-phone">
-          <a href="tel:044 123-45-67">044 123-45-67</a>
+          <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>
         </div>
 
         <div class="burger" data-fancybox data-src="#modal-nav" href="javascript:;">

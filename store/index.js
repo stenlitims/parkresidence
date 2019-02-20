@@ -5,7 +5,9 @@ export const state = () => ({
   mainUrl: 'https://web.park-residence.com.ua/',
   api: 'https://web.park-residence.com.ua/api',
   siteName: ' | Park Residence',
-  actions: []
+  actions: [],
+  mPhone: '(097) 513-00-01',
+  mEmail: 'sale.parkresidence@gmail.com'
 })
 
 export const mutations = {

@@ -6,7 +6,7 @@
           <div>
             <p>{{$t('links["Узнайте больше по телефону"]')}}</p>
             <div class="f-phone">
-              <a href="#">044 123-45-67</a>
+              <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>
             </div>
           </div>
           <div class="cont">
@@ -26,9 +26,7 @@
               <li>
                 <nuxt-link :to="$i18n.path('')+'concept'" exact>{{$t('links["Концепция"]')}}</nuxt-link>
               </li>
-              <li>
-                <a href="#">{{$t('links["Описание"]')}}</a>
-              </li>
+          
               <li>
                 <a href="#">{{$t('links["Стиль жизни"]')}}</a>
               </li>
@@ -67,9 +65,7 @@
               <li>
                 <nuxt-link :to="$i18n.path('')+'docs'" exact>{{$t('links["Документы"]')}}</nuxt-link>
               </li>
-              <li>
-                <a href="#">{{$t('links["Застройщик"]')}}</a>
-              </li>
+            
             </ul>
           </div>
         </div>

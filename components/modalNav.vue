@@ -73,7 +73,7 @@
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .4s;">
             <p class="t">{{$t('links["Узнайте больше по телефону"]')}}</p>
             <div class="f-phone">
-              <a href="#">044 123-45-67</a>
+              <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>
             </div>
           </div>
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .5s;">

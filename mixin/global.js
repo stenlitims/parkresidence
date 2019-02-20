@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     l(ru, ua) {
-      return ru;
       if (this.$store.state.locale == 'ru') {
         return ru;
       }

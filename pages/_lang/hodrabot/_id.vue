@@ -79,7 +79,7 @@ export default {
   },
   computed: {},
   mounted() {
-    setTimeout(() => {
+//    setTimeout(() => {
       $(".list-hod").owlCarousel({
         loop: false,
         margin: 0,
@@ -89,9 +89,9 @@ export default {
         navText: ["", ""],
         autoplaySpeed: 1000,
         navSpeed: 1000,
-        autoHeight: true
+      //  autoHeight: true
       });
-    }, 100);
+  //  }, 100);
   },
   methods: {}
 };

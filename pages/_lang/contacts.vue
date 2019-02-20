@@ -4,31 +4,32 @@
       <div class="container2">
         <div class="row contacts">
           <div class="col-md-6 cube-contacts">
-            <div class="title">Заходите в гости</div>
+            <div class="title">{{l('Заходите в гости', 'Заходьте в гості')}}</div>
             <div class="list">
               <div class="c-item">
                 <svg>
                   <use xlink:href="#ic_location"></use>
                 </svg>
-                г. Киев, ул. Саксаганского, 35А, офис №17
+                {{$t('adr["main"]')}}
               </div>
               <div class="c-item c-phone">
                 <svg>
                   <use xlink:href="#ic_phone2"></use>
                 </svg>
-                <a href="#">+38 050 123-45-67</a>
+                <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>,
+                <a :href="'tel:(063) 513 00 01'">(063) 513-00-01</a>
               </div>
               <div class="c-item">
                 <svg>
                   <use xlink:href="#ic_clock"></use>
                 </svg>
-                Пн-Пт с 9:00 до 19:30, Сб с 10:00 до 17:00
+                {{l('Пн – Пт: 09:00-20:00 Сб – Вс: 10:00 – 18:00', 'Пн – Пт: 09:00-20:00 Сб – Нд: 10:00 – 18:00')}}
               </div>
               <div class="c-item">
                 <svg>
                   <use xlink:href="#ic_mail"></use>
                 </svg>
-                <a href="#">clients@parkresidence.com.ua</a>
+                <a :href="'mailto:'+$store.state.mEmail">{{$store.state.mEmail}}</a>
               </div>
             </div>
             <div class="title">ЖК Park Residence</div>
@@ -36,20 +37,21 @@
               <svg>
                 <use xlink:href="#ic_location"></use>
               </svg>
-              г. Киев, ул. Саксаганского, 35А
+              {{$t('adr["main"]')}}
             </div>
           </div>
           <div class="col-md-6 r-text-contacts">
             <div>
-              <div class="heading4">Хотите узнать больше
-                <br>о ЖК или задать вопрос?
-              </div>
+              <div
+                class="heading4"
+                v-html="l('Хотите узнать больше <br>о ЖК или задать вопрос?', 'Хочете дізнатися більше <br> про ЖК або задати питання?')"
+              ></div>
               <a
                 class="btn btn-line js-modal"
                 data-fancybox="writeUsBtn"
                 data-src="#writeUs"
                 href="javascript:;"
-              >Написать нам</a>
+              >{{$t('links["Написать нам"]')}}</a>
             </div>
           </div>
         </div>
@@ -59,9 +61,10 @@
     <div id="map" class="contact-map"></div>
     <div class="main-text-bottom hideMin675">
       <div class="container text-center">
-        <div class="heading3">Хотите узнать больше
-          <br>о ЖК или задать вопрос?
-        </div>
+        <div
+          class="heading3"
+          v-html="l('Хотите узнать больше <br>о ЖК или задать вопрос?', 'Хочете дізнатися більше <br> про ЖК або задати питання?')"
+        ></div>
 
         <a
           class="btn btn-line js-modal"
@@ -118,13 +121,10 @@ export default {
       var map = new mapboxgl.Map({
         container: "map", // container id
         style: "mapbox://styles/mapbox/basic-v9", // stylesheet location
-        center: [30.231698536778982, 50.51732365110613], // starting position [lng, lat]
-        zoom: 13
+        center: [30.324553, 50.404428], // starting position [lng, lat]
+        zoom: 14
       });
 
-      // mapboxgl.setRTLTextPlugin(
-      //   "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.1.0/mapbox-gl-rtl-text.js"
-      // );
       map.addControl(
         new MapboxLanguage({
           defaultLanguage: "ru"
@@ -132,6 +132,54 @@ export default {
       );
       map.scrollZoom.disable();
       map.addControl(new mapboxgl.NavigationControl());
+
+      let listCord = [
+        {
+          title_ru: "ЖК Park Residence",
+          title_ua: "ЖК Park Residence",
+          cord: [50.404428, 30.324553],
+          type: "main"
+        },
+        {
+          title_ru: "Отдел продаж №1",
+          title_ua: "Відділ продажу №1",
+          cord: [50.404353, 30.323356]
+        },
+        {
+          title_ru: "Отдел продаж №2",
+          title_ua: "Відділ продажу №2",
+          cord: [50.400372, 30.327067]
+        }
+      ];
+
+      for (let data of listCord) {
+        var el = document.createElement("div");
+        el.className = "marker";
+        var offset = 30;
+
+        el.style.width = "24px";
+        el.style.height = "32px";
+
+        el.style.backgroundImage =
+          "url(" + this.$url + "assets/images/ic_location.png)";
+        var popup = new mapboxgl.Popup({
+          offset: offset
+        }).setHTML(
+          '<div class="wr-loc">' + data["title_" + this.lang] + "</div>"
+        );
+
+        data.cord = [data.cord[1], data.cord[0]];
+
+        // add marker to map
+        let marker = new mapboxgl.Marker(el)
+          .setLngLat(data.cord)
+          .setPopup(popup)
+          .addTo(map);
+
+        if (data.type == "main") {
+          marker.togglePopup();
+        }
+      }
     }
   }
 };

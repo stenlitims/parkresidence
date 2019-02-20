@@ -32,11 +32,8 @@
 
     <div class="container">
       <div class="section1 section text-center">
-        <div class="heading2 line-b">ЖК Park Residence
-          <br>создан для уютной жизни
-        </div>
-        <div class="text1">
-          <p>Каждая мелочь в жилом комплексе продумана, чтобы сделать каждый день для вас и ваших близких полноценным и комфортным.</p>
+        <div class="heading2 line-b" v-html="d.introtext"></div>
+        <div class="text1" v-html="d.content">
         </div>
       </div>
 
@@ -48,28 +45,26 @@
                 <div class="item">
                   <div class="num">01</div>
                   <div class="title">
-                    Жить недалеко от Киева
-                    и оставаться в тишине
+                    {{ids.s1['title_'+lang]}}
                   </div>
                   <div
-                    class="text"
-                  >Park Residence расположен всего в 3 километрах от столицы, вдали от оживленных дорог. Уровень шума во дворе комплекса в 3 раза меньше, чем в черте города. Вы сможете жить и отдыхать, не отвлекаясь на движение большого города.</div>
+                    class="text" v-html="ids.s1['text_'+lang]"
+                  ></div>
                 </div>
                 <div class="item">
                   <div class="num">02</div>
                   <div class="title">
-                    Жить недалеко от Киева
-                    и оставаться в тишине
+                   {{ids.s2['title_'+lang]}}
                   </div>
                   <div
-                    class="text"
-                  >Park Residence расположен всего в 3 километрах от столицы, вдали от оживленных дорог. Уровень шума во дворе комплекса в 3 раза меньше, чем в черте города. Вы сможете жить и отдыхать, не отвлекаясь на движение большого города.</div>
+                    class="text" v-html="ids.s2['text_'+lang]"
+                  ></div>
                 </div>
               </div>
               <div class="btns">
-                <a href="#" class="btn btn-def btn-l">
+                <nuxt-link class="btn btn-def btn-l" :to="$i18n.path('')+'location'" exact>
                   <span>{{$t('links["Расположение"]')}}</span>
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -91,28 +86,26 @@
                 <div class="item">
                   <div class="num">03</div>
                   <div class="title">
-                    Безопасность
-                    на первом месте
+                    {{ids.s3['title_'+lang]}}
                   </div>
                   <div
-                    class="text"
-                  >Закрытый двор с пропускной системой, круглосуточная охрана комплекса с двумя стационарными постами и продуманная система видеонаблюдения — вот залог безопасности для жителей и гостей комплекса.</div>
+                    class="text" v-html="ids.s3['text_'+lang]"
+                  ></div>
                 </div>
                 <div class="item">
                   <div class="num">04</div>
                   <div class="title">
-                    Стильная архитектура
-                    и уютный двор
+                    {{ids.s4['title_'+lang]}}
                   </div>
                   <div
-                    class="text"
-                  >ЖК Park Residence выгодно отличается от серых многоэтажек, ведь каждая деталь комплекса отражает философию хюгге, которая объединяет красоту, функциональность и комфорт.</div>
+                    class="text" v-html="ids.s4['text_'+lang]"
+                  ></div>
                 </div>
               </div>
               <div class="btns">
-                <a href="#" class="btn btn-def btn-l">
+                <nuxt-link class="btn btn-def btn-l" :to="$i18n.path('')+'concept'" exact>
                   <span>{{$t('links["Концепция"]')}}</span>
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -159,10 +152,9 @@
           </div>
           <div class="col-lg-4 text-bl">
             <div class="title2">
-              <p>
-                Выберите комфортную планировку
-                квартиры
-                <br>прямо сейчас
+              <p v-html="l('Выберите комфортную планировку квартиры <br>прямо сейчас','Виберіть комфортну <br> планування квартири <br> прямо зараз')">
+           
+                
               </p>
             </div>
             <div class>
@@ -205,11 +197,8 @@
 
     <div class="main-text-bottom">
       <div class="container text-center">
-        <div class="heading3">Создайте свое впечатление о Park Residence</div>
-        <div class="text">
-          <p>Запишитесь на просмотр и своими глазами посмотрите, как идет процесс
-            <br>строительства и обустройства территории комплекса.
-          </p>
+        <div class="heading3">{{ids.s5['title_'+lang]}}</div>
+        <div class="text" v-html="ids.s5['text_'+lang]">
         </div>
         <a href class="btn btn-def">
           <span>{{$t('main["Записаться на просмотр"]')}}</span>
@@ -248,7 +237,11 @@ export default {
     },
     b_main_slider() {
       return this.data.tv.b_main_slider[this.$store.state.locale];
+    },
+    ids() {
+      return this.data.tv.list_text;
     }
+
   },
   mounted() {
     let bSlider = $(".text-slide");
@@ -273,7 +266,7 @@ export default {
     bSlider.on("changed.owl.carousel", event => {
       setTimeout(() => {
         let id = $(".text-slide .active .main-bg").data("id");
-     //   console.log(id);
+        //   console.log(id);
         this.blide = id;
       }, 100);
     });
@@ -291,6 +284,7 @@ export default {
       navSpeed: 1000,
       autoplay: true,
       autoplayTimeout: 10000,
+      autoplayHoverPause: true,
       animateOut: "scaleFadeIn",
       animateIn: "scaleFadeOut"
     });

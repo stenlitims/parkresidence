@@ -11,23 +11,14 @@
         <div class="row">
           <div class="col-md-6">
             <div class="item-text">
-              <div class="title">Современный дизайн и стильная архитектура</div>
-              <div class="text">
-                ЖК Park Residence создан в соответствии со скандинавской философией хюгге, в которой максимум внимания уделено комфорту и безопасности жителей.
-                А современный дизайн фасада выгодно выделяет комплекс среди других ЖК столицы.
-              </div>
+              <div class="title">{{ids.s1['title_'+lang]}}</div>
+              <div class="text" v-html="ids.s1['text_'+lang]"></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="item-text">
-              <div class="title">
-                Квартиры
-                и помещения на любой вкус
-              </div>
-              <div class="text">
-                Архитекторы разработали 20 отдельных планировок квартир в
-                ЖК Park Residence, площадью от 34 до 82 кв. м. А на 7-8 этажах расположены двухуровневые квартиры класса люкс, которые по достоинству оценят ценители свободного пространства.
-              </div>
+              <div class="title">{{ids.s2['title_'+lang]}}</div>
+              <div class="text" v-html="ids.s2['text_'+lang]"></div>
             </div>
           </div>
         </div>
@@ -46,18 +37,16 @@
         <div class="row row-pb">
           <div class="col-md-6">
             <div class="item-text">
-              <div class="title">Малоэтажное строительство</div>
-              <div
-                class="text"
-              >Мы заботимся о комфорте жителей. Поэтому полностью отказались от концепции «муравейника». Все дома комплекса строятся высотой только 8 этажей, поэтому каждый получит достаточно пространства для жизни и отдыха.</div>
+              <div class="title">{{ids.s3['title_'+lang]}}</div>
+              <div class="text" v-html="ids.s3['text_'+lang]"></div>
             </div>
           </div>
           <div class="col-md-6 col-bg">
             <div class="item-text">
-              <div class="title">Гарантия безопасности</div>
+              <div class="title">{{ids.s4['title_'+lang]}}</div>
               <div
-                class="text"
-              >Круглосуточная охрана и видеонаблюдение за внутренней территории гарантируют абсолютную безопасность каждого жителя. Вы можете быть спокойными за своих детей, когда они играют на территории комплекса.</div>
+                class="text" v-html="ids.s4['text_'+lang]"
+              ></div>
             </div>
           </div>
         </div>
@@ -70,10 +59,10 @@
           </div>
           <div class="col-md-6">
             <div class="item-text">
-              <div class="title">Экологичные материалы</div>
+              <div class="title">{{ids.s5['title_'+lang]}}</div>
               <div
-                class="text"
-              >Эксперты проводят независимую экспертизу всех материалов, которые используются в ходе строительства. Мы гарантируем, что строительство на 100% экологичное и доказываем это документально. Результаты всех экспертиз вы можете посмотреть в отделе продаж.</div>
+                class="text" v-html="ids.s5['text_'+lang]"
+              ></div>
             </div>
           </div>
         </div>
@@ -89,20 +78,19 @@
         <div class="row row-fix-mb">
           <div class="col-md-6">
             <div class="item-text">
-              <div class="title">Спорт
-                <br>и развлечения
+              <div class="title">{{ids.s6['title_'+lang]}}
               </div>
               <div
-                class="text"
-              >Территория ЖК полностью оборудована для комфортного досуга жителей. Для любителей спорта есть беговые дорожки и спортивные площадки, а для любителей отдохнуть на природе — оборудованные зоны барбекю, беседки, красивые фонтаны и прогулочные аллеи.</div>
+                class="text" v-html="ids.s6['text_'+lang]"
+              ></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="item-text">
-              <div class="title">Бизнес на территории комплекса</div>
+              <div class="title">{{ids.s7['title_'+lang]}}</div>
               <div
-                class="text"
-              >Цокольный и первый этаж комплекса полностью занимают помещения для бизнеса. Начинайте свое дело прямо на территории комплекса — мы предлагаем лучшие условия для жителей Park Residence.</div>
+                class="text" v-html="ids.s7['text_'+lang]"
+              ></div>
             </div>
           </div>
         </div>
@@ -146,8 +134,7 @@
 
     <div class="main-text-bottom">
       <div class="container text-center">
-        <div class="heading3">Выберите свою квартиру
-          <br>в ЖК Park Residence
+        <div class="heading3" v-html="l('Выберите свою квартиру <br>в ЖК Park Residence', 'Виберіть свою квартиру <br> в ЖК Park Residence')">
         </div>
 
         <a href class="btn btn-def">
@@ -176,6 +163,11 @@ export default {
         data: res.data
       };
     });
+  },
+  computed: {
+    ids() {
+      return this.data.tv.list_text;
+    }
   }
 };
 </script>
