@@ -29,7 +29,7 @@
                     <a href="#">{{$t('links["Визуальный выбор"]')}}</a>
                   </li>
                   <li>
-                    <a href="#">{{$t('links["По параметрам"]')}}</a>
+                    <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["По параметрам"]')}}</nuxt-link>
                   </li>
                 </ul>
               </li>

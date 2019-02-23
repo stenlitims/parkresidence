@@ -1,6 +1,6 @@
 <template>
   <div class="sections">
-    <visual></visual>
+    <visual dir="g360" type="genplan" activeSlide="15"></visual>
   </div>
 </template>
 
@@ -26,6 +26,12 @@ export default {
         data: res.data
       };
     });
+  },
+  mounted() {
+    $(".footer").hide();
+  },
+  beforeDestroy() {
+    $(".footer").show();
   },
   computed: {
     ids() {

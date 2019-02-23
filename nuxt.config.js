@@ -91,7 +91,12 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/i18n.js'],
+  plugins: ['~/plugins/i18n.js', {
+    src: "~/plugins/client.js",
+    ssr: false
+  }, {
+    src: "~/plugins/global.js"
+  }],
 
   // generate: {
   //   routes: ['/', '/about', '/ua', '/ua/about', '/сoncept', '/ua/сoncept']

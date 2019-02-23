@@ -7,7 +7,7 @@
     </div>
     <siteHeader/>
     <nuxt/>
-    <siteFooter/>
+    <siteFooter></siteFooter>
 
     <div class="m-buttons">
       <nuxt-link class="fav-btn m-btn" :to="$i18n.path('')+'favorites'" exact>
@@ -236,10 +236,11 @@ export default {
         //	boxClass: 'wow', // default
         //	animateClass: 'animated', // default
         //	offset: 0, // default
-        mobile: false // default
-        //live: false // default
-        //	callback: function (box) {
-        //	}
+        mobile: false,
+     //   live: true // default
+        	callback: function (box) {
+            $(box).addClass('af');
+        	}
       });
       wow.init();
     }

@@ -27,9 +27,14 @@ export default {
   },
 
   computed: {
+
     lang() {
       return this.$store.state.locale;
     },
+    $url() {
+      return this.$store.state.mainUrl
+    },
+
     d() {
       if (this.data) {
         return this.data[this.$store.state.locale];
@@ -40,19 +45,18 @@ export default {
         return this.d.introtext;
       }
       return this.d.pagetitle;
-    },
-    $url() {
-      return this.$store.state.mainUrl
     }
 
   },
   methods: {
+
     l(ru, ua) {
       if (this.$store.state.locale == 'ru') {
         return ru;
       }
       return ua;
     },
+
     loadMapScript() {
       $("head").append(
         $('<link rel="stylesheet" type="text/css" />').attr(

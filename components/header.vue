@@ -16,7 +16,7 @@
               <nuxt-link :to="$i18n.path('')+'about'" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
             </li>
             <li>
-              <nuxt-link :to="$i18n.path('')+'sections'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
+              <nuxt-link :to="$i18n.path('')+'genplan'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
             </li>
             <li>
                <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>

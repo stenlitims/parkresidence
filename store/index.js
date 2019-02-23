@@ -7,7 +7,7 @@ export const state = () => ({
   siteName: ' | Park Residence',
   actions: [],
   mPhone: '(097) 513-00-01',
-  mEmail: 'sale.parkresidence@gmail.com'
+  mEmail: 'sale.parkresidence@gmail.com',
 })
 
 export const mutations = {

@@ -1,22 +1,87 @@
 <template>
   <div class="visual">
     <div
-      class="list360"
+      class="visual-wrap"
       @mousedown="mousedown"
       @touchstart="mousedown"
       @mouseup="mouseup"
       @touchend="mouseup"
       @mousemove="mousemove"
       @touchmove="mousemove"
+      @mousewheel="mousemove"
     >
-      <div
-        class="item"
-        v-for="item in 24"
-        :key="item"
-        :class="{'active': item == 1}"
-        :data-index="item"
-      >
-        <img :src="$store.state.mainUrl+'assets/images/dom360/'+item+'.webp'" alt class>
+      <div class="list360" :class="{'active': v360}">
+        <div
+          class="item"
+          v-for="item in 24"
+          :key="item"
+          :class="{'active': item == activeSlide}"
+          :data-index="item"
+        >
+          <img :src="$store.state.mainUrl+'assets/images/'+dir+'/'+item+'.webp'" alt class>
+        </div>
+      </div>
+      <div class="v-plan genplan" v-if="type == 'genplan'" :class="{'active': !v360}">
+        <div class="lb active" style="left: 30.5%;top: 58.5%;">
+          <div class="t">{{$t('main["Дом"]')}} 1</div>
+          <span>IV кв 2020</span>
+        </div>
+        <div class="lb" style="left: 21.5%;top: 29.5%;">
+          <div class="t">{{$t('main["Дом"]')}} 2</div>
+          <span>Скоро</span>
+        </div>
+        <div class="lb" style="left: 58.5%;top: 45.5%;">
+          <div class="t">{{$t('main["Дом"]')}} 3</div>
+          <span>Скоро</span>
+        </div>
+        <div class="lb" style="left: 45.5%;top: 18.5%;">
+          <div class="t">{{$t('main["Дом"]')}} 4</div>
+          <span>Скоро</span>
+        </div>
+        <div class="lb" style="left: 75.5%;top: 36.5%;">
+          <div class="t">{{$t('main["Дом"]')}} 5</div>
+          <span>Скоро</span>
+        </div>
+        <div class="lb" style="left: 61.5%;top: 12.5%;">
+          <div class="t">{{$t('main["Дом"]')}} 6</div>
+          <span>Скоро</span>
+        </div>
+        <div class="img-plan">
+          <img :src="$store.state.mainUrl+'assets/images/genplan/genplan.webp'" alt>
+        </div>
+      </div>
+    </div>
+
+    <div class="visual-footer">
+      <div class="container line1">
+        <div class="heading2">
+         {{l('Выберите', 'Виберіть')}} 
+          <br>
+          <span v-if="type == 'genplan'">{{$t('main["Дом"]')}}</span>
+          <span v-else>Секцию</span>
+        </div>
+
+        <a href="#" class="link-ico">
+          <div class="ico">
+            <svg>
+              <use xlink:href="#ico-settings"></use>
+            </svg>
+          </div>
+          <div class="t" style="max-width: 100px">{{$t('links["Подбор по параметрам"]')}}
+          </div>
+        </a>
+
+        <div class="ico-360">
+          <svg>
+            <use xlink:href="#ico-360"></use>
+          </svg>
+        </div>
+
+        <div class="type-list">
+          <a href="#" class="active">{{$t('main["Квартиры"]')}}</a>
+          <a href="#">{{$t('main["Коммерция"]')}}</a>
+          <a href="#">{{$t('main["Паркинг"]')}}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -26,16 +91,22 @@
 export default {
   data() {
     return {
-      clicking: false,
+      v360: false,
       par: false,
       last: 1,
       last2: false,
       pic_X: false,
       pic_W: false,
       center_X: false,
-      movestop: false
+      movestop: false,
+      timeFrame: 60,
+      draggable: false,
+      wheeling: undefined,
+      touchTimeout: null
     };
   },
+
+  props: ["dir", "type", "activeSlide"],
 
   mounted() {
     this.par = $(".list360");
@@ -47,18 +118,43 @@ export default {
 
   methods: {
     mousedown() {
-      this.clicking = true;
+      this.touchTimeout = setTimeout(() => {
+        this.draggable = true;
+      }, 300);
     },
     mouseup() {
-      this.clicking = false;
+      clearTimeout(this.touchTimeout);
+      this.draggable = false;
       setTimeout(() => {
         this.setPosition();
       }, 400);
     },
     mousemove(event) {
-      if (this.clicking == false) return;
+      if (event.type == "mousewheel") {
+        this.v360 = true;
 
-      // console.log(event);
+        if (event.wheelDelta > 0 || event.detail < 0) {
+          this.moveImg("left");
+        } else {
+          this.moveImg(false);
+        }
+
+        // if (!this.wheeling) {
+        //   //   console.log('start wheeling!');
+        // }
+
+        clearTimeout(this.wheeling);
+        this.wheeling = setTimeout(() => {
+          this.wheeling = undefined;
+          this.setPosition();
+        }, 450);
+
+        return;
+      } else {
+        if (!this.draggable) return;
+      }
+
+      this.v360 = true;
 
       var index = Math.ceil(
         Math.abs(event.pageX - this.center_X) / this.movestop
@@ -73,9 +169,9 @@ export default {
       }
       setTimeout(() => {
         this.last2 = event.pageX;
-      }, 10);
+      }, 20);
 
-      if (event.pageX < this.last2) {
+      if (event.pageX > this.last2) {
         this.moveImg("left");
       } else {
         this.moveImg(false);
@@ -112,7 +208,7 @@ export default {
         if (counter >= steps) {
           clearInterval(looper);
         }
-      }, 60);
+      }, this.timeFrame);
     },
     setPosition() {
       let index = $(".list360 .item.active").index() + 1;
@@ -121,39 +217,52 @@ export default {
         return -a;
       }
       //   console.log(index);
-      if (index > 1 && index < 5) {
-        this.animMoveImg(index, "left");
-        return;
-      }
-      if (index > 5 && index < 10) {
-        index = 10 - index;
-        this.animMoveImg(index, false);
-        return;
-      }
-      if (index > 10 && index < 15) {
-        let index2 = d(10 - index);
-        console.log(index, index2);
-        this.animMoveImg(index2, "left");
-        return;
+      let steps = 0;
+      let dir = false;
+      if (index > this.activeSlide) {
+        steps = index - this.activeSlide;
+        dir = "left";
+      } else {
+        steps = this.activeSlide - index;
       }
 
-      if (index > 10 && index < 15) {
-        index = 15 - index;
-        this.animMoveImg(index, false);
-        return;
-      }
-      if (index > 15 && index < 20) {
-        let index2 = d(15 - index);
-        console.log(index, index2);
-        this.animMoveImg(index2, "left");
-        return;
-      }
+      this.animMoveImg(steps, dir);
 
-      if (index >= 15 && index < 24) {
-        index = 24 - index;
-        this.animMoveImg(index, false);
-        return;
-      }
+      // if (index > 5 && index < 10) {
+      //   index = 10 - index;
+      //   this.animMoveImg(index, false);
+      //   //  return;
+      // }
+      // if (index > 10 && index < 15) {
+      //   index = d(10 - index);
+      //   console.log(index);
+      //   this.animMoveImg(index, "left");
+      //   // return;
+      // }
+
+      // if (index > 10 && index < 15) {
+      //   index = 15 - index;
+      //   this.animMoveImg(index, false);
+      //   // return;
+      // }
+      // if (index > 15 && index < 20) {
+      //   index = d(15 - index);
+      //   // console.log(index);
+      //   this.animMoveImg(index, "left");
+      //   //  return;
+      // }
+
+      // if (index >= 15 && index < 24) {
+      //   index = 24 - index;
+      //   this.animMoveImg(index, false);
+      //   //return;
+      // }
+
+      //   console.log((this.timeFrame * steps) - 100);
+
+      setTimeout(() => {
+        this.v360 = false;
+      }, this.timeFrame * steps);
     }
   }
 };

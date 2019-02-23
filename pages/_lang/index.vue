@@ -32,9 +32,15 @@
 
     <div class="container">
       <div class="section1 section text-center">
-        <div class="heading2 line-b" v-html="d.introtext"></div>
-        <div class="text1" v-html="d.content">
-        </div>
+        <div
+          class="heading2 line-b wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".2s"
+          v-html="d.introtext"
+        ></div>
+        <div class="text1 wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".4s" v-html="d.content"></div>
       </div>
 
       <div class="section2 section">
@@ -42,26 +48,24 @@
           <div class="list-wrap">
             <div class="list">
               <div class="items">
-                <div class="item">
+                <div class="item wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".2s">
                   <div class="num">01</div>
-                  <div class="title">
-                    {{ids.s1['title_'+lang]}}
-                  </div>
-                  <div
-                    class="text" v-html="ids.s1['text_'+lang]"
-                  ></div>
+                  <div class="title">{{ids.s1['title_'+lang]}}</div>
+                  <div class="text" v-html="ids.s1['text_'+lang]"></div>
                 </div>
-                <div class="item">
+                <div class="item wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".3s">
                   <div class="num">02</div>
-                  <div class="title">
-                   {{ids.s2['title_'+lang]}}
-                  </div>
-                  <div
-                    class="text" v-html="ids.s2['text_'+lang]"
-                  ></div>
+                  <div class="title">{{ids.s2['title_'+lang]}}</div>
+                  <div class="text" v-html="ids.s2['text_'+lang]"></div>
                 </div>
               </div>
-              <div class="btns">
+              <div class="btns wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".4s">
                 <nuxt-link class="btn btn-def btn-l" :to="$i18n.path('')+'location'" exact>
                   <span>{{$t('links["Расположение"]')}}</span>
                 </nuxt-link>
@@ -69,7 +73,9 @@
             </div>
           </div>
 
-          <div class="img">
+          <div class="img wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".8s">
             <img src="main/2.jpg" alt>
           </div>
         </div>
@@ -77,7 +83,9 @@
 
       <div class="section3 section">
         <div class="list-text-img">
-          <div class="img">
+          <div class="img wow fadeInUp2"
+          data-wow-duration=".6s"
+          data-wow-delay=".5s">
             <img src="main/3.jpg" alt>
           </div>
           <div class="list-wrap">
@@ -85,21 +93,13 @@
               <div class="items">
                 <div class="item">
                   <div class="num">03</div>
-                  <div class="title">
-                    {{ids.s3['title_'+lang]}}
-                  </div>
-                  <div
-                    class="text" v-html="ids.s3['text_'+lang]"
-                  ></div>
+                  <div class="title">{{ids.s3['title_'+lang]}}</div>
+                  <div class="text" v-html="ids.s3['text_'+lang]"></div>
                 </div>
                 <div class="item">
                   <div class="num">04</div>
-                  <div class="title">
-                    {{ids.s4['title_'+lang]}}
-                  </div>
-                  <div
-                    class="text" v-html="ids.s4['text_'+lang]"
-                  ></div>
+                  <div class="title">{{ids.s4['title_'+lang]}}</div>
+                  <div class="text" v-html="ids.s4['text_'+lang]"></div>
                 </div>
               </div>
               <div class="btns">
@@ -152,10 +152,9 @@
           </div>
           <div class="col-lg-4 text-bl">
             <div class="title2">
-              <p v-html="l('Выберите комфортную планировку квартиры <br>прямо сейчас','Виберіть комфортну <br> планування квартири <br> прямо зараз')">
-           
-                
-              </p>
+              <p
+                v-html="l('Выберите комфортную планировку квартиры <br>прямо сейчас','Виберіть комфортну <br> планування квартири <br> прямо зараз')"
+              ></p>
             </div>
             <div class>
               <a href class="btn btn-def">
@@ -198,8 +197,7 @@
     <div class="main-text-bottom">
       <div class="container text-center">
         <div class="heading3">{{ids.s5['title_'+lang]}}</div>
-        <div class="text" v-html="ids.s5['text_'+lang]">
-        </div>
+        <div class="text" v-html="ids.s5['text_'+lang]"></div>
         <a href class="btn btn-def">
           <span>{{$t('main["Записаться на просмотр"]')}}</span>
         </a>
@@ -241,7 +239,6 @@ export default {
     ids() {
       return this.data.tv.list_text;
     }
-
   },
   mounted() {
     let bSlider = $(".text-slide");
@@ -251,16 +248,34 @@ export default {
       nav: false,
       dots: false,
       items: 1,
-      autoplaySpeed: 1000,
-      navSpeed: 1000
+      autoplaySpeed: 3000,
+      navSpeed: 3000
     });
+
+    function setDisable() {
+      let $active = $(".text-slide .owl-item.active");
+      $(".s-prev, .s-next").removeClass("ds");
+      console.log($active.next());
+      if ($active.next().length == 0) {
+        $(".s-next").addClass("ds");
+      }
+      if ($active.prev().length == 0) {
+        $(".s-prev").addClass("ds");
+      }
+    }
+
+    setTimeout(() => {
+      setDisable();
+    }, 300);
 
     $(document).on("click", ".s-next", function() {
       bSlider.trigger("next.owl.carousel");
+      setDisable();
     });
 
     $(document).on("click", ".s-prev", function() {
       bSlider.trigger("prev.owl.carousel");
+      setDisable();
     });
 
     bSlider.on("changed.owl.carousel", event => {

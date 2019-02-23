@@ -140,6 +140,21 @@
     padding-top: 40px;
     padding-bottom: 40px;
   }
+
+  .list-locations{
+ 
+    .item{
+      margin-right: 10px;
+      margin-left: 10px;
+      &:first-child{
+        margin-left: 0;
+      }
+      &:last-child{
+        margin-right: 0;
+      }
+
+    }
+  }
 }
 
 @media (min-width: 576px) {
@@ -152,6 +167,26 @@
 }
 
 @media (max-width: 575px) {
+
+  .list-locations{
+    min-width: 500px;
+    margin-bottom: 24px;
+    .item{
+      .title{
+        display: none;
+      }
+      .ico{
+        margin-bottom: 0;
+      }
+
+    }
+  }
+
+  .list-locations-wrap{
+    overflow-x: auto;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
 
   .howbuy-list {
     .wrap-t {
