@@ -1,9 +1,19 @@
 <template>
   <div class="inner-page">
     <div class="container section">
-      <podbor
-     
-      ></podbor>
+      <podbor></podbor>
+    </div>
+    <div class="main-text-bottom">
+      <div class="container text-center">
+        <div class="heading3">Нет времени на поиски квартиры? <br>
+Мы вам поможем.</div>
+        <div class="text">
+          Наш менеджер подберет для вас только самые подходящие квартиры, а также <br> ответит на все вопросы. Все что вам нужно это указать желаемые параметры.
+        </div>
+        <a href class="btn btn-def">
+          <span>Заявка на подбор</span>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -19,7 +29,7 @@ export default {
   mixins: [mix],
   data() {
     return {
-      mainClass: ["def-page", "black-header"]
+      mainClass: ["def-page", "black-header", "lg-bg"]
     };
   },
   asyncData({ params }) {

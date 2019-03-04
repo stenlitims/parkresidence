@@ -8,7 +8,8 @@
             class="heading1 wow fadeInUp2"
             data-wow-duration=".6s"
             data-wow-delay="0"
-          >{{item.title}}</div>
+            v-html="item.title"
+          ></div>
           <div
             class="text wow fadeInUp2"
             data-wow-duration=".6s"
@@ -23,7 +24,7 @@
           ></div>
         </div>
         <div class="main-text" v-else>
-          <div class="heading1">{{item.title}}</div>
+          <div class="heading1" v-html="item.title"></div>
           <div class="text" v-html="item.text"></div>
           <div class="btns" v-html="item.btn"></div>
         </div>
@@ -38,9 +39,12 @@
           data-wow-delay=".2s"
           v-html="d.introtext"
         ></div>
-        <div class="text1 wow fadeInUp2"
+        <div
+          class="text1 wow fadeInUp2"
           data-wow-duration=".6s"
-          data-wow-delay=".4s" v-html="d.content"></div>
+          data-wow-delay=".4s"
+          v-html="d.content"
+        ></div>
       </div>
 
       <div class="section2 section">
@@ -48,24 +52,18 @@
           <div class="list-wrap">
             <div class="list">
               <div class="items">
-                <div class="item wow fadeInUp2"
-          data-wow-duration=".6s"
-          data-wow-delay=".2s">
+                <div class="item wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".2s">
                   <div class="num">01</div>
                   <div class="title">{{ids.s1['title_'+lang]}}</div>
                   <div class="text" v-html="ids.s1['text_'+lang]"></div>
                 </div>
-                <div class="item wow fadeInUp2"
-          data-wow-duration=".6s"
-          data-wow-delay=".3s">
+                <div class="item wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".3s">
                   <div class="num">02</div>
                   <div class="title">{{ids.s2['title_'+lang]}}</div>
                   <div class="text" v-html="ids.s2['text_'+lang]"></div>
                 </div>
               </div>
-              <div class="btns wow fadeInUp2"
-          data-wow-duration=".6s"
-          data-wow-delay=".4s">
+              <div class="btns wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".4s">
                 <nuxt-link class="btn btn-def btn-l" :to="$i18n.path('')+'location'" exact>
                   <span>{{$t('links["Расположение"]')}}</span>
                 </nuxt-link>
@@ -73,9 +71,7 @@
             </div>
           </div>
 
-          <div class="img wow fadeInUp2"
-          data-wow-duration=".6s"
-          data-wow-delay=".8s">
+          <div class="img wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".8s">
             <img src="main/2.jpg" alt>
           </div>
         </div>
@@ -83,9 +79,7 @@
 
       <div class="section3 section">
         <div class="list-text-img">
-          <div class="img wow fadeInUp2"
-          data-wow-duration=".6s"
-          data-wow-delay=".5s">
+          <div class="img wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".5s">
             <img src="main/3.jpg" alt>
           </div>
           <div class="list-wrap">
@@ -255,7 +249,7 @@ export default {
     function setDisable() {
       let $active = $(".text-slide .owl-item.active");
       $(".s-prev, .s-next").removeClass("ds");
-      console.log($active.next());
+    // console.log($active.next());
       if ($active.next().length == 0) {
         $(".s-next").addClass("ds");
       }

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+//import axios from "axios"
 
 Vue.use(VueI18n)
+//Vue.use(axios)
 
 export default ({ app, store }) => {
   // Set i18n instance on app

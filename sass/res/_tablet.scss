@@ -328,4 +328,33 @@
     }
   }
 
+  .podbor{
+    .heading25{
+      text-align: center;
+    }
+  }
+
+  .row-filtr-slider{
+    flex-wrap: wrap;
+    > div{
+      min-width: 50%;
+      width: 50%;
+    }
+  }
+
+  .fl-rooms{
+    justify-content: center;
+  }
+
+  .fl-info-line{
+    position: relative;
+    padding-top: 68px;
+    .clear-filtr{
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
+
 }

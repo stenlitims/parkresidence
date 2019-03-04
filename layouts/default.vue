@@ -10,11 +10,11 @@
     <siteFooter></siteFooter>
 
     <div class="m-buttons">
-      <nuxt-link class="fav-btn m-btn" :to="$i18n.path('')+'favorites'" exact>
+      <nuxt-link v-if="$store.state.fav.length" class="fav-btn m-btn" :to="$i18n.path('')+'favorites'" exact>
         <svg>
           <use xlink:href="#ic_heart"></use>
         </svg>
-        <span class="num">2</span>
+        <span class="num">{{$store.state.fav.length}}</span>
       </nuxt-link>
       <a
         class="phone-btn m-btn js-modal"
@@ -141,6 +141,13 @@ export default {
     // console.log(this.$route);
     // console.log(this.$i18n);
 
+    this.$store.commit('getFav');
+
+    this.isMobile();
+    $(window).resize(() => {
+      this.isMobile();
+    });
+
     $(".burger").fancybox({
       animationDuration: 500,
       animationEffect: "material",
@@ -227,6 +234,23 @@ export default {
     }
   },
   methods: {
+    isMobile() {
+      let isMobile = false;
+      if ($(window).width() < 768) {
+        isMobile = 768;
+      }
+      if ($(window).width() < 576) {
+        isMobile = 576;
+      }
+      if ($(window).width() < 420) {
+        isMobile = 420;
+      }
+      if ($(window).width() < 375) {
+        isMobile = 375;
+      }
+      this.$store.commit("setIsMobile", isMobile);
+     // console.log(this.$store.state.isMobile);
+    },
     stratLoading() {
       this.styleLine.width = "100%";
     },
@@ -237,10 +261,10 @@ export default {
         //	animateClass: 'animated', // default
         //	offset: 0, // default
         mobile: false,
-     //   live: true // default
-        	callback: function (box) {
-            $(box).addClass('af');
-        	}
+        //   live: true // default
+        callback: function(box) {
+          $(box).addClass("af");
+        }
       });
       wow.init();
     }

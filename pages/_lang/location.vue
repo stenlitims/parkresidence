@@ -126,7 +126,7 @@ export default {
       var map = new mapboxgl.Map({
         container: "map", // container id
         style: "mapbox://styles/mapbox/basic-v9", // stylesheet location
-        center: [30.241477870847287, 50.52163636529689], // starting position [lng, lat]
+        center: [30.324553,50.404428], // starting position [lng, lat]
         zoom: 13
       });
 
@@ -143,8 +143,10 @@ export default {
 
       let lang = this.$store.state.locale;
       let markers = [];
-      let infrastructure = this.data.tv.infrastructure;
+      let infrastructure = this.data.tv.infrastructure.reverse();
       let actinBtns = [];
+
+     // console.log(infrastructure);
 
       function setMarker(types = []) {
         if (!types.includes("main")) {
