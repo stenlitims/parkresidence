@@ -310,46 +310,50 @@
     margin-bottom: 32px;
   }
 
-  .list-hod .owl-nav{
+  .new-img .list-hod .owl-nav {
     position: static;
     margin-top: 16px;
     transform: translate(0);
     text-align: center;
   }
 
-  .howbuy-list .item{
+  .howbuy-list .item {
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  .howbuy-list{
-    .title, .introtext{
+  .howbuy-list {
+
+    .title,
+    .introtext {
       max-width: 220px;
     }
   }
 
-  .podbor{
-    .heading25{
+  .podbor {
+    .heading25 {
       text-align: center;
     }
   }
 
-  .row-filtr-slider{
+  .row-filtr-slider {
     flex-wrap: wrap;
-    > div{
+
+    >div {
       min-width: 50%;
       width: 50%;
     }
   }
 
-  .fl-rooms{
+  .fl-rooms {
     justify-content: center;
   }
 
-  .fl-info-line{
+  .fl-info-line {
     position: relative;
     padding-top: 68px;
-    .clear-filtr{
+
+    .clear-filtr {
       position: absolute;
       top: 20px;
       left: 50%;
@@ -357,4 +361,63 @@
     }
   }
 
+  .flat-grid {
+    padding-left: 17px;
+    padding-right: 17px;
+    grid-template-columns: minmax(250px, 1fr) minmax(200px, 1fr);
+    grid-gap: 32px;
+    grid-template-areas:
+      "f-back f-btns"
+      "f-info f-img"
+      "f-price-btns f-price-btns"
+      "f-links f-links";
+
+
+  }
+
+  .flat-grid .f-back {
+    //   justify-content: center;
+    align-self: center;
+    // display: flex;
+  }
+
+  .f-info {
+    justify-self: flex-start;
+  }
+
+  .w-price .price {
+    font-size: 22px;
+  }
+
+  .f-cl1 {
+    display: none;
+  }
+
+  .flat-btns,
+  .flat-grid .img {
+    margin-bottom: 0;
+  }
+
+  .flat-grid .img img {
+    max-height: 300px;
+  }
+
+  .section-fl-pad {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+}
+
+@media (max-width: 991px) and (min-width: 576px) {
+  .m-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >* {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
 }

@@ -15,13 +15,16 @@
             <li>
               <nuxt-link :to="$i18n.path('')+'about'" exact>{{$t('links["О комплексе"]')}}</nuxt-link>
             </li>
-            <li>
+            <!-- <li>
               <nuxt-link :to="$i18n.path('')+'genplan'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
-            </li>
+            </li> -->
+              <li>
+                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
+              </li>
             <li>
-               <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
+              <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
             </li>
-            <li>
+            <li v-if="$store.state.actions.length">
               <a class="js-actions" href="javascript:;">
                 {{$t('links["Акции"]')}}
                 <span class="count">{{$store.state.actions.length}}</span>
@@ -33,11 +36,16 @@
 
       <div>
         <div class="mob-btns">
-          <nuxt-link class="fav-btn" :to="$i18n.path('')+'favorites'" exact>
+          <nuxt-link
+            v-if="$store.state.fav.length"
+            class="fav-btn"
+            :to="$i18n.path('')+'favorites'"
+            exact
+          >
             <svg>
               <use xlink:href="#ic_heart"></use>
             </svg>
-            <span class="num">2</span>
+            <span class="num">{{$store.state.fav.length}}</span>
           </nuxt-link>
           <a
             class="phone-btn2 js-modal"
@@ -52,21 +60,22 @@
         </div>
 
         <div class="soc-list">
-          <a href="#">
+          <a :href="$store.state.soc.facebook_mes" target="_blank">
             <svg>
               <use xlink:href="#ic_messenger"></use>
             </svg>
           </a>
-          <a href="#">
+          <a :href="$store.state.soc.telegram" target="_blank">
             <svg>
               <use xlink:href="#ic_telegram"></use>
             </svg>
           </a>
-          <a href="#">
+
+          <!-- <a href="#">
             <svg>
               <use xlink:href="#ic_viber"></use>
             </svg>
-          </a>
+          </a>-->
         </div>
 
         <div class="top-phone">

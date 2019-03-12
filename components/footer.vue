@@ -11,9 +11,7 @@
           </div>
           <div class="cont">
             <p>{{$t('links["Офис продаж"]')}}</p>
-            <p>г. Киев, ул. Шевченка, 74, офис 17
-              <br>Пн - Сб с 10:00 до 21:00
-            </p>
+            <p v-html="$store.state.op['adress_'+$store.state.locale]"></p>
           </div>
         </div>
 
@@ -27,9 +25,9 @@
                 <nuxt-link :to="$i18n.path('')+'concept'" exact>{{$t('links["Концепция"]')}}</nuxt-link>
               </li>
           
-              <li>
+              <!-- <li>
                 <a href="#">{{$t('links["Стиль жизни"]')}}</a>
-              </li>
+              </li> -->
               <li>
                 <nuxt-link :to="$i18n.path('')+'location'" exact>{{$t('links["Расположение"]')}}</nuxt-link>
               </li>
@@ -42,28 +40,30 @@
               </li>
               <li>
                 <nuxt-link
-                  :to="$i18n.path('')+'hodrabot'"
+                  :to="$i18n.path('')+'progress'"
                   exact
                 >{{$t('links["Ход строительства"]')}}</nuxt-link>
               </li>
               <li>
                 <nuxt-link :to="$i18n.path('')+'news'" exact>{{$t('links["Новости"]')}}</nuxt-link>
               </li>
-              <li>
-                <nuxt-link :to="$i18n.path('')+'contacts'" exact>{{$t('links["Контакты"]')}}</nuxt-link>
-              </li>
+             
             </ul>
           </div>
           <div class="f-nav-item">
             <ul>
+              <!-- <li>
+                <a href="#">{{$t('links["Визуальный выбор"]')}}</a>
+              </li> -->
               <li>
-                <a href="#">{{$t('links["Квартиры на генплане"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
               </li>
-              <li>
-                <a href="#">{{$t('links["Подбор по параметрам"]')}}</a>
-              </li>
-              <li>
+              <!-- <li>
                 <nuxt-link :to="$i18n.path('')+'docs'" exact>{{$t('links["Документы"]')}}</nuxt-link>
+              </li> -->
+
+               <li>
+                <nuxt-link :to="$i18n.path('')+'contacts'" exact>{{$t('links["Контакты"]')}}</nuxt-link>
               </li>
             
             </ul>
@@ -71,30 +71,31 @@
         </div>
 
         <div class="f-soc-list">
-          <a href="#" class="insta">
+          <a :href="$store.state.soc.instagram" target="_blank" class="insta">
             <svg>
               <use xlink:href="#ic_insta"></use>
             </svg>
           </a>
-          <a href="#" class="facebook">
+          <a :href="$store.state.soc.facebook" target="_blank" class="facebook">
             <svg>
               <use xlink:href="#ic_facebook"></use>
             </svg>
           </a>
-          <a href="#">
+          <a :href="$store.state.soc.telegram" target="_blank">
             <svg>
               <use xlink:href="#ic_telegram"></use>
             </svg>
           </a>
-          <a href="#">
+
+          <!-- <a href="#">
             <svg>
               <use xlink:href="#ic_viber"></use>
             </svg>
-          </a>
+          </a> -->
         </div>
       </div>
 
-      <div class="copy">© 2018 Park Residence</div>
+      <div class="copy">© 2019 Park Residence</div>
     </div>
   </footer>
 </template>

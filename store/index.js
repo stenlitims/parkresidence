@@ -11,8 +11,21 @@ export const state = () => ({
   mEmail: 'sale.parkresidence@gmail.com',
   actions: [],
   flats: null,
+  floorplans: null,
+  plans_floorplans: null,
   isMobile: false,
-  fav: []
+  op: {
+    phone: '(097) 513-00-01',
+  },
+  galPlan: {},
+  fav: [],
+  fillQ: null,
+  soc: {
+    telegram: "http://t.me/Park_Residence_bot",
+    facebook_mes: "https://m.me/park.residence.com.ua/",
+    facebook: "https://www.facebook.com/park.residence.com.ua",
+    instagram: "https://www.instagram.com/park.residence.kyiv/",
+  }
 })
 
 export const mutations = {
@@ -31,6 +44,29 @@ export const mutations = {
 
   getFlats(state, payload) {
     state.flats = payload;
+  },
+
+  getOptions(state, payload) {
+    state.op = payload;
+  },
+
+  getFloorplans(state, payload) {
+    state.floorplans = payload.floorplans;
+    state.plans_floorplans = payload.plans_floorplans;
+  },
+
+  setfillQ(state, payload) {
+    // console.log(payload);
+    state.fillQ = payload;
+  },
+
+
+  getGalPlan(state, payload) {
+    let temp = {
+      ...state.galPlan
+    };
+    temp[payload.op.building + payload.op.section + payload.op.type] = payload.data;
+    state.galPlan = temp;
   },
 
   setIsMobile(state, pror) {
@@ -53,7 +89,7 @@ export const mutations = {
     let temp = JSON.stringify(state.fav);
     localStorage.setItem("fav", temp);
 
-    console.log(state.fav);
+    //  console.log(state.fav);
 
   }
 
@@ -74,6 +110,37 @@ export const actions = {
   }) {
     axios.get(state.api + '?action=getFlats').then(res => {
       commit('getFlats', res.data);
+    });
+  },
+  getOptions({
+    commit,
+    state
+  }) {
+    axios.get(state.api + '?action=getOptions').then(res => {
+      commit('getOptions', res.data);
+    });
+  },
+  getFloorplans({
+    commit,
+    state
+  }) {
+    axios.get(state.api + '?action=getFloorplans').then(res => {
+      commit('getFloorplans', res.data);
+    });
+  },
+  getGalPlan({
+    commit,
+    state
+  }, op) {
+    // console.log(op);
+    axios.get(state.api + '?action=getPlanGal&type=' + op.type + '&building=' + op.building + '&section=' + op.section).then(res => {
+      // console.log(res.data);
+      if (Array.isArray(res.data)) {
+        commit('getGalPlan', {
+          data: res.data,
+          op
+        });
+      }
     });
   }
 }

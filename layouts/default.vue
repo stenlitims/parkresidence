@@ -10,7 +10,12 @@
     <siteFooter></siteFooter>
 
     <div class="m-buttons">
-      <nuxt-link v-if="$store.state.fav.length" class="fav-btn m-btn" :to="$i18n.path('')+'favorites'" exact>
+      <nuxt-link
+        v-if="$store.state.fav.length"
+        class="fav-btn m-btn"
+        :to="$i18n.path('')+'favorites'"
+        exact
+      >
         <svg>
           <use xlink:href="#ic_heart"></use>
         </svg>
@@ -59,6 +64,26 @@
 
       <div class="soc-wrap">
         <div class="text text-center">{{$t('modal["или напишите нам"]')}}</div>
+        <socList/>
+      </div>
+    </div>
+
+    <div class="def-modal zv-modal text-center" id="zapis">
+      <div
+        class="heading4 text-center"
+        style="max-width: 250px;"
+      >{{$t('main["Записаться на просмотр"]')}}</div>
+      <cForm
+        :btnName="$t('form.writeUsBtn')"
+        action="zapis"
+        :fields="{
+        name:$t('form.name'),
+        phone:$t('form.phone')
+      }"
+      ></cForm>
+
+      <div class="soc-wrap">
+        <div class="text">{{$t('modal["или напишите нам"]')}}</div>
         <socList/>
       </div>
     </div>
@@ -122,6 +147,18 @@ export default {
 
   mixins: [all],
 
+  head() {
+    const host = process.server
+      ? this.$ssrContext.req.headers.host
+      : window.location.host;
+    return {
+      link: [
+        // We use $route.path since we don't use query parameters
+        { rel: "canonical", href: `https://${host}${this.$route.path}` }
+      ]
+    };
+  },
+
   data() {
     return {
       loading: true,
@@ -135,13 +172,17 @@ export default {
     };
   },
 
-  computed: {},
+  created() {
+    if (!this.$store.state.op.adress_ru) {
+      this.$store.dispatch("getOptions");
+    }
+  },
 
   mounted() {
     // console.log(this.$route);
     // console.log(this.$i18n);
 
-    this.$store.commit('getFav');
+    this.$store.commit("getFav");
 
     this.isMobile();
     $(window).resize(() => {
@@ -149,20 +190,23 @@ export default {
     });
 
     $(".burger").fancybox({
-      animationDuration: 500,
+      animationDuration: 300,
       animationEffect: "material",
       arrows: false,
       touch: false,
       baseClass: "b-close"
     });
 
-    $(".js-modal").fancybox({
-      animationDuration: 500,
-      animationEffect: "material",
-      arrows: false,
-      touch: false
-      // baseClass: "b-close"
+    this.loadFancy();
+
+    let vue = this;
+
+    $(document).on("click", "[data-link]", function(e) {
+      e.preventDefault();
+      vue.$router.push({ path: vue.$i18n.path("") + $(this).data("link") });
     });
+
+    //$.fancybox.defaults.animationEffect = "material";
 
     // $(".js-actions").fancybox({
     //   animationDuration: 500,
@@ -249,7 +293,7 @@ export default {
         isMobile = 375;
       }
       this.$store.commit("setIsMobile", isMobile);
-     // console.log(this.$store.state.isMobile);
+      // console.log(this.$store.state.isMobile);
     },
     stratLoading() {
       this.styleLine.width = "100%";

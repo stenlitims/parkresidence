@@ -36,7 +36,7 @@ export default {
     TheMask
   },
 
-  props: ["btnName", "action", "fields"],
+  props: ["btnName", "action", "fields", "adata"],
 
   data() {
     return {
@@ -50,6 +50,9 @@ export default {
       this.data[item] = "";
     }
     this.data.action = this.action;
+    if (this.adata) {
+      this.data.d = this.adata;
+    }
   },
   methods: {
     isAddress(email) {

@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="img">
-              <img :src="$url+item.image_mini" alt>
+              <nuxt-link :to="$i18n.path('')+'news/'+item.alias" exact><img :src="$url+item.image_mini" alt></nuxt-link>
             </div>
           </div>
         </div>

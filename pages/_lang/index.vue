@@ -72,7 +72,7 @@
           </div>
 
           <div class="img wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".8s">
-            <img src="main/2.jpg" alt>
+            <img :src="$url+'assets/img/main/1.webp'" alt>
           </div>
         </div>
       </div>
@@ -80,17 +80,17 @@
       <div class="section3 section">
         <div class="list-text-img">
           <div class="img wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".5s">
-            <img src="main/3.jpg" alt>
+            <img :src="$url+'assets/img/main/2.webp'" alt>
           </div>
           <div class="list-wrap">
             <div class="list">
               <div class="items">
-                <div class="item">
+                <div class="item wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".2s">
                   <div class="num">03</div>
                   <div class="title">{{ids.s3['title_'+lang]}}</div>
                   <div class="text" v-html="ids.s3['text_'+lang]"></div>
                 </div>
-                <div class="item">
+                <div class="item wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".3s">
                   <div class="num">04</div>
                   <div class="title">{{ids.s4['title_'+lang]}}</div>
                   <div class="text" v-html="ids.s4['text_'+lang]"></div>
@@ -106,40 +106,44 @@
         </div>
       </div>
 
-      <section class="section black-box">
+      <section class="black-box section">
         <div class="row">
           <div class="col-lg-8">
             <div class="row list">
               <div class="col-sm-6">
                 <div class="item">
                   <div class="num">850</div>
-                  <div class="text">Уютных, комфортных
-                    <br>и теплых квартир
-                  </div>
+                  <div
+                    class="text"
+                    v-html="l('Уютных, комфортных <br>и теплых квартир','Затишних, комфортних <br> і теплих квартир')"
+                  ></div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="item">
                   <div class="num">8</div>
-                  <div class="text">Этажей в 6 современных
-                    <br>домах жилого комплекса
-                  </div>
+                  <div
+                    class="text"
+                    v-html="l('Этажей в 6 современных <br>домах жилого комплекса','Поверхів в 6 сучасних <br> будинках житлового комплексу')"
+                  ></div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="item">
-                  <div class="num">34-82 м²</div>
-                  <div class="text">Площадь квартир
-                    <br>с продуманной планировкой
-                  </div>
+                  <div class="num">34-184 м²</div>
+                  <div
+                    class="text"
+                    v-html="l('Площадь квартир <br>с продуманной планировкой','Площа квартир <br> з продуманим плануванням')"
+                  ></div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="item">
-                  <div class="num">2019 год</div>
-                  <div class="text">Ввод в эксплуатацию
-                    <br>и выдача ключей в доме №1
-                  </div>
+                  <div class="num">2020 {{l('год', 'рік')}}</div>
+                  <div
+                    class="text"
+                    v-html="l('Ввод в эксплуатацию <br>и выдача ключей в доме №1', 'Введення в експлуатацію <br> і видача ключів в будинку №1')"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -151,14 +155,20 @@
               ></p>
             </div>
             <div class>
-              <a href class="btn btn-def">
+              <nuxt-link :to="$i18n.path('')+'podbor'" exact class="btn btn-def">
                 <span>{{$t('links["Выбрать квартиру"]')}}</span>
-              </a>
+              </nuxt-link>
             </div>
           </div>
         </div>
       </section>
     </div>
+
+    <section class="section-podbor">
+      <div class="container">
+        <podbor mode="main"></podbor>
+      </div>
+    </section>
 
     <div class="w-text-slide">
       <div class="text-slide owl-carousel">
@@ -192,7 +202,7 @@
       <div class="container text-center">
         <div class="heading3">{{ids.s5['title_'+lang]}}</div>
         <div class="text" v-html="ids.s5['text_'+lang]"></div>
-        <a href class="btn btn-def">
+        <a class="btn btn-def js-modal" data-fancybox="zapis" data-src="#zapis" href="javascript:;">
           <span>{{$t('main["Записаться на просмотр"]')}}</span>
         </a>
       </div>
@@ -203,9 +213,13 @@
 <script>
 import mix from "@/mixin/global";
 import axios from "axios";
+import podbor from "~/components/podbor";
 
 export default {
   mixins: [mix],
+  components: {
+    podbor
+  },
   data() {
     return {
       blide: 0
@@ -237,7 +251,7 @@ export default {
   mounted() {
     let bSlider = $(".text-slide");
     bSlider.owlCarousel({
-      loop: false,
+      loop: true,
       margin: 0,
       nav: false,
       dots: false,
@@ -249,7 +263,7 @@ export default {
     function setDisable() {
       let $active = $(".text-slide .owl-item.active");
       $(".s-prev, .s-next").removeClass("ds");
-    // console.log($active.next());
+      // console.log($active.next());
       if ($active.next().length == 0) {
         $(".s-next").addClass("ds");
       }

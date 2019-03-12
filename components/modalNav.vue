@@ -1,7 +1,10 @@
 <template>
   <div id="modal-nav" style=" display: none;">
     <div class="modal-nav">
-      <div class="modal-bg" style=" background-image: url('images/modal-img.jpg');"></div>
+      <div
+        class="modal-bg"
+        :style="'background-image: url('+$store.state.mainUrl+'assets/img/menu.webp)'"
+      ></div>
       <div class="modal-content">
         <!-- v-if="$i18n.locale === 'ru'" -->
         <div class="row nav-row">
@@ -20,9 +23,12 @@
                 <nuxt-link :to="$i18n.path('')+'location'" exact>{{$t('links["Расположение"]')}}</nuxt-link>
               </li>
               <li>
-                <a href="#">{{$t('links["Стиль жизни"]')}}</a>
+                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
               </li>
-              <li>
+              <!-- <li>
+                <a href="#">{{$t('links["Стиль жизни"]')}}</a>
+              </li>-->
+              <!-- <li>
                 <a href="#">{{$t('links["Выбрать квартиру"]')}}</a>
                 <ul>
                   <li>
@@ -32,14 +38,14 @@
                     <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["По параметрам"]')}}</nuxt-link>
                   </li>
                 </ul>
-              </li>
+              </li>-->
             </ul>
           </div>
           <div class="col-sm-6">
             <ul class="fadeInRight2" style="animation-delay: .2s;">
               <li>
                 <nuxt-link
-                  :to="$i18n.path('')+'hodrabot'"
+                  :to="$i18n.path('')+'progress'"
                   exact
                 >{{$t('links["Ход строительства"]')}}</nuxt-link>
               </li>
@@ -49,9 +55,9 @@
               <li>
                 <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
               </li>
-              <li>
+              <!-- <li>
                 <nuxt-link :to="$i18n.path('')+'docs'" exact>{{$t('links["Документы"]')}}</nuxt-link>
-              </li>
+              </li>-->
               <li>
                 <nuxt-link :to="$i18n.path('')+'contacts'" exact>{{$t('links["Контакты"]')}}</nuxt-link>
               </li>
@@ -79,34 +85,33 @@
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .5s;">
             <div class="cont">
               <p class="t">{{$t('links["Офис продаж"]')}}</p>
-              <p class="adr">г. Киев, ул. Шевченка, 74, офис 17
-                <br>Пн - Сб с 10:00 до 21:00
-              </p>
+              <p class="adr" v-html="$store.state.op['adress_'+$store.state.locale]"></p>
             </div>
           </div>
 
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .4s;">
             <div class="f-soc-list">
-              <a href="#" class="insta">
+              <a :href="$store.state.soc.instagram" target="_blank" class="insta">
                 <svg>
                   <use xlink:href="#ic_insta"></use>
                 </svg>
               </a>
-              <a href="#" class="facebook">
+              <a :href="$store.state.soc.facebook" target="_blank" class="facebook">
                 <svg>
                   <use xlink:href="#ic_facebook"></use>
                 </svg>
               </a>
-              <a href="#">
+              <a :href="$store.state.soc.telegram" target="_blank">
                 <svg>
                   <use xlink:href="#ic_telegram"></use>
                 </svg>
               </a>
-              <a href="#">
-                <svg>
-                  <use xlink:href="#ic_viber"></use>
-                </svg>
-              </a>
+
+              <!-- <a href="#">
+            <svg>
+              <use xlink:href="#ic_viber"></use>
+            </svg>
+              </a>-->
             </div>
           </div>
         </div>

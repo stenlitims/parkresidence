@@ -179,13 +179,10 @@
 @media (max-width: 1440px) and (min-width: 991px) {}
 
 @media (max-width: 1300px) {
-  .row-filtr-select{
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+
   .filtr .item-select {
-    min-width: 20%;
-    width: 20%;
+    min-width: 18%;
+    //  width: 20%;
   }
 }
 
@@ -296,6 +293,10 @@
     padding-left: 0;
   }
 
+  .flat-grid {
+    grid-template-columns: minmax(300px, 1fr) minmax(300px, 2fr) minmax(300px, 1fr);
+  }
+
 }
 
 
@@ -306,6 +307,11 @@
 }
 
 @media (max-width: 1040px) {
+  .row-filtr-select {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .filtr .item-select {
     min-width: 33.3%;
     width: 33.3%;

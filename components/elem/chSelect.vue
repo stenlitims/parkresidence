@@ -1,5 +1,5 @@
 <template>
-  <div class="ch-select">
+  <div class="ch-select" :class="{'active': active}">
     <div class="label" @click="addActive">
       <span v-if="title" :title="title">{{title}}</span>
       <span v-else>{{$t('main["Выбрать"]')}}</span>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ["list", "label", "conf"],
+  props: ["list", "f", "conf"],
   data() {
     return {
       active: false,
@@ -31,59 +31,69 @@ export default {
       }
     };
   },
-  watch: {
-    conf() {
-      if (this.conf.length == 0) {
-        this.data = [];
-        let t = { ...this.ls };
-        for (let i in t) {
-      //    console.log(t[i].t);
-          t[i].active = false;
-        }
-        this.ls = t;
-      }
-    }
-  },
+  watch: {},
   created() {
-    this.ls = this.chList(this.conf, this.list);
-    for (let i in this.ls) {
-      if (this.ls[i].active) {
-        this.data.push(i);
-      }
-    }
+    this.setP([]);
   },
   computed: {
     title() {
       if (!this.data.length) return false;
       let out = [];
       for (let i of this.data) {
-        let index = +i;
+        //  let index = +i;
         //  console.log(index, this.list[index]);
-        out.push(this.ls[index].t);
+        out.push(this.ls[i].t);
       }
       //
       return out.join(", ");
     }
   },
   methods: {
-    chList(conf, list) {
+    chList(list, conf = []) {
       let data = {};
 
       for (let i in list) {
         //  console.log(i);
         data[i] = {};
         data[i]["t"] = list[i];
-        //    console.log(conf.indexOf(+i), typeof i);
-        if (conf.indexOf(+i) != -1) {
+        //     console.log(conf.indexOf(+i), typeof i, conf);
+        if (Number.isInteger(+i)) i = +i;
+        if (conf.indexOf(i) != -1) {
           data[i]["active"] = true;
         } else {
           data[i]["active"] = false;
         }
       }
+
+      //     console.log(data);
       return data;
-      // console.log(data);
+    },
+    setP(data) {
+      //  console.log(data);
+      this.ls = this.chList(this.list, data);
+      let d = [];
+      for (let i in this.ls) {
+        if (this.ls[i].active) {
+          d.push(i);
+        }
+      }
+      this.data = d;
     },
     addActive(e) {
+      $(".ch-select")
+        .not($(e.target).closest(".ch-select"))
+        .removeClass("active");
+
+      if (
+        $(e.target)
+          .closest(".ch-select")
+          .hasClass("active")
+      ) {
+        this.active = false;
+      } else {
+        this.active = true;
+      }
+
       $(e.target)
         .closest(".ch-select")
         .toggleClass("active");
@@ -94,6 +104,7 @@ export default {
       } else {
         this.data.splice(this.data.indexOf(item), 1);
       }
+      //  console.log(this.data);
       this.$emit("data", this.data);
     }
   }

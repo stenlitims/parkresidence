@@ -2,11 +2,13 @@
   <div class="inner-page">
     <div class="container section">
       <div class="container3">
-        <div class="heading25 tt heading3-dh">{{title}}</div>
-
+        
         <div class="header-hodrabot">
           <div class="l">
-            <a href="#">
+
+            <div class="heading25 tt heading3-dh">{{title}} </div>
+
+            <!-- <a href="#">
               <svg>
                 <use xlink:href="#ic_video"></use>
               </svg>
@@ -18,13 +20,14 @@
                 <use xlink:href="#ic_grafic"></use>
               </svg>
               <span>{{$t('links["График строительства"]')}}</span>
-            </a>
+            </a> -->
+            
           </div>
 
           <div class="r">
             <div class="sd">
               {{$t('links["Сдача в"]')}}
-              <span>2021</span>
+              <span>2020</span>
             </div>
           </div>
         </div>
@@ -33,7 +36,7 @@
           <div class="item" v-for="(item, i) in list" :key="i">
             <div class="info">
               <div class="heading4">
-                <nuxt-link :to="$i18n.path('')+'hodrabot/'+item.alias" exact>{{item.pagetitle}}</nuxt-link>
+                <nuxt-link :to="$i18n.path('')+'progress/'+item.alias" exact>{{item.pagetitle}}</nuxt-link>
               </div>
               <div class="count">
                 <div class="it">
@@ -59,7 +62,7 @@
               </div>
             </div>
             <div class="img">
-              <nuxt-link :to="$i18n.path('')+'hodrabot/'+item.alias" exact>
+              <nuxt-link :to="$i18n.path('')+'progress/'+item.alias" exact>
                 <img :src="$url+item.image_mini" alt>
                 <div class="plus"></div>
               </nuxt-link>
@@ -74,6 +77,7 @@
 <script>
 import mix from "@/mixin/global";
 import axios from "axios";
+import orderBy from "lodash.orderby";
 export default {
   mixins: [mix],
   data() {
@@ -95,6 +99,7 @@ export default {
   computed: {
     list() {
       let data = this.data.data[this.$store.state.locale];
+      data = orderBy(data, ['menuindex'], ['asc']);
       return data;
     }
   },

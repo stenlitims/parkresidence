@@ -105,7 +105,9 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    ['@nuxtjs/google-tag-manager', { id: 'GTM-WSF6NDH' }],
+  ],
 
   /*
    ** Build configuration

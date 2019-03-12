@@ -1,6 +1,6 @@
 <template>
   <div class="inner-page">
-    <div class="inner-bg section" style="background-image: url(images/location/1.jpg)">
+    <div class="inner-bg section"  :style="'background-image: url('+$url+'assets/img/location/1.webp)'" >
       <div class="inner-heading">
         <h1 class="h1">{{d.introtext}}</h1>
       </div>
@@ -12,7 +12,7 @@
       </div>
 
       <div class="section">
-        <div class="bg-img-text" style="background-image: url(images/location/2.jpg)">
+        <div class="bg-img-text" :style="'background-image: url('+$url+'assets/img/location/2.webp)'">
           <div class="inner-text">
             <p>
               {{l('ЖК Park Residence — это тихий уголок, где можно расслабиться и отдохнуть. Но всего мгновение — и вы уже в течении большого города и круговороте ярких событий.', 'ЖК Park Residence - це тихий куточок, де можна розслабитися і відпочити. Але лише мить - і ви вже на протязі великого міста і кругообігу яскравих подій.')}}
@@ -27,7 +27,7 @@
         <div class="heading3 text-center">{{$t('main["Инфраструктура"]')}}</div>
         <div class="list-locations-wrap">
           <div class="list-locations">
-            <div class="item" data-type="shop">
+            <div class="item active" data-type="shop">
               <div class="ico">
                 <svg class="icon">
                   <use xlink:href="#loc-mag"></use>
@@ -35,7 +35,7 @@
               </div>
               <div class="title">{{l('Магазины', 'Магазини')}}</div>
             </div>
-            <div class="item" data-type="theater">
+            <div class="item active" data-type="theater">
               <div class="ico">
                 <svg class="icon">
                   <use xlink:href="#loc-teater"></use>
@@ -43,7 +43,7 @@
               </div>
               <div class="title">{{l('Развлечения', 'Розваги')}}</div>
             </div>
-            <div class="item" data-type="kids">
+            <div class="item active" data-type="kids">
               <div class="ico">
                 <svg class="icon">
                   <use xlink:href="#loc-children"></use>
@@ -51,7 +51,7 @@
               </div>
               <div class="title">{{l('Детям', 'Дітям')}}</div>
             </div>
-            <div class="item" data-type="cafe">
+            <div class="item active" data-type="cafe">
               <div class="ico">
                 <svg class="icon">
                   <use xlink:href="#loc-eat"></use>
@@ -59,7 +59,7 @@
               </div>
               <div class="title">{{l('Рестораны', 'Ресторани')}}</div>
             </div>
-            <div class="item" data-type="medical">
+            <div class="item active" data-type="medical">
               <div class="ico">
                 <svg class="icon">
                   <use xlink:href="#loc-medical"></use>
@@ -67,7 +67,7 @@
               </div>
               <div class="title">Медицина</div>
             </div>
-            <div class="item" data-type="sport">
+            <div class="item active" data-type="sport">
               <div class="ico">
                 <svg class="icon">
                   <use xlink:href="#loc-boll"></use>
@@ -87,7 +87,10 @@
         <div class="heading3" v-html="l('Хотите осмотреть территорию вокруг <br>ЖК Park Residence?', 'Хочете оглянути територію навколо <br> ЖК Park Residence?')">
         </div>
 
-        <a href class="btn btn-def">
+        <a class="btn btn-def js-modal"
+            data-fancybox="zapis"
+            data-src="#zapis"
+            href="javascript:;">
           <span>{{$t('main["Записаться на просмотр"]')}}</span>
         </a>
       </div>
@@ -115,6 +118,7 @@ export default {
     });
   },
   mounted() {
+    this.loadFancy();
     if (!window.mapLoaded) {
       this.loadMapScript();
     } else {
@@ -144,7 +148,7 @@ export default {
       let lang = this.$store.state.locale;
       let markers = [];
       let infrastructure = this.data.tv.infrastructure.reverse();
-      let actinBtns = [];
+      let actinBtns = ['shop', 'theater', 'kids', 'cafe', 'medical', 'sport'];
 
      // console.log(infrastructure);
 
@@ -197,7 +201,7 @@ export default {
         }
       }
 
-      setMarker();
+      setMarker(actinBtns);
 
       $(document).on("click", ".mapboxgl-marker", function() {
         $(".mapboxgl-marker").removeClass("active");

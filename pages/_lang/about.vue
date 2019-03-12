@@ -1,6 +1,6 @@
 <template>
   <div class="inner-page">
-    <div class="inner-bg section" style="background-image: url(images/about/1.jpg)">
+    <div class="inner-bg section" :style="'background-image: url('+$url+'assets/img/about/1.webp)'">
       <div class="inner-heading">
         <h1 class="h1">{{d.introtext}}</h1>
       </div>
@@ -23,14 +23,14 @@
           </div>
         </div>
         <div class="text-center">
-          <a href class="btn btn-def">
+           <nuxt-link :to="$i18n.path('')+'podbor'" exact class="btn btn-def">
             <span>{{$t('main["Смотреть планировки"]')}}</span>
-          </a>
+          </nuxt-link>
         </div>
       </div>
 
       <div class="section w100-img">
-        <img src="images/about/2.jpg" alt>
+        <img :src="$url+'assets/img/about/2.webp'" alt>
       </div>
 
       <div class="section">
@@ -55,7 +55,7 @@
       <div class="section">
         <div class="row row-pb">
           <div class="col-md-6 col-img">
-            <img src="images/about/3.jpg" alt>
+            <img  :src="$url+'assets/img/about/3.webp'" alt>
           </div>
           <div class="col-md-6">
             <div class="item-text">
@@ -70,7 +70,7 @@
     </div>
 
     <div class="section w100-img ab-bg-img">
-      <img src="images/about/4.jpg" alt>
+      <img  :src="$url+'assets/img/about/4.webp'" alt>
     </div>
 
     <div class="container">
@@ -97,33 +97,33 @@
       </div>
 
       <div class="section w100-img">
-        <img src="images/about/5.jpg" alt>
+        <img :src="$url+'assets/img/about/5.webp'" alt>
       </div>
 
       <div class="section">
         <div class="row">
           <div class="col-sm-6">
             <div class="item-text mb0">
-              <div class="title">Парковки</div>
+              <div class="title">{{ids.s8['title_'+lang]}}</div>
               <div
-                class="text"
-              >На территории комплекса есть 5 подземных отапливаемых парковок, каждая из которых вмещает 35 автомобилей. На парковку можно попасть прямо из лифта, что очень актуально холодной зимой. Также есть безопасный наружный паркинг на 240 машиномест.</div>
+                class="text"  v-html="ids.s8['text_'+lang]"
+              ></div>
             </div>
           </div>
           <div class="col-sm-6 a-center">
             <div class="item-nums">
               <div class="item">
-                <div class="num">175</div>
+                <div class="num">210</div>
                 <div class="text">
-                  Парковочных мест
-                  в 5 отапливаемый подземных паркингах
+                  {{l('Парковочных мест в 6 отапливаемый подземных паркингах', 'Паркувальних місць в 6 опалювальний підземних паркінгах')}}
+                 
                 </div>
               </div>
               <div class="item">
                 <div class="num">240</div>
                 <div class="text">
-                  Машиномест
-                  в безопасном наружном паркинге
+                  {{l('Машиномест в безопасном наружном паркинге', 'Машиномісць в безпечному зовнішньому паркінгу')}}
+                  
                 </div>
               </div>
             </div>
@@ -137,9 +137,9 @@
         <div class="heading3" v-html="l('Выберите свою квартиру <br>в ЖК Park Residence', 'Виберіть свою квартиру <br> в ЖК Park Residence')">
         </div>
 
-        <a href class="btn btn-def">
+         <nuxt-link :to="$i18n.path('')+'podbor'" class="btn btn-def">
           <span>{{$t('links["Выбрать квартиру"]')}}</span>
-        </a>
+        </nuxt-link>
       </div>
     </div>
   </div>

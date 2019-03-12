@@ -21,6 +21,58 @@ export default {
         return ru;
       }
       return ua;
+    },
+
+    loadFancy() {
+      $(".js-modal").fancybox({
+        animationDuration: 300,
+        animationEffect: "material",
+        arrows: false,
+        touch: false
+        // baseClass: "b-close"
+      });
+    },
+
+    loadFullGal() {
+      $(".list-hod").owlCarousel({
+        loop: false,
+        margin: 0,
+        nav: true,
+        dots: false,
+        items: 1,
+        navText: ["", ""],
+        autoplaySpeed: 1000,
+        navSpeed: 1000
+        //  autoHeight: true
+      });
+    },
+
+    loadResGal() {
+      $(".js-list").owlCarousel({
+        loop: false,
+        margin: 32,
+        nav: true,
+        dots: false,
+        items: 2,
+        // autoplay: true,
+        navText: [],
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          567: {
+            items: 2,
+            margin: 16,
+          },
+          991: {
+            items: 3,
+          },
+          1200: {
+            items: 4,
+          }
+        }
+      });
     }
 
   },
