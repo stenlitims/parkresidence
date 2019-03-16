@@ -24,10 +24,10 @@
               <li>
                 <nuxt-link :to="$i18n.path('')+'concept'" exact>{{$t('links["Концепция"]')}}</nuxt-link>
               </li>
-          
+
               <!-- <li>
                 <a href="#">{{$t('links["Стиль жизни"]')}}</a>
-              </li> -->
+              </li>-->
               <li>
                 <nuxt-link :to="$i18n.path('')+'location'" exact>{{$t('links["Расположение"]')}}</nuxt-link>
               </li>
@@ -47,25 +47,22 @@
               <li>
                 <nuxt-link :to="$i18n.path('')+'news'" exact>{{$t('links["Новости"]')}}</nuxt-link>
               </li>
-             
             </ul>
           </div>
           <div class="f-nav-item">
             <ul>
               <!-- <li>
                 <a href="#">{{$t('links["Визуальный выбор"]')}}</a>
-              </li> -->
+              </li>-->
               <li>
                 <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
               </li>
               <!-- <li>
                 <nuxt-link :to="$i18n.path('')+'docs'" exact>{{$t('links["Документы"]')}}</nuxt-link>
-              </li> -->
-
-               <li>
+              </li>-->
+              <li>
                 <nuxt-link :to="$i18n.path('')+'contacts'" exact>{{$t('links["Контакты"]')}}</nuxt-link>
               </li>
-            
             </ul>
           </div>
         </div>
@@ -91,11 +88,23 @@
             <svg>
               <use xlink:href="#ic_viber"></use>
             </svg>
-          </a> -->
+          </a>-->
         </div>
       </div>
 
-      <div class="copy">© 2019 Park Residence</div>
+      <div class="fb-links">
+        <div class="copy">© 2019 Park Residence</div>
+        <div class="dev">
+          <a
+            href="https://www.facebook.com/lukyanenko.vladimir"
+            target="_blabk"
+          >{{l('Создание сайта','Створення сайту')}}</a>
+          <a
+            href="https://studiom3.com.ua/"
+            target="_blabk"
+          >{{l('Проектные решения','Проектні рішення')}}</a>
+        </div>
+      </div>
     </div>
   </footer>
 </template>

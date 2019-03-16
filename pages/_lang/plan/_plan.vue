@@ -115,6 +115,7 @@ export default {
     },
     floorsName() {
       if (!this.floors) return;
+      if(this.floors.length == 1) return this.floors[0].floor;
       let flats = this.floors;
 
       let arr = [];

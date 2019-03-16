@@ -52,7 +52,7 @@
       </div>
 
       <div class="section w100-img">
-        <img :src="$url+'assets/img/concept/3.webp'" alt>
+        <img :src="$url+'assets/img/concept/3-2.webp'" alt>
       </div>
 
       <div class="section">

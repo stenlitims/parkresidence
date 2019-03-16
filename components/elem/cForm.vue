@@ -13,7 +13,7 @@
       <input type="text" v-else v-model="data[i]" class="form-control" :placeholder="item">
     </div>
     <div class="form-group text-center">
-      <button class="btn btn-def" @click="send">
+      <button class="btn btn-def" :class="classBtn ? classBtn : ''" @click="send">
         <span>{{btnName}}</span>
       </button>
     </div>
@@ -21,7 +21,8 @@
       <p v-for="(error, i) in errors" :key="i">{{ error }}</p>
     </div>
     <div v-if="showSuccess" class="alert alert-success">
-      <p>{{$t('mes["textSuccess"]')}}</p>
+      <p v-if="textSuccess">{{textSuccess}}</p>
+      <p v-else>{{$t('mes["textSuccess"]')}}</p>
     </div>
   </div>
 </template>
@@ -36,13 +37,13 @@ export default {
     TheMask
   },
 
-  props: ["btnName", "action", "fields", "adata"],
+  props: ["btnName", "action", "fields", "adata", "textSuccess", "classBtn"],
 
   data() {
     return {
       errors: [],
       showSuccess: false,
-      data: {}
+      data: {},
     };
   },
   created() {
@@ -63,15 +64,18 @@ export default {
       return false;
     },
     validate(data) {
+      //   console.log(this.errors);
+      //   this.errors = [];
       for (let item in data) {
         if (data[item] == "") {
-          if ($.inArray(this.$t('mes["emptyErros"]'), this.errors) < 0) {
+          //    console.log(data);
+          if (!this.errors.includes(this.$t('mes["emptyErros"]'))) {
             this.errors.push(this.$t('mes["emptyErros"]'));
           }
           break;
         }
         if (data[item].length < 10 && item == "phone") {
-          if ($.inArray(this.$t('mes["phoneErros"]'), this.errors) < 0) {
+          if (!this.errors.includes(this.$t('mes["phoneErros"]'))) {
             this.errors.push(this.$t('mes["phoneErros"]'));
           }
         }
@@ -81,6 +85,8 @@ export default {
           }
         }
       }
+
+      //console.log(this.errors);
 
       setTimeout(() => {
         if (this.errors.length) {
@@ -94,7 +100,6 @@ export default {
     },
     send() {
       if (this.validate(this.data)) {
-        // console.log(this.data);
         $.post(
           this.$store.state.api,
           this.data,
@@ -104,9 +109,12 @@ export default {
               setTimeout(() => {
                 this.showSuccess = false;
                 $.fancybox.close();
-                for (let item in this.data) {
-                  this.data[item] = "";
+                let d = this.data;
+                for (let item in this.fields) {
+                  d[item] = "";
                 }
+                this.data = d;
+                $(".def-modal input").val("");
               }, 4000);
             }
           },

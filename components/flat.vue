@@ -138,8 +138,8 @@
       <div class="f-links">
 
 
-        <!-- <div>
-          <a href="#" class="l-print">
+        <div>
+          <a  :href="'https://web.park-residence.com.ua/plan.pdf?id='+data.plan_id" target="_blank" class="l-print">
             <svg>
               <use xlink:href="#ic-print"></use>
             </svg>
@@ -147,22 +147,26 @@
           </a>
         </div>
         <div>
-          <a href="#" class="l-dw">
+          <a :href="'https://web.park-residence.com.ua/plan.pdf?id='+data.plan_id" download class="l-dw">
             <svg>
               <use xlink:href="#ic_dw"></use>
             </svg>
             {{$t('flat["Скачать"]')}} PDF
           </a>
         </div>
+     
         <div>
-          <a href="#" class="l-print">
+          <a class="l-print js-modal"
+            data-fancybox="pdfEmail"
+            data-src="#pdfEmail"
+            href="javascript:;">
             <svg>
               <use xlink:href="#ic-mail"></use>
             </svg>
-            {{$t('form["writeUsBtn"]')}}
-            <span class="mob-nome">на e-mail</span>
+           <span>{{$t('form["writeUsBtn"]')}} <span class="mob-nome"> на e-mail</span> </span> 
+            
           </a>
-        </div> -->
+        </div>
 
 
         <div>
@@ -179,6 +183,26 @@
             <span v-else>{{$t('flat["В избранное"]')}}</span>
           </a>
         </div>
+      </div>
+    </div>
+
+
+    <div class="def-modal zv-modal text-center" id="pdfEmail">
+      <div class="heading4">{{$t('form["writeUsBtn"]')}} <br> PDF на e-mail </div>
+      <cForm
+        :btnName="$t('form.writeUsBtn')"
+        action="pdfEmail"
+        :textSuccess="$t('mes.textSuccessPl')"
+        :adata="data"
+        :fields="{
+        name:$t('form.name'),
+        email:'E-mail',
+      }"
+      ></cForm>
+
+      <div class="soc-wrap">
+        <div class="text">{{$t('modal["или напишите нам"]')}}</div>
+        <socList/>
       </div>
     </div>
 
@@ -220,6 +244,8 @@
         <socList/>
       </div>
     </div>
+
+
   </div>
 </template>
 

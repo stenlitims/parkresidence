@@ -925,6 +925,13 @@
   .sort-type-list {
     margin-left: 0;
   }
+
+  .fb-links{
+    display: block;
+    .copy{
+      margin-bottom: 15px;
+    }
+  }
 }
 
 @media (max-width: 400px) {

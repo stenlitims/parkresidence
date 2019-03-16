@@ -55,7 +55,7 @@
       <div class="section">
         <div class="row row-pb">
           <div class="col-md-6 col-img">
-            <img  :src="$url+'assets/img/about/3.webp'" alt>
+            <img  :src="$url+'assets/img/about/3-2.webp'" alt>
           </div>
           <div class="col-md-6">
             <div class="item-text">

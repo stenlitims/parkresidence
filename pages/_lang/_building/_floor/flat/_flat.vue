@@ -2,6 +2,10 @@
   <div class="inner-page">
     <flat :data="data" type="flat" :title="title"></flat>
 
+    <div class="section-fl container">
+      <calc :data="data"></calc>
+    </div>
+
     <div v-if="gal">
       <div class="list-hod owl-carousel">
         <div class="item" v-for="item in gal" :key="item.id">
@@ -64,10 +68,12 @@
 import mix from "@/mixin/global";
 import axios from "axios";
 import flat from "~/components/flat.vue";
+import calc from "~/components/calc.vue";
 
 export default {
   components: {
-    flat
+    flat,
+    calc
   },
   mixins: [mix],
   head() {
