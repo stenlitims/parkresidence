@@ -106,8 +106,34 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
-    ['@nuxtjs/google-tag-manager', { id: 'GTM-WSF6NDH' }],
+    ['@nuxtjs/google-tag-manager', {
+      id: 'GTM-WSF6NDH'
+    }]
+    
+    //, '@nuxtjs/sitemap'
   ],
+
+
+  // sitemap: {
+  //   path: '/sitemap.xml',
+  //   hostname: 'https://example.com',
+  //   cacheTime: 1000 * 60 * 15,
+  //   gzip: true,
+  //   generate: false, // Enable me when using nuxt generate
+  //   exclude: [
+  //     '/secret',
+  //     '/admin/**'
+  //   ],
+  //   routes: [
+  //     '/page/1',
+  //     {
+  //       url: '/page/2',
+  //       changefreq: 'daily',
+  //       priority: 1,
+  //       lastmodISO: '2019-02-30T13:30:00.000Z'
+  //     }
+  //   ]
+  // },
 
   /*
    ** Build configuration

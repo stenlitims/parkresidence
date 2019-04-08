@@ -16,6 +16,44 @@ export default {
   },
 
   methods: {
+
+    setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    },
+
+    getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    },
+    glGa(action) {
+      // console.log(435);
+      let cat = "Click_on_phone_and_email";
+      let event = "Click2";
+      if (action == 'mes') {
+        cat = "Messenger";
+        event = "Click4";
+      }
+
+      if (typeof ga == 'function') {
+        
+        ga("send", "event", cat, event);
+        console.log(cat, event);
+      }
+
+    },
+
     l(ru, ua) {
       if (this.$store.state.locale == 'ru') {
         return ru;
@@ -73,6 +111,23 @@ export default {
           }
         }
       });
+    },
+    Declension(num, expressions) {
+      var result;
+      var count = num % 100;
+      if (count >= 5 && count <= 20) {
+        result = expressions["2"];
+      } else {
+        count = count % 10;
+        if (count == 1) {
+          result = expressions["0"];
+        } else if (count >= 2 && count <= 4) {
+          result = expressions["1"];
+        } else {
+          result = expressions["2"];
+        }
+      }
+      return result;
     }
 
   },

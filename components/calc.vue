@@ -11,7 +11,7 @@
           <vue-slider
             ref="period"
             :tooltip="'none'"
-            :max="30"
+            :max="24"
             :min="1"
             :height="8"
             :dotSize="32"
@@ -49,12 +49,7 @@
           <cForm
             :btnName="$t('form.writeUsBtn')"
             action="calc"
-            :adata="{
-              summ,
-              pvz,
-              pMonth,
-              price1Sq
-            }"
+            :adata="formData"
             classBtn="btn-black"
             :fields="{
                 name:$t('form.name'),
@@ -77,9 +72,9 @@ export default {
   },
   data() {
     return {
-      period: 9,
-      vznos: 50,
-      periodData: ["1", "10", "20", "30"],
+      period: 24,
+      vznos: 70,
+      periodData: ["1", "8", "16", "24"],
       //vznosData: ['20%', '40%', '60%', '80%', '100%'],
       vznosData: {
         "50": "50%",
@@ -92,24 +87,59 @@ export default {
     };
   },
   computed: {
+    formData() {
+      return {
+        summ: this.summ,
+        pvz: this.pvz,
+        pMonth: this.pMonth,
+        price1Sq: this.price1Sq,
+        period: this.period,
+        vznos: this.vznos,
+        data: this.data
+      };
+    },
     // цена за квадрат
     price1Sq() {
       let p = 0;
 
-      if (this.period <= 12) {
-        p = 1000;
+      if (this.period >= 4 && this.period <= 6) {
+        p = 500;
+      }
+      if (this.period >= 7 && this.period <= 7) {
+        p = 750;
+      }
+      if (this.period >= 10 && this.period <= 12) {
+        p = 750;
+      }
+      if (this.period >= 13 && this.period <= 15) {
+        p = 1250;
+      }
+      if (this.period >= 16 && this.period <= 18) {
+        p = 1500;
+      }
+      if (this.period >= 19 && this.period <= 21) {
+        p = 1750;
+      }
+      if (this.period >= 22 && this.period <= 24) {
+        p = 2000;
       }
 
-      if (this.period > 12) {
-        p = 2850;
+      let summ = this.data.price_m2 + p;
+
+      // if (this.period > 12) {
+      //   summ = summ + (summ * 0.1);
+      // }
+
+      if (this.vznos == 100) {
+        return this.data.price_m2;
       }
 
       //  console.log(p);
-      return this.data.price_m2 + p;
+      return summ;
     },
     // Общая стоимость
     summ() {
-      return this.price1Sq * this.data.square_total;
+      return this.data.price_m2 * this.data.square_total;
     },
     // Первый взнос
     pvz() {
@@ -118,7 +148,8 @@ export default {
     },
     // Ежемесячный платеж
     pMonth() {
-      return (this.summ - this.pvz) / this.vznos;
+      let summ = this.price1Sq * this.data.square_total;
+      return (summ - this.pvz) / this.period;
     }
   }
 };

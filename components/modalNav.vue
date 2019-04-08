@@ -1,10 +1,13 @@
 <template>
   <div id="modal-nav" style=" display: none;">
     <div class="modal-nav">
-      <div
-        class="modal-bg"
-        :style="'background-image: url('+$store.state.mainUrl+'assets/img/menu.webp)'"
-      ></div>
+      <div class="modal-bg">
+        <picture>
+          <source :srcset="$store.state.mainUrl+'assets/img/menu.webp'" type="image/webp">
+          <source :srcset="$store.state.mainUrl+'assets/img/menu.webp'" type="image/jpeg">
+          <img :src="$store.state.mainUrl+'assets/img/menu.webp'" alt>
+        </picture>
+      </div>
       <div class="modal-content">
         <!-- v-if="$i18n.locale === 'ru'" -->
         <div class="row nav-row">
@@ -22,23 +25,20 @@
               <li>
                 <nuxt-link :to="$i18n.path('')+'location'" exact>{{$t('links["Расположение"]')}}</nuxt-link>
               </li>
-              <li>
-                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
-              </li>
               <!-- <li>
                 <a href="#">{{$t('links["Стиль жизни"]')}}</a>
               </li>-->
-              <!-- <li>
-                <a href="#">{{$t('links["Выбрать квартиру"]')}}</a>
+               <li>
+                <nuxt-link :to="$i18n.path('')+'genplan'">{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
                 <ul>
                   <li>
-                    <a href="#">{{$t('links["Визуальный выбор"]')}}</a>
+                    <nuxt-link :to="$i18n.path('')+'genplan'" exact>{{$t('links["Визуальный выбор"]')}}</nuxt-link>
                   </li>
                   <li>
                     <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["По параметрам"]')}}</nuxt-link>
                   </li>
                 </ul>
-              </li>-->
+              </li>
             </ul>
           </div>
           <div class="col-sm-6">
@@ -79,7 +79,7 @@
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .4s;">
             <p class="t">{{$t('links["Узнайте больше по телефону"]')}}</p>
             <div class="f-phone">
-              <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>
+              <a :href="'tel:'+$store.state.mPhone" @click="glGa">{{$store.state.mPhone}}</a>
             </div>
           </div>
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .5s;">
@@ -91,17 +91,27 @@
 
           <div class="col-sm-6 fadeInRight2" style="animation-delay: .4s;">
             <div class="f-soc-list">
-              <a :href="$store.state.soc.instagram" target="_blank" class="insta">
+              <a
+                :href="$store.state.soc.instagram"
+                target="_blank"
+                @click="glGa('mes')"
+                class="insta"
+              >
                 <svg>
                   <use xlink:href="#ic_insta"></use>
                 </svg>
               </a>
-              <a :href="$store.state.soc.facebook" target="_blank" class="facebook">
+              <a
+                :href="$store.state.soc.facebook"
+                target="_blank"
+                @click="glGa('mes')"
+                class="facebook"
+              >
                 <svg>
                   <use xlink:href="#ic_facebook"></use>
                 </svg>
               </a>
-              <a :href="$store.state.soc.telegram" target="_blank">
+              <a :href="$store.state.soc.telegram" target="_blank" @click="glGa('mes')">
                 <svg>
                   <use xlink:href="#ic_telegram"></use>
                 </svg>

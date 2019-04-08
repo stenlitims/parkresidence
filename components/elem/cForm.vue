@@ -43,7 +43,7 @@ export default {
     return {
       errors: [],
       showSuccess: false,
-      data: {},
+      data: {}
     };
   },
   created() {
@@ -51,9 +51,6 @@ export default {
       this.data[item] = "";
     }
     this.data.action = this.action;
-    if (this.adata) {
-      this.data.d = this.adata;
-    }
   },
   methods: {
     isAddress(email) {
@@ -98,13 +95,80 @@ export default {
         return true;
       }
     },
+    ga(action) {
+      let cat = "call_back";
+      let event = "Click1";
+      if (action == "writeUs") {
+        cat = "Write_us";
+        event = "Click3";
+      }
+
+      if (action == "zapis") {
+        cat = "View_object";
+        event = "Click5";
+      }
+
+      if (action == "zvFlat") {
+        cat = "Request";
+        event = "Click6";
+      }
+
+      if (action == "zvPrice") {
+        cat = "Price_drop";
+        event = "Click7";
+      }
+
+      if (action == "pdfEmail") {
+        cat = "Email";
+        event = "Click8";
+      }
+
+      if (action == "calc") {
+        cat = "Installment_plan";
+        event = "Click9";
+      }
+
+      if (action == "moreModal") {
+        cat = "More_info";
+        event = "Click10";
+      }
+
+      //  console.log(cat, event);
+
+      if (typeof ga == "function") {
+        ga("send", "event", cat, event);
+        console.log(cat, event);
+      }
+    },
     send() {
+      if (this.adata) {
+        this.data.d = this.adata;
+      }
       if (this.validate(this.data)) {
+        if (this.action == "adressphone") {
+          if (this.getCookie("adressphone")) {
+            this.errors.push(
+              this.l(
+                "Вы уже отправляли сегодня этот адрес",
+                "Ви вже відправляли сьогодні цю адресу"
+              )
+            );
+            setTimeout(() => {
+              this.errors = [];
+            }, 2000);
+            return;
+          }
+        }
+
         $.post(
           this.$store.state.api,
           this.data,
           data => {
             if (data.type == "success") {
+              if (this.action == "adressphone") {
+                this.setCookie("adressphone", "adressphone", 1);
+              }
+
               this.showSuccess = true;
               setTimeout(() => {
                 this.showSuccess = false;
@@ -115,6 +179,7 @@ export default {
                 }
                 this.data = d;
                 $(".def-modal input").val("");
+                this.ga(this.data.action);
               }, 4000);
             }
           },

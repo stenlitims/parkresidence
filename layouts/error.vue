@@ -1,5 +1,5 @@
 <template>
-  <div class="error-page" style="background-image: url(images/error_bg.jpg)">
+  <div class="error-page" style="background-image: url(https://web.park-residence.com.ua/assets/images/404.jpg)">
     <div class="error-logo">
       <svg>
         <use xlink:href="#ic_logo"></use>
@@ -24,24 +24,19 @@
     <div class="error-b">
       <div class="t1">{{l('Есть вопросы?', 'Є питання?')}}</div>
       <div class="er-ph">
-        <a href="#">044 123-45-67</a>
+        <a :href="'tel:'+$store.state.mPhone" @click="glGa">{{$store.state.mPhone}}</a>
       </div>
       <div class="soc-list">
-        <a href="#">
-          <svg>
-            <use xlink:href="#ic_messenger"></use>
-          </svg>
-        </a>
-        <a href="#">
-          <svg>
-            <use xlink:href="#ic_telegram"></use>
-          </svg>
-        </a>
-        <a href="#">
-          <svg>
-            <use xlink:href="#ic_viber"></use>
-          </svg>
-        </a>
+         <a :href="$store.state.soc.facebook_mes"  @click="glGa('mes')" target="_blank">
+            <svg>
+              <use xlink:href="#ic_messenger"></use>
+            </svg>
+          </a>
+          <a :href="$store.state.soc.telegram"  @click="glGa('mes')" target="_blank">
+            <svg>
+              <use xlink:href="#ic_telegram"></use>
+            </svg>
+          </a>
       </div>
     </div>
   </div>

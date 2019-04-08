@@ -1,20 +1,23 @@
 <template>
   <div class="inner-page">
+    <h1 class="def-h1" v-if="d.menutitle">{{d.menutitle}}</h1>
     <div class="container section">
       <div class="container3">
+
+        
         
         <div class="header-hodrabot">
           <div class="l">
 
             <div class="heading25 tt heading3-dh">{{title}} </div>
 
-            <!-- <a href="#">
+           <!-- <a href="#">
               <svg>
                 <use xlink:href="#ic_video"></use>
               </svg>
               <span>{{$t('links["Видеокамера"]')}}</span>
-            </a>
-            
+            </a> -->
+             <!-- 
             <a href="#" class="grafic-hod">
               <svg>
                 <use xlink:href="#ic_grafic"></use>

@@ -1,8 +1,9 @@
 <template>
-  <div class="inner-page">
-    <div class="inner-bg section"  :style="'background-image: url('+$url+'assets/img/location/1.webp)'" >
+  <div class="inner-page1">
+    <h1 class="def-h1" v-if="d.menutitle">{{d.menutitle}}</h1>
+    <div class="inner-bg section"  :style="'background-image: url('+$url+'assets/img/location/1.jpg)'" >
       <div class="inner-heading">
-        <h1 class="h1">{{d.introtext}}</h1>
+        <div class="h1">{{d.introtext}}</div>
       </div>
     </div>
 
@@ -15,7 +16,7 @@
         <div class="bg-img-text" :style="'background-image: url('+$url+'assets/img/location/2.webp)'">
           <div class="inner-text">
             <p>
-              {{l('ЖК Park Residence — это тихий уголок, где можно расслабиться и отдохнуть. Но всего мгновение — и вы уже в течении большого города и круговороте ярких событий.', 'ЖК Park Residence - це тихий куточок, де можна розслабитися і відпочити. Але лише мить - і ви вже на протязі великого міста і кругообігу яскравих подій.')}}
+              {{l('ЖК Park Residence — это тихий уголок, где можно расслабиться и отдохнуть. Но всего мгновение — и вы уже в течении большого города и круговороте ярких событий.', 'ЖК Park Residence - тихий куточок, де можна розслабитись та відпочити.Та  лише мить - і Ви вже в течії великого міста і кругообігу яскравих подій.')}}
               </p>
           </div>
         </div>

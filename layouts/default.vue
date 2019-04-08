@@ -21,7 +21,7 @@
         </svg>
         <span class="num">{{$store.state.fav.length}}</span>
       </nuxt-link>
-      <a
+      <!-- <a
         class="phone-btn m-btn js-modal"
         data-fancybox="fbtncallback"
         data-src="#callback"
@@ -30,7 +30,7 @@
         <svg>
           <use xlink:href="#ic_phone"></use>
         </svg>
-      </a>
+      </a> -->
     </div>
 
     <div class="def-modal callback-modal text-center" id="callback">
@@ -51,7 +51,7 @@
     </div>
 
     <div class="def-modal writeUs-modal text-center" id="writeUs">
-      <div class="heading4" v-html="$t('links[\'Написать нам\']')"></div>
+      <div class="heading4 text-center" v-html="$t('links[\'Написать нам\']')"></div>
       <cForm
         :btnName="$t('form.writeUsBtn')"
         action="writeUs"

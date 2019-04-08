@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/google-tag-manager": "^2.1.4",
+    "@nuxtjs/sitemap": "^0.2.2",
     "axios": "^0.18.0",
     "cross-env": "^5.2.0",
     "lodash.maxby": "^4.6.0",

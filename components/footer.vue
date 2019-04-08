@@ -6,7 +6,7 @@
           <div>
             <p>{{$t('links["Узнайте больше по телефону"]')}}</p>
             <div class="f-phone">
-              <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>
+              <a :href="'tel:'+$store.state.mPhone"  @click="glGa">{{$store.state.mPhone}}</a>
             </div>
           </div>
           <div class="cont">
@@ -51,11 +51,11 @@
           </div>
           <div class="f-nav-item">
             <ul>
-              <!-- <li>
-                <a href="#">{{$t('links["Визуальный выбор"]')}}</a>
-              </li>-->
               <li>
-                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
+                <nuxt-link :to="$i18n.path('')+'genplan'" exact>{{$t('links["Визуальный выбор"]')}}</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Подбор по параметрам"]')}}</nuxt-link>
               </li>
               <!-- <li>
                 <nuxt-link :to="$i18n.path('')+'docs'" exact>{{$t('links["Документы"]')}}</nuxt-link>
@@ -68,17 +68,17 @@
         </div>
 
         <div class="f-soc-list">
-          <a :href="$store.state.soc.instagram" target="_blank" class="insta">
+          <a :href="$store.state.soc.instagram" target="_blank"  @click="glGa('mes')" class="insta">
             <svg>
               <use xlink:href="#ic_insta"></use>
             </svg>
           </a>
-          <a :href="$store.state.soc.facebook" target="_blank" class="facebook">
+          <a :href="$store.state.soc.facebook" target="_blank"  @click="glGa('mes')" class="facebook">
             <svg>
               <use xlink:href="#ic_facebook"></use>
             </svg>
           </a>
-          <a :href="$store.state.soc.telegram" target="_blank">
+          <a :href="$store.state.soc.telegram" target="_blank"  @click="glGa('mes')" >
             <svg>
               <use xlink:href="#ic_telegram"></use>
             </svg>

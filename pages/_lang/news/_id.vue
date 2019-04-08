@@ -1,5 +1,6 @@
 <template>
   <div class="inner-page">
+    <h1 class="def-h1" v-if="d.menutitle">{{d.menutitle}}</h1>
     <div class="container">
       <div class="news-one" v-if="$route.params.id">
         <div class="container2 section">
@@ -12,7 +13,7 @@
                 {{one.date}}
               </div>
             </div>
-            <h1 class="heading25">{{one.pagetitle}}</h1>
+            <div class="heading25">{{one.pagetitle}}</div>
           </div>
 
           <div class="new-img">

@@ -1,6 +1,6 @@
 <template>
   <div class="soc-list-big soc-list">
-    <a :href="$store.state.soc.telegram" target="_blank" class="it">
+    <a :href="$store.state.soc.telegram" target="_blank"  @click="glGa('mes')" class="it">
       <div class="ico">
         <svg class="telegram">
           <use xlink:href="#ic_telegram"></use>
@@ -16,7 +16,7 @@
       </div>
       <div class="t">Viber</div>
     </a>-->
-    <a :href="$store.state.soc.facebook_mes" target="_blank" class="it">
+    <a :href="$store.state.soc.facebook_mes" target="_blank" @click="glGa('mes')" class="it">
       <div class="ico">
         <svg class="messenger">
           <use xlink:href="#ic_messenger"></use>

@@ -8,7 +8,10 @@
             <div class="item">
               <div class="l">
                 <div class="img">
-                  <nuxt-link :to="$i18n.path('')+item.section+'/'+item.floor+'/'+item.id" exact>
+                  <nuxt-link
+                    :to="$i18n.path('')+item.building+'/'+item.floor+'/flat/'+item.id"
+                    exact
+                  >
                     <img :src="item.img" alt>
                   </nuxt-link>
                 </div>
@@ -20,14 +23,14 @@
                 <table>
                   <tbody>
                     <tr>
-                      <td>Квартира №</td>
+                      <td> №</td>
                       <td>{{item.number}}</td>
                     </tr>
                     <tr>
                       <td>{{$t('pd["Дом"]')}}</td>
                       <td>{{item.building}}</td>
                     </tr>
-                    <tr>
+                    <tr v-if="item.section">
                       <td>{{$t('pd["Секция"]')}}</td>
                       <td>{{item.section}}</td>
                     </tr>
@@ -96,15 +99,30 @@ export default {
   computed: {
     list() {
       if (!this.$store.state.flats) return "";
+      if (!this.$store.state.commerce) return "";
       let flats = this.$store.state.flats.filter(o => {
         return this.$store.state.fav.includes(o.id);
       });
+
+      let commerce = this.$store.state.commerce.filter(o => {
+        return this.$store.state.fav.includes(o.id);
+      });
+
+      let parking = this.$store.state.parking.filter(o => {
+        return this.$store.state.fav.includes(o.id);
+      });
+
+      flats = [...flats, ...commerce, ...parking];
+
       return flats;
     }
   },
   mounted() {
     if (!this.$store.state.flats) {
       this.$store.dispatch("getFlats");
+    }
+    if (!this.$store.state.commerce) {
+      this.$store.dispatch("getCommerce");
     }
   },
   methods: {}

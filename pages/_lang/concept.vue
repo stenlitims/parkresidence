@@ -1,20 +1,17 @@
 <template>
-  <div class="inner-page">
+  <div class="inner-page1">
     <div
       class="inner-bg section"
-      :style="'background-image: url('+$url+'assets/img/concept/1.webp)'"
+      :style="'background-image: url('+$url+'assets/img/concept/1.jpg)'"
     >
       <div class="inner-heading">
-        <h1 class="h1">{{title}}</h1>
+        <div class="h1">{{title}}</div>
       </div>
     </div>
 
     <div class="container">
       <div class="section">
-        <div class="inner-text text-center inner-text-m">
-          <p>
-            {{l('Park Residence — это жилой комплекс новой эры, который создан, чтобы сделать жизнь комфортнее во всех ее проявлениях. Это настоящее воплощение скандинавской философии хюгге, в которой идеально сочетаются уют, безопасность и хорошее настроение.', 'Park Residence - це житловий комплекс нової ери, який створений, щоб зробити життя комфортнішим у всіх її проявах. Це справжнє втілення скандинавської філософії хюгге, в якій ідеально поєднуються затишок, безпеку і гарний настрій.')}}
-          </p>
+        <div class="inner-text text-center inner-text-m" v-html="ids.text1['text_'+lang]"> 
         </div>
       </div>
 
@@ -26,9 +23,8 @@
           <div class="col-md-6">
             <div class="item-text">
               <div
-                class="text"
+                class="text"  v-html="ids.text2['text_'+lang]"
               >
-              {{l('Жизнь в мегаполисе идет на высоких скоростях. И чтобы успеть все, нельзя терять ни минуты. Время стоит дорого. И мы это прекрасно знаем. Поэтому в Park Residence мы создали уникальную инфраструктуру жизни, где вы можете работать, отдыхать, воспитывать детей и наслаждаться каждым днем.', 'Життя в мегаполісі йде на високих швидкостях. І щоб встигнути все, не можна втрачати ні хвилини. Час коштує дорого. І ми це прекрасно знаємо. Тому в Park Residence ми створили унікальну інфраструктуру життя, де ви можете працювати, відпочивати, виховувати дітей і насолоджуватися кожним днем.')}}
               </div>
               <a
                 class="btn btn-def js-modal"
@@ -44,10 +40,7 @@
       </div>
 
       <div class="section">
-        <div class="inner-text text-center inner-text-m">
-          <p>
-            {{l('Park Residence создан для людей, которые ценят свое время и хотят оградить себя от шумной суеты мегаполиса. Это пространство для тех, кто любит комфорт и стремится быть в тренде.', 'Park Residence створений для людей, які цінують свій час і хочуть захистити себе від галасливої метушні мегаполісу. Це простір для тих, хто любить комфорт і прагне бути в тренді.')}}
-            </p>
+        <div class="inner-text text-center inner-text-m"  v-html="ids.text3['text_'+lang]">
         </div>
       </div>
 
@@ -59,18 +52,15 @@
         <div class="row row-fix-mb">
           <div class="col-md-6">
             <div class="item-text">
-              <div class="text">
-                {{l('Чтобы жить на полную, жителям даже не обязательно покидать территорию комплекса, ведь на расстоянии 7 минут спокойным шагом здесь есть практически все, что может понадобиться.', 'Щоб жити на повну, жителям навіть не обов\'язково залишати територію комплексу, адже на відстані 7 хвилин спокійним кроком тут є практично все, що може знадобитися.')}}
-                
+              <div class="text"  v-html="ids.text4['text_'+lang]">                
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="item-text">
               <div
-                class="text"
+                class="text"  v-html="ids.text5['text_'+lang]"
               >
-              {{l('Park Residence — это жизнь на высоких оборотах, в которой всегда будет островок тишины и спокойствия. Ваш островок.', 'Park Residence - це життя на високих оборотах, в якій завжди буде острівець тиші і спокою. Ваш острівець.')}}
               </div>
             </div>
           </div>
@@ -130,6 +120,11 @@ export default {
   mixins: [mix],
   data() {
     return {};
+  },
+  computed:{
+    ids() {
+      return this.data.tv.list_text;
+    }
   },
   mounted(){
     this.loadFancy();

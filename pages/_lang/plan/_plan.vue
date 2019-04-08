@@ -1,5 +1,5 @@
 <template>
-  <div class="inner-page">
+  <div class="inner-page1">
     <flat :data="data" type="plan" :title="title" :floorsName="floorsName"></flat>
 
     <div v-if="gal">

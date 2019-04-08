@@ -1,5 +1,6 @@
 <template>
-  <div class="inner-page">
+  <div class="inner-page1">
+    <h1 class="def-h1" v-if="d.menutitle">{{d.menutitle}}</h1>
     <div class="container">
       <div class="container2">
         <div class="row contacts">
@@ -12,24 +13,31 @@
                 </svg>
                 {{$t('adr["main"]')}}
               </div>
+              <div class="c-item">
+                <svg>
+                  <use xlink:href="#ic_location"></use>
+                </svg>
+                {{l('с. Софиевская Борщаговка, ул. Соборная, 126/16','с. Софіївська Борщагівка, вул. Соборна, 126/16')}}
+              </div>
+
               <div class="c-item c-phone">
                 <svg>
                   <use xlink:href="#ic_phone2"></use>
                 </svg>
                 <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>,
-                <a :href="'tel:(063) 513 00 01'">(063) 513-00-01</a>
+                <a :href="'tel:(063) 513 00 01'" @click="glGa">(063) 513-00-01</a>
               </div>
               <div class="c-item">
                 <svg>
                   <use xlink:href="#ic_clock"></use>
                 </svg>
-                {{l('Пн – Пт: 09:00-20:00 Сб – Вс: 10:00 – 18:00', 'Пн – Пт: 09:00-20:00 Сб – Нд: 10:00 – 18:00')}}
+                {{l('Пн – Пт: 09:00-20:00 Сб – Вс: 09:00–18:00', 'Пн – Пт: 09:00-20:00 Сб – Нд: 09:00–18:00')}}
               </div>
               <div class="c-item">
                 <svg>
                   <use xlink:href="#ic_mail"></use>
                 </svg>
-                <a :href="'mailto:'+$store.state.mEmail">{{$store.state.mEmail}}</a>
+                <a :href="'mailto:'+$store.state.mEmail" @click="glGa">{{$store.state.mEmail}}</a>
               </div>
             </div>
             <div class="title">ЖК Park Residence</div>
@@ -51,7 +59,29 @@
                 data-fancybox="writeUsBtn"
                 data-src="#writeUs"
                 href="javascript:;"
+                @click="glGa"
               >{{$t('links["Написать нам"]')}}</a>
+
+              <div class="adr-links">
+                <a
+                  class="js-modal"
+                  data-fancybox="adressphone1"
+                  data-src="#adressphone"
+                  href="javascript:;"
+                >
+                  <svg>
+                    <use xlink:href="#ico-phone"></use>
+                  </svg>
+                  {{l('Отправить адрес на телефон','Надіслати адресу на телефон')}}
+                </a>
+                <br>
+                <a :href="$store.state.mapUrl" target="_blank">
+                  <svg>
+                    <use xlink:href="#adr-loc"></use>
+                  </svg>
+                  {{l('Проложить маршрут на карте','Прокласти маршрут на мапі')}}
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -74,7 +104,44 @@
         >
           <span>{{$t('links["Написать нам"]')}}</span>
         </a>
+
+        <div class="adr-links">
+          <a
+            class="js-modal"
+            data-fancybox="adressphone2"
+            data-src="#adressphone"
+            href="javascript:;"
+          >
+            <svg>
+              <use xlink:href="#ico-phone"></use>
+            </svg>
+            {{l('Отправить адрес на телефон','Надіслати адресу на телефон')}}
+          </a>
+          <br>
+          <a :href="$store.state.mapUrl" target="_blank">
+            <svg>
+              <use xlink:href="#adr-loc"></use>
+            </svg>
+            {{l('Проложить маршрут на карте','Прокласти маршрут на мапі')}}
+          </a>
+        </div>
       </div>
+    </div>
+
+    <div class="def-modal zv-modal text-center" id="adressphone">
+      <div
+        class="heading4 text-center"
+        style="max-width: 250px;"
+      >{{l('Отправить адрес на телефон','Надіслати адресу на телефон')}}</div>
+      <cForm
+        :btnName="$t('form.writeUsBtn')"
+        action="adressphone"
+        :textSuccess="l('Спасибо! Адрес был отправлен Вам в SMS-сообщении.', 'Дякуємо! Адреса був відправлений Вам у SMS-повідомленні.')"
+        :fields="{
+        name:$t('form.name'),
+        phone:$t('form.phone')
+      }"
+      ></cForm>
     </div>
   </div>
 </template>
@@ -82,7 +149,13 @@
 <script>
 import mix from "@/mixin/global";
 import axios from "axios";
+import cForm from "~/components/elem/cForm.vue";
+import socList from "~/components/elem/socList.vue";
 export default {
+  components: {
+    cForm,
+    socList
+  },
   mixins: [mix],
   data() {
     return {

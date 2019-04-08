@@ -1,5 +1,30 @@
 @media all and (max-width: 1200px) and (min-width: 768px) {}
 
+@media all and (max-width: 1400px) and (min-width: 1100px) {
+  .floor-page.def-page {
+    .inner-page {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .header {
+      margin-bottom: 50px;
+    }
+  }
+
+  .floor-img .img {
+    max-width: 500px;
+  }
+
+  .floor-header {
+    margin-bottom: 0;
+  }
+
+  .floor-center {
+    margin-bottom: 40px;
+  }
+}
+
 @media (min-width: 560px) {}
 
 @media (min-width: 768px) {}
@@ -69,6 +94,28 @@
 
   .inner-heading {
     padding: 56px;
+  }
+
+  .floor-img img {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 1390px) {
+  .floor-img img {
+    max-height: 390px;
+  }
+
+  .floor-img .svg .label {
+    transform: translate(-5px, -10px) scale(.9);
+  }
+
+  .floor-nums .item .num {
+    font-size: 32px;
+  }
+
+  .floor-center {
+    margin-bottom: 15px;
   }
 }
 
@@ -189,7 +236,32 @@
 
 @media (max-width: 1340px) {}
 
+@media (min-width: 1200px) {
+  .mob-select-object {
+    display: none;
+  }
+}
+
 @media (max-width: 1200px) {
+
+  .pobor-head-line{
+    text-align: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    .links{
+      order: -1;
+      margin-bottom: 30px;
+    }
+    .heading25{
+      width: 100%;
+    }
+  }
+
+  .mask-visual,
+  .mask-anim {
+    display: none !important;
+  }
+
   .cube-contacts {
     padding: 40px;
     padding-top: 38px;
@@ -219,8 +291,10 @@
     .img {
       order: -1;
       margin-bottom: 50px;
+      max-height: 500px;
 
-      img {
+      img,
+      picture {
         width: 100%;
       }
     }
@@ -295,6 +369,168 @@
 
   .flat-grid {
     grid-template-columns: minmax(300px, 1fr) minmax(300px, 2fr) minmax(300px, 1fr);
+  }
+
+
+  .visual {
+    min-height: auto;
+  }
+
+  .visual-wrap {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+  }
+
+  .v-plan .lb {
+    transform: scale(.8) translate(0, -50%);
+  }
+
+  .visual-footer .heading2 {
+    br {
+      //  display: none;
+    }
+  }
+
+  .visual-footer {
+    padding-left: 33px;
+  }
+
+  .wrap-tooltip {
+    display: none !important;
+  }
+
+  .page-visual {
+    .header {
+      margin-bottom: 40px;
+    }
+  }
+
+  .mob-select-object {
+    background: #fff;
+    display: flex;
+    border-bottom: 1px solid #E5E0DC;
+    letter-spacing: -0.01em;
+
+    >* {
+      padding: 5px 24px;
+      width: 25%;
+      max-width: 25%;
+      border-right: 1px solid #E5E0DC;
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .arr-l,
+    .arr-r {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+
+      &:before {
+        position: relative;
+        content: "";
+        display: block;
+        width: 11px;
+        height: 11px;
+        border-right: 2px solid #B27E56;
+        border-bottom: 2px solid #B27E56;
+        top: 50%;
+      }
+
+      &.dis {
+        opacity: .5;
+      }
+    }
+
+    .arr-l {
+      left: 10%;
+
+      &:before {
+        transform: translate(0, -50%) rotate(135deg);
+        margin-left: 4px;
+      }
+
+    }
+
+    .arr-r {
+      right: 10%;
+
+      &:before {
+        transform: translate(0, -50%) rotate(-45deg);
+        margin-left: 8px;
+      }
+
+    }
+
+    .col-ob {
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .val {
+      font-size: 32px;
+      color: #855235;
+      margin-left: 8px;
+    }
+
+    .col-nav {
+      padding-left: 6%;
+      padding-right: 6%;
+    }
+
+    .t {}
+
+    .col-btn {
+      color: #fff;
+      background: #845235;
+      font-size: 13px;
+      text-transform: uppercase;
+      text-align: center;
+      justify-content: center;
+      border-right: none;
+
+      >span {
+        display: flex;
+
+        &:before {
+          content: "";
+          height: 11px;
+          width: 5px;
+          display: block;
+          margin-right: 16px;
+          transform: rotate(45deg);
+          border-right: 1px solid #fff;
+          border-bottom: 1px solid #fff;
+        }
+      }
+    }
+  }
+
+  .v-plan svg polygon:hover,
+  .v-plan svg path:hover {
+    opacity: 0;
+  }
+
+
+
+  .noanim {
+    .v-plan svg {
+
+      polygon,
+      path {
+        &.active {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+
+  .ico-360{
+    display: none;
   }
 
 }

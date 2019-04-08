@@ -2,7 +2,7 @@
   <div class="inner-page">
     <h1 class="def-h1" v-if="d.menutitle">{{d.menutitle}}</h1>
     <div class="container section">
-      <podbor mode="podbor" ptype="podbor"></podbor>
+      <podbor mode="podbor" ptype="commerce"></podbor>
     </div>
     <podborText></podborText>
   </div>
@@ -15,8 +15,8 @@ import podbor from "~/components/podbor";
 import podborText from "~/components/elem/podborText";
 export default {
   components: {
-    podborText,
-    podbor
+    podbor,
+    podborText
   },
   mixins: [mix],
   data() {

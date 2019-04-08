@@ -1,10 +1,44 @@
 <template>
-  <div class="podbor">
-    <h1 class="heading25 tt heading3-dh">{{$t('pd["Подбор по параметрам"]')}}</h1>
+  <div class="podbor" :class="ftype">
+    <div class="pobor-head-line">
+      <div
+        class="heading25 tt heading3-dh"
+        v-if="ftype == 'podbor'"
+      >{{$t('pd["Подбор по параметрам"]')}}</div>
+      <div
+        class="heading25 tt heading3-dh"
+        v-if="ftype == 'commerce'"
+      >{{l('Подбор коммерции по параметрам', 'Підбір комерції за параметрами')}}</div>
+      <div
+        class="heading25 tt heading3-dh"
+        v-if="ftype == 'parking'"
+      >{{l('Подбор паркомест по параметрам', 'Підбір паркомісць за параметрами')}}</div>
+      <div class="links">
+        <a href="#" :class="{'active': ftype == 'podbor'}" @click.prevent="setLInk('podbor')">
+          <svg>
+            <use xlink:href="#ico-kv"></use>
+          </svg>
+          <div class="t">{{l('Квартиры','Квартири')}}</div>
+        </a>
+        <a href="#" :class="{'active': ftype == 'commerce'}" @click.prevent="setLInk('commerce')">
+          <svg>
+            <use xlink:href="#ico-dom"></use>
+          </svg>
+          <div class="t">{{l('Коммерция', 'Комерція')}}</div>
+        </a>
+        <a href="#" :class="{'active': ftype == 'parking'}" @click.prevent="setLInk('parking')">
+          <svg>
+            <use xlink:href="#ico-p"></use>
+          </svg>
+          <div class="t">Парковка</div>
+        </a>
+      </div>
+    </div>
+
     <div class="filtr" :class="{'active': showFiltr}">
       <div class="close-fitr hideMin675" @click="showFiltr = false"></div>
       <div class="row-filtr row-filtr-slider">
-        <div class="item item-rooms">
+        <div class="item item-rooms"  v-if="ftype != 'parking'">
           <div class="title">{{$t('pd["Комнат"]')}}</div>
           <div class="fl-rooms">
             <div
@@ -20,10 +54,40 @@
             <div
               class="fl-room"
               :class="{'active':config.rooms.includes(3)}"
-              @click.prevent="setConf('rooms',3)"
+              @click.prevent="setConf('rooms',3, 4, 5)"
             >3+</div>
           </div>
         </div>
+
+        <div class="item item-select" v-if="ftype == 'parking'">
+          <div class="title">{{$t('pd["Дом"]')}}</div>
+          <chSelect
+            ref="building"
+            :list=" {
+            1: $t('pd.Дом')+' 1',
+           // 2: $t('pd.Дом')+' 2',
+         //   3: 'Дом 3',
+       //     4: 'Дом 4',
+          }"
+            @data="setConf('building', $event)"
+          ></chSelect>
+        </div>
+
+        <!-- <div class="item item-rooms" v-if="ftype == 'commerce'">
+          <div class="title">{{$t('pd["Этаж"]')}}</div>
+          <div class="fl-rooms">
+            <div
+              class="fl-room"
+              :class="{'active':config.lfloor.includes(0)}"
+              @click.prevent="setConf('lfloor',0)"
+            >0</div>
+            <div
+              class="fl-room"
+              :class="{'active':config.lfloor.includes(1)}"
+              @click.prevent="setConf('lfloor',1)"
+            >1</div>
+          </div>
+        </div>-->
 
         <div class="item item-slider">
           <div class="title">
@@ -55,7 +119,7 @@
           </div>
         </div>
 
-        <div class="item item-slider">
+        <div class="item item-slider" v-if="ftype == 'podbor'">
           <div class="title">{{$t('pd["Этаж"]')}}</div>
           <div class="sl">
             <vue-slider
@@ -110,9 +174,21 @@
             </div>
           </div>
         </div>
+
+        <div class="item f-action"  v-if="ftype == 'parking'">
+          <label class="cus-check big">
+            <input
+              type="checkbox"
+              @change="setConf('action', '1' )"
+              :checked="config.action.length"
+            >
+            <span class="ch"></span>
+            <span class="ch-title">{{l('Акционные паркоместа','Акційні паркомісця')}}</span>
+          </label>
+        </div>
       </div>
 
-      <div class="row-filtr row-filtr-select" style="display: none">
+      <div class="row-filtr row-filtr-select" v-if="ftype != 'parking'" style="display: none">
         <div class="item item-select">
           <div class="title">{{$t('pd["Дом"]')}}</div>
           <chSelect
@@ -140,7 +216,7 @@
             @data="setConf('section', $event)"
           ></chSelect>
         </div>
-        <div class="item item-select">
+        <div class="item item-select" v-if="ftype == 'podbor'">
           <div class="title">{{$t('pd["Тип квартиры"]')}}</div>
           <chSelect
             :list="{
@@ -204,11 +280,15 @@
               :checked="config.action.length"
             >
             <span class="ch"></span>
-            <span class="ch-title" v-html="$t('pd.Акционные_квартиры')"></span>
+            <span class="ch-title" v-html="$t('pd.Акционные_квартиры')" v-if="ftype == 'podbor'"></span>
+            <span
+              class="ch-title"
+              v-if="ftype == 'commerce'"
+            >{{l('Акционные помещения','Акційні приміщення')}}</span>
           </label>
         </div>
       </div>
-      <div class="more-filtr text-center">
+      <div class="more-filtr text-center" v-if="ftype != 'parking'">
         <a href="#" class="active" @click.prevent="toggleFiltr">{{$t('pd["Расширенный фильтр"]')}}</a>
       </div>
     </div>
@@ -221,7 +301,14 @@
         <div class="l">
           <div class="cont-flats">
             {{$t('pd["Найдено"]')}}
-            <span>{{flats.length}}</span> квартир
+            <span v-if="config.typeList == 'list'">
+              <span class="count">{{flats.length}}</span>
+              {{sk(flats.length)}}
+            </span>
+            <span v-else>
+              <span class="count">{{plans.length}}</span>
+              {{sk(plans.length, 'plan')}}
+            </span>
           </div>
           <div class="clear-filtr">
             <a href="#" @click.prevent="clearfitr">{{$t('pd["Сбросить фильтр"]')}}</a>
@@ -247,7 +334,7 @@
               <div class="arr"></div>
             </a>
           </div>
-          <div class="sort-type-list">
+          <div class="sort-type-list" v-if="ftype == 'podbor'">
             <div
               class="it"
               :class="{'active':config.typeList == 'list'}"
@@ -305,7 +392,7 @@
                 </div>
               </nuxt-link>
               <nuxt-link :to="$i18n.path('')+'plan/'+item.plan_id" exact class="similar">
-                <span>Доступно {{cFlats(item)}} квартир</span>
+                <span>Доступно {{cFlats(item)}} {{sk(cFlats(item))}}</span>
                 <svg>
                   <use xlink:href="#ic-arrow"></use>
                 </svg>
@@ -317,14 +404,16 @@
         <div class="table-flats" v-else>
           <div class="row t-head">
             <div class="col">
-              <span>Кв. №</span>
+              <span v-if="ftype == 'podbor'">Кв. №</span>
+              <span v-if="ftype == 'commerce'">{{l('Пом.','Пр.')}} №</span>
+              <span v-if="ftype == 'parking'"> №</span>
             </div>
             <div class="col hideMax575">{{$t('pd["Дом"]')}}</div>
-            <div class="col hideMax575">{{$t('pd["Секция"]')}}</div>
-            <div class="col">
+            <div class="col hideMax575" v-if="ftype != 'parking'">{{$t('pd["Секция"]')}}</div>
+            <div class="col" v-if="ftype != 'parking'">
               <span>{{$t('pd["Этаж"]')}}</span>
             </div>
-            <div class="col">
+            <div class="col"  v-if="ftype != 'parking'">
               <span>{{$t('pd["Комнат"]')}}</span>
             </div>
             <div class="col">
@@ -349,9 +438,9 @@
             >
               <div class="col">{{item.number}}</div>
               <div class="col hideMax575">{{item.building}}</div>
-              <div class="col hideMax575">{{item.section}}</div>
-              <div class="col">{{item.floor}}</div>
-              <div class="col">{{item.rooms}}</div>
+              <div class="col hideMax575" v-if="ftype != 'parking'">{{item.section}}</div>
+              <div class="col" v-if="ftype != 'parking'">{{item.floor}}</div>
+              <div class="col" v-if="ftype != 'parking'">{{item.rooms}}</div>
               <div class="col">{{item.square_total}}</div>
               <div class="col">{{item.price_m2 | Price}}</div>
               <div class="col-1"></div>
@@ -373,7 +462,7 @@
           v-if="config.typeList == 'square' && plans.length > countFlasts ||  config.typeList == 'list' &&  flats.length > countFlasts"
         >
           <button class="btn btn-def btn-black" @click="countFlasts = countFlasts + 12">
-            <span>{{$t('pd["Показать еще"]')}} 12 квартир</span>
+            <span>{{$t('pd["Показать еще"]')}} {{lastCont}} {{curTypeName}}</span>
           </button>
         </div>
       </div>
@@ -401,12 +490,13 @@ import minBy from "lodash.minby";
 import uniqBy from "lodash.uniqby";
 
 export default {
-  props: ["mode"],
+  props: ["mode", "ptype"],
   components: {
     chSelect
   },
   data() {
     return {
+      ftype: "podbor",
       config: {
         rooms: [],
         building: [],
@@ -421,7 +511,8 @@ export default {
         prices: [8500, 30400],
         orderField: "price_m2",
         sort: false,
-        typeList: "square"
+        typeList: "list",
+        lfloor: []
       },
       // Площадь, м2
       sq: {
@@ -467,15 +558,31 @@ export default {
     }
   },
   created() {
+    if (this.ptype) {
+      this.ftype = this.ptype;
+    }
+
     if (this.mode == "main") {
       this.showContent = false;
     }
 
     if (!this.$store.state.flats) {
-      this.$store.dispatch("getFlats").then(() => {});
+      this.$store.dispatch("getFlats");
     }
 
-    if (this.$store.state.fillQ && this.mode != "main") {
+    if (!this.$store.state.commerce) {
+      this.$store.dispatch("getCommerce");
+    }
+
+    if (!this.$store.state.parking) {
+      this.$store.dispatch("getParking");
+    }
+
+    if (
+      this.$store.state.fillQ &&
+      this.mode != "main" &&
+      this.ptype == "podbor"
+    ) {
       this.$router.push({ query: this.$store.state.fillQ });
     }
   },
@@ -487,16 +594,33 @@ export default {
       }
     });
 
-    if (this.flats.length) {
+    //  console.log(this.ftype);
+
+    let data = this.$store.state.flats;
+    if (this.ftype == "commerce") {
+      data = this.$store.state.commerce;
+    }
+    if (this.ftype == "parking") {
+      data = this.$store.state.parking;
+    }
+
+    if (data) {
       setTimeout(() => {
-        this.setConfig(this.$store.state.flats);
+        this.setConfig(data);
         setTimeout(() => {
           this.loaded = true;
         }, 10);
       }, 100);
     } else {
       setTimeout(() => {
-        this.setConfig(this.$store.state.flats);
+        data = this.$store.state.flats;
+        if (this.ftype == "commerce") {
+          data = this.$store.state.commerce;
+        }
+        if (this.ftype == "parking") {
+          data = this.$store.state.parking;
+        }
+        this.setConfig(data);
         setTimeout(() => {
           this.loaded = true;
         }, 10);
@@ -504,8 +628,42 @@ export default {
     }
   },
   computed: {
+    lastCont() {
+      let items = this.flats;
+      if (this.config.typeList == "square") {
+        items = this.plans;
+      }
+      //  console.log(items);
+      if (!items) return 12;
+      let last = items.length - this.countFlasts;
+      // console.log(last);
+      if (last < 12) {
+        return last;
+      } else {
+        return 12;
+      }
+    },
+    curTypeName() {
+      let type = this.config.typeList == "square" ? "plan" : "";
+      return this.sk(this.lastCont, type);
+    },
     plans() {
       if (!this.flats.length) return [];
+      let pl = {};
+      [1, 2, 3, 4].forEach(t => {
+        let temp = this.flats.filter(o => {
+          return o.section == t;
+        });
+        pl[t] = uniqBy(temp, o => {
+          return o.type;
+        });
+      });
+
+      let res = [...pl[1], ...pl[2], ...pl[3], ...pl[4]];
+
+      return res;
+
+      console.log(pl);
       let plans = uniqBy(this.flats, o => {
         return o.type;
       });
@@ -513,7 +671,17 @@ export default {
       return plans;
     },
     flats() {
-      let flats = this.$store.state.flats;
+      let flats = [];
+      if (this.ftype == "podbor") {
+        flats = this.$store.state.flats;
+      }
+      if (this.ftype == "commerce") {
+        flats = this.$store.state.commerce;
+      }
+      if (this.ftype == "parking") {
+        flats = this.$store.state.parking;
+      }
+
       if (!flats) return [];
       flats = flats.filter(o => {
         return (
@@ -612,6 +780,12 @@ export default {
     }
   },
   methods: {
+    setLInk(type) {
+      this.ftype = type;
+      this.$router.push({
+        path: this.$i18n.path("") + type
+      });
+    },
     cFlats(data) {
       if (!this.flats) return "";
       let flats = this.flats.filter(o => {
@@ -624,9 +798,36 @@ export default {
 
       return flats.length;
     },
+    sk(num, type) {
+      let names = ["квартира", this.l("квартиры", "квартири"), "квартир"];
+      if (type == "plan") {
+        names = [
+          this.l("планировка", "планування"),
+          this.l("планировки", "планування"),
+          this.l("планировок", "планувань")
+        ];
+      }
+
+      if (this.ftype == "commerce") {
+        names = [
+          this.l("помещение", "приміщення"),
+          this.l("помещения", "приміщення"),
+          this.l("помещений", "приміщень")
+        ];
+      }
+
+      if (this.ftype == "parking") {
+        names = [
+          this.l("паркоместо", "паркомісце"),
+          this.l("паркоместа", "паркомісця"),
+          this.l("паркомест", "паркомісць")
+        ];
+      }
+
+      return this.Declension(num, names);
+    },
     setQ() {
-      // return;
-      // console.log(1);
+      if (this.ftype != "podbor") return;
       let tConf = { ...this.config };
       for (let i in tConf) {
         if (Array.isArray(tConf[i])) {
@@ -648,11 +849,14 @@ export default {
       }
     },
     setConfig(flats) {
+      //  console.log(flats);
+      //  if (!flats) return;
+
       let conf = { ...this.config };
-      conf.sq[0] =
-        minBy(flats, function(o) {
-          return o.square_total;
-        }).square_total - 1;
+      let sqMin = minBy(flats, function(o) {
+        return o.square_total;
+      });
+      conf.sq[0] = sqMin.square_total;
       this.sq.min = +conf.sq[0].toFixed();
       conf.sq[1] =
         maxBy(flats, function(o) {
@@ -664,9 +868,10 @@ export default {
         return o.price_m2;
       }).price_m2;
       this.prices.min = +conf.prices[0].toFixed();
-      conf.prices[1] = maxBy(flats, function(o) {
-        return o.price_m2;
-      }).price_m2;
+      conf.prices[1] =
+        maxBy(flats, function(o) {
+          return o.price_m2;
+        }).price_m2 + 1;
       this.prices.max = Math.ceil(conf.prices[1]);
 
       conf.floors[0] = minBy(flats, function(o) {
@@ -682,7 +887,11 @@ export default {
 
       let q = this.$route.query;
       //  console.log(Object.keys(q).length, 1);
-      if (!Object.keys(q).length && this.$store.state.fillQ) {
+      if (
+        !Object.keys(q).length &&
+        this.$store.state.fillQ &&
+        this.ftype == "podbor"
+      ) {
         //   console.log(234);
         q = this.$store.state.fillQ;
       }
@@ -720,7 +929,9 @@ export default {
             //  "deadline"
           ].includes(i)
         ) {
-          this.$refs[i].setP(this.config[i]);
+          if (this.$refs[i]) {
+            this.$refs[i].setP(this.config[i]);
+          }
         }
       }
 
@@ -730,6 +941,7 @@ export default {
       });
     },
     clearfitr() {
+      this.countFlasts = 12;
       for (let i in this.config) {
         // console.log(i);
         if (Array.isArray(this.config[i])) {
@@ -755,7 +967,7 @@ export default {
         "side_light"
         //   "deadline"
       ].forEach(o => {
-        this.$refs[o].setP([]);
+        if (this.$refs[o]) this.$refs[o].setP([]);
       });
     },
     sortD(field) {
@@ -766,7 +978,7 @@ export default {
       $(".row-filtr-select").slideToggle();
       $(".more-filtr a").toggleClass("active");
     },
-    setConf(f, i) {
+    setConf(f, i, i2, i3) {
       // console.log(f, i);
       let temp = { ...this.config };
       if (Array.isArray(temp[f]) && !Array.isArray(i)) {
@@ -778,6 +990,23 @@ export default {
       } else {
         temp[f] = i;
       }
+
+      if (i2) {
+        if (temp[f].indexOf(i2) == -1) {
+          temp[f].push(i2);
+        } else {
+          temp[f].splice(temp[f].indexOf(i2), 1);
+        }
+      }
+
+      if (i3) {
+        if (temp[f].indexOf(i3) == -1) {
+          temp[f].push(i3);
+        } else {
+          temp[f].splice(temp[f].indexOf(i3), 1);
+        }
+      }
+
       this.config = temp;
     }
   }

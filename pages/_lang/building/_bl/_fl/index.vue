@@ -1,6 +1,6 @@
 <template>
   <div class="sections">
-    <visual :dir="params.dir" :type="params.type" :activeSlide="params.slide" :rk="params.rk"></visual>
+    <visual type="floors" :activeSlide="1"></visual>
   </div>
 </template>
 
@@ -33,8 +33,6 @@ export default {
       this.$store.dispatch("getFlats");
     }
 
-    //console.log(this.$route);
-
     if (window.innerWidth < 1200) {
       // console.log();
       this.$store.commit("setMainClass", [
@@ -44,30 +42,16 @@ export default {
       ]);
     }
   },
-  beforeDestroy() {
+  destroyed() {
     $(".footer").show();
   },
   computed: {
-    ids() {
-      return this.data.tv.list_text;
-    },
-    params() {
-      let dir = "g360";
+    type() {
       let type = "genplan";
-      let slide = 15;
-      let rk = [23, 3, 7, 11, 15, 19];
       if (this.$route.params.id) {
-        dir = "dom360";
         type = "building";
-        slide = 22;
-        rk = [1, 5, 9, 13, 17, 22];
       }
-      return {
-        dir,
-        type,
-        slide,
-        rk
-      };
+      return type;
     }
   }
 };

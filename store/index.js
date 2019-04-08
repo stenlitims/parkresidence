@@ -8,12 +8,18 @@ export const state = () => ({
   api: 'https://web.park-residence.com.ua/api',
   siteName: ' | Park Residence',
   mPhone: '(097) 513-00-01',
-  mEmail: 'sale.parkresidence@gmail.com',
+  mEmail: 'sale@park-residence.com.ua',
   actions: [],
   flats: null,
+  commerce: null,
   floorplans: null,
+  parking: null,
   plans_floorplans: null,
+  floors: null,
+  buildings: null,
+  sections: null,
   isMobile: false,
+  mapUrl: "https://goo.gl/maps/aHCfyfCMoyv",
   op: {
     phone: '(097) 513-00-01',
   },
@@ -46,6 +52,14 @@ export const mutations = {
     state.flats = payload;
   },
 
+  getCommerce(state, payload) {
+    state.commerce = payload;
+  },
+
+  getParking(state, payload) {
+    state.parking = payload;
+  },
+
   getOptions(state, payload) {
     state.op = payload;
   },
@@ -53,6 +67,9 @@ export const mutations = {
   getFloorplans(state, payload) {
     state.floorplans = payload.floorplans;
     state.plans_floorplans = payload.plans_floorplans;
+    state.floors = payload.floors;
+    state.buildings = payload.buildings;
+    state.sections = payload.sections;
   },
 
   setfillQ(state, payload) {
@@ -110,6 +127,22 @@ export const actions = {
   }) {
     axios.get(state.api + '?action=getFlats').then(res => {
       commit('getFlats', res.data);
+    });
+  },
+  getCommerce({
+    commit,
+    state
+  }) {
+    axios.get(state.api + '?action=getComm').then(res => {
+      commit('getCommerce', res.data);
+    });
+  },
+  getParking({
+    commit,
+    state
+  }) {
+    axios.get(state.api + '?action=getPark').then(res => {
+      commit('getParking', res.data);
     });
   },
   getOptions({

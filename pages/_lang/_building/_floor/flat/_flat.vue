@@ -1,8 +1,8 @@
 <template>
-  <div class="inner-page">
+  <div class="inner-page1">
     <flat :data="data" type="flat" :title="title"></flat>
 
-    <div class="section-fl container">
+    <div class="section-fl container calc-wrap" v-if="data.property_type == 'flat'">
       <calc :data="data"></calc>
     </div>
 
@@ -103,6 +103,16 @@ export default {
   },
   computed: {
     title() {
+      if(this.data.property_type == 'nonresidential'){
+        return this.l('Помещение', 'Приміщення')+', №'+this.data.number;
+      }
+
+       if(this.data.property_type == 'parking_place'){
+        return this.l('Паркоместо', 'Паркомісце')+', №'+this.data.number;
+      }
+
+
+
       let t = this.$t("flat[ " + this.data.rooms + "]");
       if (this.data.levels == "2") {
         t = this.$t("pd['Двухуровневая']");

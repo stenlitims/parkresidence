@@ -1,5 +1,6 @@
 <template>
   <div class="main-page">
+    <h1 class="def-h1" v-if="d.menutitle">{{d.menutitle}}</h1>
     <div class="main-text-list owl-carousel">
       <div v-for="(item, i) in main_slider" :key="i" class="main-img" :class="'slide'+i">
         <img :src="$url+item.image" class="bg-img" :class="{'scaleIn': i == 0}" alt>
@@ -72,7 +73,11 @@
           </div>
 
           <div class="img wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".8s">
-            <img :src="$url+'assets/img/main/1.webp'" alt>
+            <picture>
+              <source :srcset="$url+'assets/img/main/1.webp'" type="image/webp">
+              <source :srcset="$url+'assets/img/main/1.jpg'" type="image/jpeg">
+              <img :src="$url+'assets/img/main/1.jpg'" alt>
+            </picture>
           </div>
         </div>
       </div>
@@ -80,7 +85,11 @@
       <div class="section3 section">
         <div class="list-text-img">
           <div class="img wow fadeInUp2" data-wow-duration=".6s" data-wow-delay=".5s">
-            <img :src="$url+'assets/img/main/2.webp'" alt>
+            <picture>
+              <source :srcset="$url+'assets/img/main/2.webp'" type="image/webp">
+              <source :srcset="$url+'assets/img/main/2.jpg'" type="image/jpeg">
+              <img :src="$url+'assets/img/main/2.jpg'" alt>
+            </picture>
           </div>
           <div class="list-wrap">
             <div class="list">

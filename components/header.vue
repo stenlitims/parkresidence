@@ -19,11 +19,17 @@
               <nuxt-link :to="$i18n.path('')+'genplan'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
             </li> -->
               <li>
-                <nuxt-link :to="$i18n.path('')+'podbor'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
+                <nuxt-link :to="$i18n.path('')+'genplan'" exact>{{$t('links["Выбрать квартиру"]')}}</nuxt-link>
               </li>
             <li>
               <nuxt-link :to="$i18n.path('')+'howbuy'" exact>{{$t('links["Как купить"]')}}</nuxt-link>
             </li>
+             <li>
+                <nuxt-link
+                  :to="$i18n.path('')+'progress'"
+                  exact
+                >{{$t('links["Ход строительства"]')}}</nuxt-link>
+              </li>
             <li v-if="$store.state.actions.length">
               <a class="js-actions" href="javascript:;">
                 {{$t('links["Акции"]')}}
@@ -60,12 +66,12 @@
         </div>
 
         <div class="soc-list">
-          <a :href="$store.state.soc.facebook_mes" target="_blank">
+          <a :href="$store.state.soc.facebook_mes"  @click="glGa('mes')" target="_blank">
             <svg>
               <use xlink:href="#ic_messenger"></use>
             </svg>
           </a>
-          <a :href="$store.state.soc.telegram" target="_blank">
+          <a :href="$store.state.soc.telegram"  @click="glGa('mes')" target="_blank">
             <svg>
               <use xlink:href="#ic_telegram"></use>
             </svg>
@@ -79,7 +85,7 @@
         </div>
 
         <div class="top-phone">
-          <a :href="'tel:'+$store.state.mPhone">{{$store.state.mPhone}}</a>
+          <a :href="'tel:'+$store.state.mPhone" @click="glGa">{{$store.state.mPhone}}</a>
         </div>
 
         <div class="burger" data-fancybox data-src="#modal-nav" href="javascript:;">
